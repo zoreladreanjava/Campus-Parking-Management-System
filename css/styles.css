@@ -372,6 +372,7 @@ p {
 }
 
 .table-wrap {
+  position:relative;
   border:1px solid var(--border);
   border-radius:10px;
   overflow:auto;
@@ -2040,6 +2041,13 @@ fieldset.card {
   display:inline-flex;
   align-items:center;
   min-height:44px
+}
+
+/* Links inside sentences: taller hit area without changing line spacing */
+.footnote a,.panel-head a,.back-link {
+  display:inline-block;
+  padding:13px 0;
+  margin:-13px 0
 }
 
 
