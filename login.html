@@ -10,28 +10,19 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<div class="app-shell"><header class="topbar"><a class="brand" href="index.html">P / TeamParker</a>
-<p class="campus">CIT-University • Campus parking</p>
-<div class="topbar-end"><span class="role">Administrator</span>
-<a class="button neutral" href="login.html">Sign out</a></div></header>
-<aside class="sidebar">
-<nav aria-label="Main navigation"><a href="overview.html" >Overview</a>
-<a href="areas.html" >Parking areas</a>
-<a href="vehicles.html" >Vehicles / owners</a>
-<a href="history.html" >Parking history</a>
-<a href="reports.html" >Reports</a>
-</nav></aside>
-<main id="main" class="main"><div class="page-heading"><h1>Staff sign in</h1>
-<p class="text  muted size-14">Guard and administrator access. Vehicle owners can check availability without staff credentials.</p></div>
-<section class="card" style="--card-width:600px"><h2>Access your workspace</h2>
-<div class="field" style="--field-width:552px"><label for="field-1">Username</label>
-<input id="field-1" name="Username" type="text" placeholder="Enter staff username"   autocomplete="off"></div>
-<div class="field" style="--field-width:552px"><label for="field-2">Password</label>
-<input id="field-2" name="Password" type="password" value="••••••••"   autocomplete="off"></div>
-<p class="text  muted size-14">Your assigned staff account determines your access.</p>
-<div class="row"><a class="button primary" href="guard.html" >Sign in as guard</a>
-<a class="button neutral" href="overview.html" >Sign in as administrator</a></div>
-<a class="button subtle" href="mobile.html" >View public availability</a></section></main>
+<div class="auth-shell"><header class="public-header"><a class="brand" href="index.html">P / TeamParker</a>
+<p class="muted">CIT-University • Campus parking</p></header>
+<main id="main" class="auth-main"><form class="card auth-card" action="guard.html" method="get"><div><h1>Staff sign in</h1>
+<p class="text muted size-14">For guards and administrators.</p></div>
+<div class="field"><label for="username">Username</label>
+<input id="username" name="username" type="text" placeholder="Enter staff username" autocomplete="username"></div>
+<div class="field"><label for="password">Password</label>
+<input id="password" name="password" type="password" placeholder="Enter password" autocomplete="current-password"></div>
+<div class="form-actions"><button class="button primary large" type="submit" formaction="guard.html">Sign in as guard</button>
+<button class="button neutral large" type="submit" formaction="overview.html">Sign in as admin</button></div>
+<p class="footnote">Prototype: the two buttons stand in for role-based sign-in. Don&#39;t enter real credentials.</p></form>
+<a class="card owner-link" href="mobile.html"><strong>Vehicle owner?</strong>
+<span>Check parking availability ›</span></a></main>
 <footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
 </body>
 </html>

@@ -21,20 +21,22 @@
 <a href="history.html" >Parking history</a>
 <a href="reports.html" >Reports</a>
 </nav></aside>
-<main id="main" class="main"><div class="page-heading"><h1>Add / edit parking area</h1>
-<p class="text  muted size-14">Area details match the ParkingArea entity.</p></div>
-<section class="card" style="--card-width:720px"><h2>Parking area details</h2>
-<div class="field" style="--field-width:672px"><label for="field-10">Area ID (generated)</label>
-<input id="field-10" name="Area ID (generated)" type="text" value="A-01" readonly  autocomplete="off"></div>
-<div class="field" style="--field-width:672px"><label for="field-11">Area name</label>
-<input id="field-11" name="Area name" type="text" value="Area A"   autocomplete="off"></div>
-<div class="field" style="--field-width:672px"><label for="field-12">Total capacity</label>
-<input id="field-12" name="Total capacity" type="text" value="100"   autocomplete="off"></div>
-<div class="field" style="--field-width:672px"><label for="field-13">Managed by administrator</label>
-<input id="field-13" name="Managed by administrator" type="text" value="A. Rivera • ADM-01"   autocomplete="off"></div>
-<aside class="notice">70 occupied • 30 available (calculated). Capacity must be at least 70 for this sample area.</aside>
-<div class="row"><a class="button primary" href="areas.html" >Save parking area</a>
-<a class="button neutral" href="areas.html" >Cancel</a></div></section></main>
+<main id="main" class="main"><div class="page-heading"><h1>Edit parking area</h1>
+<p class="text muted size-14">Area A • A-01</p></div>
+<form class="card form-card" action="areas.html" method="get"><div class="row"><div class="field"><label for="a-id">Area ID</label>
+<input id="a-id" type="text" value="A-01" readonly>
+<span class="hint">Generated automatically</span></div>
+<div class="field"><label for="a-admin">Managed by</label>
+<input id="a-admin" type="text" value="A. Rivera • ADM-01" readonly></div></div>
+<div class="field"><label for="a-name">Area name</label>
+<input id="a-name" name="name" type="text" value="Area A" required></div>
+<div class="field"><label for="a-cap">Total capacity</label>
+<input id="a-cap" name="capacity" type="number" value="100" min="70" step="1" required>
+<span class="hint">70 vehicles are parked here now, so capacity must be at least 70.</span></div>
+<div class="area-update"><div class="meter-head num"><strong>After saving</strong><span><b>30</b> <span class="muted">/ 100 free • 70 occupied</span></span></div>
+<div class="meter" aria-hidden="true"><span style="--value:70%"></span></div></div>
+<div class="form-actions"><button class="button primary" type="submit">Save parking area</button>
+<a class="button subtle" href="areas.html">Cancel</a></div></form></main>
 <footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
 </body>
 </html>

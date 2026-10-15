@@ -22,29 +22,36 @@
 <a href="search.html" class="active" aria-current="page">Search / correct</a>
 </nav></aside>
 <main id="main" class="main"><div class="page-heading"><h1>Search vehicle / owner</h1>
-<p class="text  muted size-14">Find registered vehicles and inspect parking records.</p></div>
-<div class="field" style="--field-width:924px"><label for="field-5">Search</label>
-<input id="field-5" name="Search" type="text" placeholder="Plate number, owner name or RFID card number"  data-search autocomplete="off"></div>
-<div class="table-wrap" tabindex="0"><table><thead><tr><th scope="col">Owner</th>
+<p class="text muted size-14">Find a vehicle without an ID tap, or fix a record entered by mistake.</p></div>
+<section class="panel" aria-labelledby="results-heading"><div class="toolbar" role="search"><div class="field grow"><label for="search-q">Plate number, owner name or RFID</label>
+<input id="search-q" name="q" type="search" placeholder="e.g. MC-1234 or John Doe" data-search autocomplete="off"></div></div>
+<h2 class="visually-hidden" id="results-heading">Results</h2>
+<div class="table-wrap" tabindex="0"><table class="data-table" style="--table-min:680px"><colgroup><col style="width:24%"><col style="width:18%"><col style="width:12%"><col style="width:12%"><col style="width:16%"><col style="width:18%"></colgroup>
+<thead><tr><th scope="col">Owner</th>
 <th scope="col">Vehicle</th>
-<th scope="col">Parking area</th>
-<th scope="col">Status</th></tr></thead>
-<tbody><tr><td>John Doe</td>
-<td>MC-1234</td>
+<th scope="col">Area</th>
+<th scope="col">Entered</th>
+<th scope="col">Status</th>
+<th scope="col"><span class="visually-hidden">Actions</span></th></tr></thead>
+<tbody><tr class="is-selected"><th scope="row">John Doe<span class="cell-sub">RFID 004218</span></th>
+<td>MC-1234<span class="cell-sub">Motorcycle</span></td>
 <td>Area A</td>
-<td>Active</td></tr>
-<tr><td>Maria Cruz</td>
-<td>ABC-5678</td>
+<td class="num">08:15</td>
+<td><span class="badge active">Inside</span></td>
+<td><a href="correct.html">Correct</a></td></tr>
+<tr><th scope="row">Maria Cruz<span class="cell-sub">RFID 004219</span></th>
+<td>ABC-5678<span class="cell-sub">Car</span></td>
 <td>Area B</td>
-<td>Active</td></tr>
-<tr><td>Alex Reyes</td>
-<td>MC-2088</td>
+<td class="num">08:20</td>
+<td><span class="badge active">Inside</span></td>
+<td><a href="correct.html">Correct</a></td></tr>
+<tr><th scope="row">Alex Reyes<span class="cell-sub">RFID 004377</span></th>
+<td>MC-2088<span class="cell-sub">Motorcycle</span></td>
 <td>—</td>
-<td>Outside</td></tr></tbody></table></div>
-<section class="card" style="--card-width:924px"><h2>Selected record • ENT-0158</h2>
-<p class="text   size-16">John Doe / MC-1234 / Area A / Entered 08:15 / Active</p>
-<a class="button primary" href="correct.html" >Correct selected record</a>
-<aside class="notice">A correction must reconcile area availability. Save only after reviewing the change.</aside></section></main>
+<td class="num">—</td>
+<td><span class="badge neutral">Outside</span></td>
+<td><a href="entry.html">Record entry</a></td></tr></tbody></table></div>
+<p class="panel-foot">Corrections are saved with your name and the time, and update area availability.</p></section></main>
 <footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
 </body>
 </html>

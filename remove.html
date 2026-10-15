@@ -21,13 +21,16 @@
 <a href="history.html" >Parking history</a>
 <a href="reports.html" >Reports</a>
 </nav></aside>
-<main id="main" class="main"><div class="page-heading"><h1>Review removal</h1>
-<p class="text  muted size-14">Prevent orphaned records and preserve recorded parking history.</p></div>
-<section class="card" style="--card-width:720px"><h2>Removal blocked • Area A</h2>
-<p class="text strong  size-24">Area A has 70 active parking records.</p>
-<p class="text   size-16">Resolve active entries before removing the area. Vehicles with active entries must also be checked out before removal. Historical references require retention or archival rules.</p>
-<a class="button neutral" href="areas.html" >Return to parking areas</a>
-<a class="button subtle" href="history.html" >View active records</a></section></main>
+<main id="main" class="main"><div class="page-heading"><h1>Remove Area A?</h1>
+<p class="text muted size-14">A-01 • 100 slots</p></div>
+<section class="card form-card" aria-labelledby="blocked"><div class="callout bad" role="alert"><strong id="blocked">This area can&#39;t be removed yet</strong>
+<span>70 vehicles are parked in Area A right now.</span></div>
+<p class="text size-15">Removing it would leave their active entries without an area. Wait until the area is empty (every vehicle&#39;s exit is recorded), or move entries with a correction first. Past entries and exits stay in parking history.</p>
+<dl class="detail-list"><div><dt>Active entries</dt><dd>70</dd></div>
+<div><dt>Past entries kept in history</dt><dd>1,240</dd></div></dl>
+<div class="form-actions"><a class="button primary" href="history.html">View vehicles inside</a>
+<a class="button subtle" href="areas.html">Back to parking areas</a>
+<button class="button neutral" type="button" disabled>Remove area</button></div></section></main>
 <footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
 </body>
 </html>

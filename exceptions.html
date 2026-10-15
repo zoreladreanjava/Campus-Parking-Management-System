@@ -21,18 +21,37 @@
 <a href="exit.html" >Vehicle exit</a>
 <a href="search.html" >Search / correct</a>
 </nav></aside>
-<main id="main" class="main"><div class="page-heading"><h1>Gate verification exceptions</h1>
-<p class="text  muted size-14">No entry or exit is saved when verification fails.</p></div>
-<section class="card" style="--card-width:924px"><h2>Invalid or unregistered ID</h2>
-<p class="text   size-14">No matching RFID owner was found. Re-tap the card or search the registry; refer registration issues to an administrator.</p></section>
-<section class="card" style="--card-width:924px"><h2>No parking available</h2>
-<p class="text   size-14">All parking areas are full. Entry confirmation is disabled until capacity is available.</p></section>
-<section class="card" style="--card-width:924px"><h2>No active parking record</h2>
-<p class="text   size-14">The vehicle is not recorded inside. Request verification before recording an exit.</p></section>
-<section class="card" style="--card-width:924px"><h2>Vehicle already inside</h2>
-<p class="text   size-14">An active entry already exists. Review the record instead of creating a duplicate.</p></section>
-<div class="row"><a class="button primary" href="entry.html" >Retry ID scan</a>
-<a class="button neutral" href="search.html" >Search records</a></div></main>
+<main id="main" class="main"><div class="page-heading"><h1>Gate exceptions</h1>
+<p class="text muted size-14">What the reader shows when a tap can&#39;t be recorded. Nothing is saved in these states.</p></div>
+<div class="state-grid"><section class="card state-card" id="invalid-id" aria-labelledby="s1"><span class="badge danger">Entry or exit</span>
+<div class="reader-status"><span class="reader-indicator small error" aria-hidden="true"></span>
+<div><p class="reader-title" id="s1">ID not registered</p>
+<p class="text muted size-14">RFID 009931 has no matching owner or vehicle.</p></div></div>
+<p class="text size-15">Ask the owner to tap again. If it still fails, search by plate number. Registration is handled by an administrator.</p>
+<div class="form-actions"><a class="button primary" href="guard.html">Tap again</a>
+<a class="button neutral" href="search.html">Search by plate</a></div></section>
+<section class="card state-card" id="no-parking" aria-labelledby="s2"><span class="badge danger">Entry</span>
+<div class="reader-status"><span class="reader-indicator small error" aria-hidden="true"></span>
+<div><p class="reader-title" id="s2">No parking available — tell the owner “No”</p>
+<p class="text muted size-14">All areas are full. Entry can&#39;t be recorded.</p></div></div>
+<ul class="area-meters"><li><div class="meter-head"><span>Area A</span><span class="badge full num">FULL · 0 / 100</span></div></li>
+<li><div class="meter-head"><span>Area B</span><span class="badge full num">FULL · 0 / 80</span></div></li>
+<li><div class="meter-head"><span>Area C</span><span class="badge full num">FULL · 0 / 20</span></div></li></ul>
+<div class="form-actions"><a class="button neutral" href="guard.html">Back to gate dashboard</a></div></section>
+<section class="card state-card" id="already-inside" aria-labelledby="s3"><span class="badge warn">Entry</span>
+<div class="reader-status"><span class="reader-indicator small warn" aria-hidden="true"></span>
+<div><p class="reader-title" id="s3">Vehicle already inside</p>
+<p class="text muted size-14">MC-1234 has an active entry in Area A since 08:15.</p></div></div>
+<p class="text size-15">A second entry would count the slot twice. If the vehicle is leaving, record the exit; if the old record is wrong, correct it.</p>
+<div class="form-actions"><a class="button primary" href="exit.html">Record exit instead</a>
+<a class="button neutral" href="search.html?q=MC-1234">Review record</a></div></section>
+<section class="card state-card" id="no-record" aria-labelledby="s4"><span class="badge danger">Exit</span>
+<div class="reader-status"><span class="reader-indicator small error" aria-hidden="true"></span>
+<div><p class="reader-title" id="s4">No active parking record</p>
+<p class="text muted size-14">Alex Reyes • MC-2088 is not recorded inside.</p></div></div>
+<p class="text size-15">The entry may have been missed at the gate. Find the vehicle&#39;s records before letting the exit through.</p>
+<div class="form-actions"><a class="button primary" href="search.html?q=MC-2088">Find records</a>
+<a class="button neutral" href="guard.html">Back to gate dashboard</a></div></section></div></main>
 <footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
 </body>
 </html>

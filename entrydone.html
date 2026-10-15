@@ -21,14 +21,20 @@
 <a href="exit.html" >Vehicle exit</a>
 <a href="search.html" >Search / correct</a>
 </nav></aside>
-<main id="main" class="main"><div class="page-heading"><h1>Entry recorded</h1>
-<p class="text  muted size-14">The vehicle is now inside campus.</p></div>
-<section class="card" style="--card-width:720px"><h2>Entry confirmation</h2>
-<p class="text strong  size-26">John Doe • MC-1234</p>
-<p class="text   size-16">Parking area: Area A<br>Entry time: 12 Oct 2026, 08:15<br>Entry log: ENT-0158 • Active<br>Verified by: G. Santos</p>
-<aside class="notice">Area A: 29 available / 100 total. Follow the owner&#39;s selected parking area.</aside>
-<a class="button primary" href="entry.html" >Next vehicle</a>
-<a class="button neutral" href="guard.html" >Return to gate dashboard</a></section></main>
+<main id="main" class="main"><div class="page-heading inline"><h1>Entry recorded</h1>
+<ol class="stepper" aria-label="Entry steps"><li class="done">Verify ID</li>
+<li class="done">Tell owner &amp; record area</li>
+<li class="current" aria-current="step">Entry saved</li></ol></div>
+<section class="card success-card" aria-labelledby="done-title"><div class="reader-status" role="status"><span class="reader-indicator" aria-hidden="true"></span>
+<div><p class="reader-title" id="done-title">John Doe can park in <span data-area-name>Area A</span></p>
+<p class="text muted size-15">MC-1234 • Motorcycle • Entry ENT-0158 is now active</p></div></div>
+<dl class="detail-list"><div><dt>Entry time</dt><dd>12 Oct 2026, 08:15</dd></div>
+<div><dt>Recorded by</dt><dd>G. Santos • Main gate</dd></div></dl>
+<div class="area-update"><div class="meter-head num"><strong data-area-name>Area A</strong>
+<span><b data-area-free>29</b> <span class="muted">/ <span data-area-total>100</span> free (was <span data-area-was>30</span>)</span></span></div>
+<div class="meter" aria-hidden="true"><span data-area-meter style="--value:71%"></span></div></div>
+<div class="form-actions"><a class="button primary large" href="guard.html">Ready for next vehicle</a>
+<a class="button subtle" href="search.html?q=MC-1234">Undo or correct this entry</a></div></section></main>
 <footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
 </body>
 </html>

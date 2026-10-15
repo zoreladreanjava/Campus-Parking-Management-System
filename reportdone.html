@@ -21,36 +21,44 @@
 <a href="history.html" >Parking history</a>
 <a href="reports.html" class="active" aria-current="page">Reports</a>
 </nav></aside>
-<main id="main" class="main"><div class="page-heading"><h1>Campus parking summary</h1>
-<p class="text  muted size-14">12 Oct 2026, 00:00–08:15 • Demonstration report</p></div>
-<div class="table-wrap" tabindex="0"><table><thead><tr><th scope="col">Area</th>
-<th scope="col">Entries</th>
-<th scope="col">Exits</th>
-<th scope="col">Parked now</th>
-<th scope="col">Current usage</th></tr></thead>
-<tbody><tr><td>Area A</td>
-<td>83</td>
-<td>13</td>
-<td>70</td>
-<td>70%</td></tr>
-<tr><td>Area B</td>
-<td>55</td>
-<td>15</td>
-<td>40</td>
-<td>50%</td></tr>
-<tr><td>Area C</td>
-<td>20</td>
-<td>0</td>
-<td>20</td>
-<td>100%</td></tr>
-<tr><td>Total</td>
-<td>158</td>
-<td>28</td>
-<td>130</td>
-<td>65%</td></tr></tbody></table></div>
-<aside class="notice">130 vehicles inside / 200 total capacity. 70 slots available at the report time.</aside>
-<a class="button neutral" href="reports.html" >Change filters</a>
-<p class="text  muted size-14">Report preview for wireframe review; export format is not specified in the requirements.</p></main>
+<main id="main" class="main"><div class="page-heading with-actions"><div><h1>Campus parking summary</h1>
+<p class="text muted size-14">12 Oct 2026, 00:00–08:15 • All areas</p></div>
+<div class="row"><a class="button neutral" href="reports.html">Change filters</a>
+<button class="button primary" type="button" onclick="window.print()">Print / save as PDF</button></div></div>
+<section class="card summary-card" aria-label="Report totals"><div class="summary-stat primary"><span>Parked at report time</span>
+<p class="summary-value num"><strong>130</strong> <span>of 200 · 65%</span></p>
+<div class="meter large" role="img" aria-label="65% of campus capacity occupied"><span style="--value:65%"></span></div></div>
+<div class="divider" aria-hidden="true"></div>
+<div class="summary-stat"><span>Entries</span>
+<p class="summary-value num"><strong>158</strong></p></div>
+<div class="divider" aria-hidden="true"></div>
+<div class="summary-stat"><span>Exits</span>
+<p class="summary-value num"><strong>28</strong></p></div></section>
+<section class="panel" aria-labelledby="by-area"><div class="panel-head"><h2 id="by-area">By area</h2></div>
+<div class="table-wrap" tabindex="0"><table class="data-table" style="--table-min:640px"><colgroup><col style="width:18%"><col style="width:14%"><col style="width:14%"><col style="width:16%"><col style="width:38%"></colgroup>
+<thead><tr><th scope="col">Area</th>
+<th scope="col" class="num">Entries</th>
+<th scope="col" class="num">Exits</th>
+<th scope="col" class="num">Parked now</th>
+<th scope="col" class="usage-col">Usage now</th></tr></thead>
+<tbody><tr><th scope="row" class="strong">Area A</th>
+<td class="num">83</td>
+<td class="num">13</td>
+<td class="num">70</td>
+<td class="usage-col"><div class="usage"><div class="meter" aria-hidden="true"><span style="--value:70%"></span></div><span class="num">70%</span></div></td></tr>
+<tr><th scope="row" class="strong">Area B</th>
+<td class="num">55</td>
+<td class="num">15</td>
+<td class="num">40</td>
+<td class="usage-col"><div class="usage"><div class="meter" aria-hidden="true"><span style="--value:50%"></span></div><span class="num">50%</span></div></td></tr>
+<tr><th scope="row" class="strong">Area C</th>
+<td class="num">20</td>
+<td class="num">0</td>
+<td class="num">20</td>
+<td class="usage-col"><div class="usage"><div class="meter" aria-hidden="true"><span style="--value:100%"></span></div><span class="num">100%</span></div></td></tr></tbody>
+<tfoot><tr><th scope="row">Total</th><td class="num">158</td><td class="num">28</td><td class="num">130</td>
+<td class="usage-col"><div class="usage"><div class="meter" aria-hidden="true"><span style="--value:65%"></span></div><span class="num">65%</span></div></td></tr></tfoot></table></div>
+<p class="panel-foot">Demonstration report. Usage = vehicles parked at report time ÷ area capacity.</p></section></main>
 <footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
 </body>
 </html>

@@ -21,31 +21,34 @@
 <a href="exit.html" >Vehicle exit</a>
 <a href="search.html" >Search / correct</a>
 </nav></aside>
-<main id="main" class="main"><div class="page-heading"><h1>Record vehicle entry</h1>
-<p class="text  muted size-14">1 Verify ID  /  2 Select owner&#39;s area  /  3 Confirm entry</p></div>
-<div class="row"><section class="card" style="--card-width:420px"><h2>Verified owner &amp; vehicle</h2>
-<div class="field" style="--field-width:372px"><label for="field-3">Campus ID / RFID</label>
-<input id="field-3" name="Campus ID / RFID" type="text" value="RFID-004218"   autocomplete="off"></div>
-<p class="text strong  size-24">John Doe</p>
-<p class="text   size-16">Plate: MC-1234<br>Type: Motorcycle<br>Contact: 09•• ••• 1234<br>Parking status: Outside</p>
-<a class="button subtle" href="search.html" >Choose a different vehicle</a></section>
-<section class="card" style="--card-width:488px"><h2>Owner&#39;s chosen parking area</h2>
-<p class="text  muted size-14">Tell the owner which areas have space. Record the area they choose.</p>
-<div class="table-wrap" tabindex="0"><table><thead><tr><th scope="col">Area</th>
-<th scope="col">Available</th>
-<th scope="col">Select</th></tr></thead>
-<tbody><tr><td>Area A</td>
-<td>30 / 100</td>
-<td>Selected</td></tr>
-<tr><td>Area B</td>
-<td>40 / 80</td>
-<td>Choose</td></tr>
-<tr><td>Area C</td>
-<td>0 / 20</td>
-<td>Unavailable</td></tr></tbody></table></div>
-<aside class="notice">Entry will change Area A from 30 to 29 available slots.</aside>
-<a class="button primary" href="entrydone.html" >Confirm entry</a>
-<a class="button subtle" href="guard.html" >Cancel</a></section></div></main>
+<main id="main" class="main"><div class="page-heading inline"><h1>Record vehicle entry</h1>
+<ol class="stepper" aria-label="Entry steps"><li class="done">Verify ID</li>
+<li class="current" aria-current="step">Tell owner &amp; record area</li>
+<li>Entry saved</li></ol></div>
+<div class="flow-grid"><section class="card" aria-labelledby="owner-label"><h2 class="card-label" id="owner-label">ID verified</h2>
+<div class="reader-status"><span class="reader-indicator small" aria-hidden="true"></span>
+<div><p class="reader-title">John Doe</p>
+<p class="text muted size-14">RFID 004218 • Registered owner</p></div></div>
+<dl class="detail-list"><div><dt>Plate</dt><dd>MC-1234</dd></div>
+<div><dt>Vehicle</dt><dd>Motorcycle</dd></div>
+<div><dt>Contact</dt><dd>09•• ••• 1234</dd></div>
+<div><dt>Parking status</dt><dd><span class="badge neutral">Outside campus</span></dd></div></dl>
+<p class="footnote">John Doe has 2 registered vehicles. <a href="search.html?q=John+Doe">Choose a different vehicle</a></p></section>
+<form class="card" action="entrydone.html" method="get" data-entry-form aria-labelledby="area-legend">
+<div class="callout good" role="status"><strong>Parking available — tell the owner “Yes”</strong>
+<span>70 slots free in 2 areas. Ask which area they want, then record it.</span></div>
+<fieldset class="choice-group"><legend class="card-label" id="area-legend">Owner&#39;s chosen area</legend>
+<label class="choice"><input type="radio" name="area" value="Area A" data-free="30" checked><span class="choice-body"><span class="choice-head"><strong>Area A</strong>
+<span class="num"><b>30</b> <span class="muted">/ 100 free</span></span></span>
+<span class="meter" aria-hidden="true"><span style="--value:70%"></span></span></span></label>
+<label class="choice"><input type="radio" name="area" value="Area B" data-free="40"><span class="choice-body"><span class="choice-head"><strong>Area B</strong>
+<span class="num"><b>40</b> <span class="muted">/ 80 free</span></span></span>
+<span class="meter" aria-hidden="true"><span style="--value:50%"></span></span></span></label>
+<label class="choice is-disabled"><input type="radio" name="area" value="Area C" disabled><span class="choice-body"><span class="choice-head"><strong>Area C</strong>
+<span class="badge full num">FULL · 0 / 20</span></span></span></label></fieldset>
+<p class="impact num" data-entry-impact aria-live="polite">Area A will go from <b>30</b> to <b>29</b> free.</p>
+<div class="form-actions"><button class="button primary large" type="submit" data-entry-submit>Record entry · Area A</button>
+<a class="button subtle" href="guard.html">Cancel</a></div></form></div></main>
 <footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
 </body>
 </html>

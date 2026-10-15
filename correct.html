@@ -22,19 +22,24 @@
 <a href="search.html" class="active" aria-current="page">Search / correct</a>
 </nav></aside>
 <main id="main" class="main"><div class="page-heading"><h1>Correct parking record</h1>
-<p class="text  muted size-14">Review changes to ENT-0158 before saving.</p></div>
-<section class="card" style="--card-width:720px"><h2>Correction details</h2>
-<div class="field" style="--field-width:672px"><label for="field-6">Vehicle</label>
-<input id="field-6" name="Vehicle" type="text" value="MC-1234 — John Doe"   autocomplete="off"></div>
-<div class="field" style="--field-width:672px"><label for="field-7">Parking area</label>
-<input id="field-7" name="Parking area" type="text" value="Area B (corrected from Area A)"   autocomplete="off"></div>
-<div class="field" style="--field-width:672px"><label for="field-8">Entry time</label>
-<input id="field-8" name="Entry time" type="text" value="12 Oct 2026, 08:15"   autocomplete="off"></div>
-<div class="field" style="--field-width:672px"><label for="field-9">Reason for correction</label>
-<input id="field-9" name="Reason for correction" type="text" value="Owner parked in Area B; original area was entered incorrectly."   autocomplete="off"></div>
-<aside class="notice">Availability impact: Area A 29 → 30; Area B 40 → 39. This is a proposed audited correction flow.</aside>
-<div class="row"><a class="button primary" href="search.html" >Save correction</a>
-<a class="button neutral" href="search.html" >Cancel</a></div></section></main>
+<p class="text muted size-14">ENT-0158 • John Doe • MC-1234</p></div>
+<form class="card form-card" action="search.html" method="get"><div class="field"><label for="c-vehicle">Vehicle</label>
+<input id="c-vehicle" type="text" value="MC-1234 — John Doe" readonly></div>
+<div class="row"><div class="field"><label for="c-area">Parking area</label>
+<select id="c-area" name="area"><option>Area A</option><option selected>Area B</option><option disabled>Area C (full)</option></select>
+<span class="hint">Originally recorded: Area A</span></div>
+<div class="field"><label for="c-time">Entry time</label>
+<input id="c-time" type="datetime-local" value="2026-10-12T08:15"></div></div>
+<div class="field"><label for="c-reason">Reason for correction</label>
+<textarea id="c-reason" name="reason" required>Owner parked in Area B; Area A was selected by mistake.</textarea>
+<span class="hint">Required. Shown in parking history.</span></div>
+<div class="area-update"><p class="card-label">Availability after saving</p>
+<ul class="compare"><li><div class="meter-head num"><strong>Area A</strong><span><b>29</b> → <b>30</b> <span class="muted">/ 100 free</span></span></div>
+<div class="meter" aria-hidden="true"><span style="--value:70%"></span></div></li>
+<li><div class="meter-head num"><strong>Area B</strong><span><b>40</b> → <b>39</b> <span class="muted">/ 80 free</span></span></div>
+<div class="meter" aria-hidden="true"><span style="--value:51%"></span></div></li></ul></div>
+<div class="form-actions"><button class="button primary" type="submit">Save correction</button>
+<a class="button subtle" href="search.html">Cancel</a></div></form></main>
 <footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
 </body>
 </html>

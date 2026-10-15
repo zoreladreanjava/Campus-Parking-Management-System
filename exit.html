@@ -21,16 +21,30 @@
 <a href="exit.html" class="active" aria-current="page">Vehicle exit</a>
 <a href="search.html" >Search / correct</a>
 </nav></aside>
-<main id="main" class="main"><div class="page-heading"><h1>Record vehicle exit</h1>
-<p class="text  muted size-14">Verify the ID and active entry before confirming departure.</p></div>
-<section class="card" style="--card-width:720px"><h2>Active parking record found</h2>
-<div class="field" style="--field-width:672px"><label for="field-4">Campus ID / RFID</label>
-<input id="field-4" name="Campus ID / RFID" type="text" value="RFID-004218"   autocomplete="off"></div>
-<p class="text strong  size-26">John Doe • MC-1234</p>
-<p class="text   size-16">Motorcycle • Area A<br>Entered: 12 Oct 2026, 08:15<br>Active entry: ENT-0158<br>Exit time: 12 Oct 2026, 12:05</p>
-<aside class="notice">Exit closes this entry and restores one slot in Area A: 29 → 30 available.</aside>
-<a class="button primary" href="exitdone.html" >Confirm exit</a>
-<a class="button neutral" href="guard.html" >Cancel</a></section></main>
+<main id="main" class="main"><div class="page-heading inline"><h1>Record vehicle exit</h1>
+<ol class="stepper" aria-label="Exit steps"><li class="done">Verify ID</li>
+<li class="current" aria-current="step">Confirm exit</li>
+<li>Exit saved</li></ol></div>
+<div class="flow-grid"><section class="card" aria-labelledby="record-label"><h2 class="card-label" id="record-label">Active parking record</h2>
+<div class="reader-status"><span class="reader-indicator small" aria-hidden="true"></span>
+<div><p class="reader-title">John Doe</p>
+<p class="text muted size-14">RFID 004218 • <span class="badge active">Currently parked</span></p></div></div>
+<dl class="detail-list"><div><dt>Plate</dt><dd>MC-1234</dd></div>
+<div><dt>Vehicle</dt><dd>Motorcycle</dd></div>
+<div><dt>Parked in</dt><dd>Area A</dd></div>
+<div><dt>Entered</dt><dd>08:15 • G. Santos</dd></div>
+<div><dt>Time inside</dt><dd>3 h 50 min</dd></div>
+<div><dt>Entry log</dt><dd>ENT-0158</dd></div></dl>
+<p class="footnote">Not the right vehicle? <a href="search.html?q=John+Doe">Search records</a></p></section>
+<form class="card" action="exitdone.html" method="get" aria-labelledby="confirm-label">
+<div class="callout good" role="status"><strong id="confirm-label">Vehicle is recorded inside — confirm exit</strong>
+<span>Exit time will be 12 Oct 2026, 12:05.</span></div>
+<div class="area-update"><div class="meter-head num"><strong>Area A</strong>
+<span><b>29</b> → <b>30</b> <span class="muted">/ 100 free after exit</span></span></div>
+<div class="meter" aria-hidden="true"><span style="--value:71%"></span></div></div>
+<div class="form-actions"><button class="button primary large" type="submit">Confirm exit</button>
+<a class="button subtle" href="guard.html">Cancel</a></div>
+<p class="footnote">If the ID has no active record, the reader shows <a href="exceptions.html#no-record">No active parking record</a> instead.</p></form></div></main>
 <footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
 </body>
 </html>

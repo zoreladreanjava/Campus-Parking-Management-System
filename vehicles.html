@@ -21,33 +21,46 @@
 <a href="history.html" >Parking history</a>
 <a href="reports.html" >Reports</a>
 </nav></aside>
-<main id="main" class="main"><div class="page-heading"><h1>Registered vehicles &amp; owners</h1>
-<p class="text  muted size-14">An owner may have multiple vehicles linked to one campus RFID card.</p></div>
-<div class="row"><a class="button primary" href="vehicleform.html" >Register owner / vehicle</a></div>
-<div class="field" style="--field-width:924px"><label for="field-14">Search</label>
-<input id="field-14" name="Search" type="text" placeholder="Owner name, plate number or RFID"  data-search autocomplete="off"></div>
-<div class="table-wrap" tabindex="0"><table><thead><tr><th scope="col">Owner</th>
-<th scope="col">RFID</th>
+<main id="main" class="main"><div class="page-heading with-actions"><div><h1>Registered vehicles &amp; owners</h1>
+<p class="text muted size-14">One RFID card per owner; an owner can have several vehicles.</p></div>
+<div class="row"><a class="button primary" href="vehicleform.html">Register owner / vehicle</a></div></div>
+<section class="panel" aria-labelledby="veh-heading"><div class="toolbar" role="search"><div class="field grow"><label for="veh-q">Search</label>
+<input id="veh-q" type="search" placeholder="Owner name, plate number or RFID" data-search autocomplete="off"></div>
+<div class="field"><label for="veh-type">Vehicle type</label>
+<select id="veh-type"><option>All types</option><option>Motorcycle</option><option>Car</option></select></div></div>
+<h2 class="visually-hidden" id="veh-heading">Vehicles</h2>
+<div class="table-wrap" tabindex="0"><table class="data-table" style="--table-min:720px"><colgroup><col style="width:24%"><col style="width:14%"><col style="width:16%"><col style="width:16%"><col style="width:14%"><col style="width:16%"></colgroup>
+<thead><tr><th scope="col">Owner</th>
+<th scope="col" class="num">RFID</th>
 <th scope="col">Plate</th>
 <th scope="col">Type</th>
-<th scope="col">Actions</th></tr></thead>
-<tbody><tr><td>John Doe</td>
-<td>004218</td>
+<th scope="col">Parking</th>
+<th scope="col"><span class="visually-hidden">Actions</span></th></tr></thead>
+<tbody><tr><th scope="row">John Doe<span class="cell-sub">OWN-0042</span></th>
+<td class="num">004218</td>
 <td>MC-1234</td>
 <td>Motorcycle</td>
-<td>Edit / Remove</td></tr>
-<tr><td>Maria Cruz</td>
-<td>004219</td>
-<td>ABC-5678</td>
-<td>Car</td>
-<td>Edit / Remove</td></tr>
-<tr><td>John Doe</td>
-<td>004218</td>
+<td><span class="badge active">Inside</span></td>
+<td><div class="row-actions"><a href="vehicleform.html">Edit</a><a class="danger" href="remove.html">Remove</a></div></td></tr>
+<tr><th scope="row">John Doe<span class="cell-sub">OWN-0042</span></th>
+<td class="num">004218</td>
 <td>DEF-9123</td>
 <td>Car</td>
-<td>Edit / Remove</td></tr></tbody></table></div>
-<a class="button neutral" href="vehicleform.html" >Edit John Doe / MC-1234</a>
-<a class="button neutral" href="remove.html" >Remove selected vehicle</a></main>
+<td><span class="badge neutral">Outside</span></td>
+<td><div class="row-actions"><a href="vehicleform.html">Edit</a><a class="danger" href="remove.html">Remove</a></div></td></tr>
+<tr><th scope="row">Maria Cruz<span class="cell-sub">OWN-0043</span></th>
+<td class="num">004219</td>
+<td>ABC-5678</td>
+<td>Car</td>
+<td><span class="badge active">Inside</span></td>
+<td><div class="row-actions"><a href="vehicleform.html">Edit</a><a class="danger" href="remove.html">Remove</a></div></td></tr>
+<tr><th scope="row">Alex Reyes<span class="cell-sub">OWN-0051</span></th>
+<td class="num">004377</td>
+<td>MC-2088</td>
+<td>Motorcycle</td>
+<td><span class="badge neutral">Outside</span></td>
+<td><div class="row-actions"><a href="vehicleform.html">Edit</a><a class="danger" href="remove.html">Remove</a></div></td></tr></tbody></table></div>
+<p class="panel-foot">4 vehicles • 3 owners. A vehicle that is parked inside can&#39;t be removed until its exit is recorded.</p></section></main>
 <footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
 </body>
 </html>

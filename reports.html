@@ -21,14 +21,16 @@
 <a href="history.html" >Parking history</a>
 <a href="reports.html" class="active" aria-current="page">Reports</a>
 </nav></aside>
-<main id="main" class="main"><div class="page-heading"><h1>Parking utilization reports</h1>
-<p class="text  muted size-14">Generate an area-based summary from recorded entry and exit activity.</p></div>
-<div class="row"><div class="field" style="--field-width:400px"><label for="field-27">Period</label>
-<input id="field-27" name="Period" type="text" value="12 Oct 2026"   autocomplete="off"></div>
-<div class="field" style="--field-width:400px"><label for="field-28">Parking area</label>
-<input id="field-28" name="Parking area" type="text" value="All areas"   autocomplete="off"></div></div>
-<a class="button primary" href="reportdone.html" >Generate report</a>
-<aside class="notice">Report includes entries, exits and current occupancy. Historical usage is calculated from overlapping parking sessions.</aside></main>
+<main id="main" class="main"><div class="page-heading"><h1>Utilization report</h1>
+<p class="text muted size-14">Summarize entries, exits and occupancy for each area.</p></div>
+<form class="card form-card" action="reportdone.html" method="get"><div class="row"><div class="field"><label for="r-from">From</label>
+<input id="r-from" name="from" type="date" value="2026-10-12"></div>
+<div class="field"><label for="r-to">To</label>
+<input id="r-to" name="to" type="date" value="2026-10-12"></div></div>
+<div class="field"><label for="r-area">Parking area</label>
+<select id="r-area" name="area"><option>All areas</option><option>Area A</option><option>Area B</option><option>Area C</option></select></div>
+<p class="footnote">The report counts entries and exits in the period and shows how full each area is at the end of it.</p>
+<div class="form-actions"><button class="button primary" type="submit">Generate report</button></div></form></main>
 <footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
 </body>
 </html>
