@@ -12,39 +12,42 @@
 <a class="skip-link" href="#main">Skip to content</a>
 <div class="app-shell"><header class="topbar"><a class="brand" href="index.html">P / TeamParker</a>
 <p class="campus">CIT-University • Campus parking</p>
-<span class="role">Guard</span></header>
-<aside class="sidebar"><p class="nav-label">GUARD</p>
+<div class="topbar-end"><span class="chip">Main gate</span>
+<span class="role">G. Santos · Guard</span>
+<a class="button neutral" href="login.html">Sign out</a></div></header>
+<aside class="sidebar">
 <nav aria-label="Main navigation"><a href="guard.html" class="active" aria-current="page">Gate dashboard</a>
 <a href="entry.html" >Vehicle entry</a>
 <a href="exit.html" >Vehicle exit</a>
 <a href="search.html" >Search / correct</a>
-<a href="login.html" >Sign out</a></nav></aside>
-<main id="main" class="main"><div class="page-heading"><h1>Gate dashboard</h1>
-<p class="text  muted size-14">Main gate • Guard: G. Santos • 12 Oct 2026, 08:15</p></div>
-<div class="row"><section class="card" style="--card-width:297px"><h2>Available slots</h2>
-<p class="text strong  size-36">70</p></section>
-<section class="card" style="--card-width:297px"><h2>Vehicles inside</h2>
-<p class="text strong  size-36">130</p></section>
-<section class="card" style="--card-width:297px"><h2>Entries today</h2>
-<p class="text strong  size-36">158</p></section></div>
-<div class="row"><section class="card" style="--card-width:450px"><h2>ID / RFID reader</h2>
-<p class="text strong  size-22">Ready for the next ID tap</p>
-<p class="text  muted size-14">Tap the owner&#39;s campus ID to verify a registered vehicle.</p>
-<a class="button primary" href="entry.html" >Start vehicle entry</a>
-<a class="button neutral" href="exit.html" >Start vehicle exit</a></section>
-<section class="card" style="--card-width:458px"><h2>Parking capacity</h2>
-<div class="table-wrap" tabindex="0"><table><thead><tr><th scope="col">Area</th>
-<th scope="col">Available</th>
-<th scope="col">Capacity</th></tr></thead>
-<tbody><tr><td>Area A</td>
-<td>30</td>
-<td>100</td></tr>
-<tr><td>Area B</td>
-<td>40</td>
-<td>80</td></tr>
-<tr><td>Area C</td>
-<td>0 — Full</td>
-<td>20</td></tr></tbody></table></div></section></div></main>
+</nav></aside>
+<main id="main" class="main"><div class="page-heading inline"><h1>Gate dashboard</h1>
+<p class="text  muted size-14">12 Oct 2026, 08:15</p></div>
+<div class="gate-grid"><section class="card reader-card" aria-labelledby="reader-label"><h2 class="card-label" id="reader-label">ID / RFID reader</h2>
+<div class="reader-status" role="status"><span class="reader-indicator" aria-hidden="true"></span>
+<div><p class="reader-title">Ready for the next ID tap</p>
+<p class="text  muted size-15">Tap the owner&#39;s campus ID to verify a registered vehicle.</p></div></div>
+<div class="action-grid"><a class="action-tile" href="entry.html"><strong>Vehicle entry</strong>
+<span>Log arrival and assign area</span></a>
+<a class="action-tile neutral" href="exit.html"><strong>Vehicle exit</strong>
+<span>Close the active record</span></a></div>
+<form class="quick-search" action="search.html" method="get" role="search"><label class="visually-hidden" for="quick-search">Search by plate number or owner</label>
+<input id="quick-search" name="q" type="search" placeholder="No ID? Search by plate number or owner" autocomplete="off">
+<button class="button neutral" type="submit">Search</button></form></section>
+<section class="card availability-card" aria-labelledby="availability-label"><h2 class="card-label" id="availability-label">Campus availability</h2>
+<p class="big-stat num"><strong>70</strong> <span>of 200 slots free</span></p>
+<div class="mini-stats"><p class="mini-stat"><span>Vehicles inside</span> <strong class="num">130</strong></p>
+<p class="mini-stat"><span>Entries today</span> <strong class="num">158</strong></p></div>
+<ul class="area-meters"><li><div class="meter-head"><span>Area A</span>
+<span class="num"><b>30</b> <span class="muted">/ 100 free</span></span></div>
+<div class="meter" role="img" aria-label="Area A 70% occupied"><span style="--value:70%"></span></div></li>
+<li><div class="meter-head"><span>Area B</span>
+<span class="num"><b>40</b> <span class="muted">/ 80 free</span></span></div>
+<div class="meter" role="img" aria-label="Area B 50% occupied"><span style="--value:50%"></span></div></li>
+<li><div class="meter-head"><span>Area C</span>
+<span class="badge full num">FULL · 0 / 20</span></div>
+<div class="meter" role="img" aria-label="Area C 100% occupied"><span style="--value:100%"></span></div></li></ul>
+<p class="footnote">Bars show occupied share. Updated 08:15.</p></section></div></main>
 <footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
 </body>
 </html>

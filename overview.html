@@ -12,45 +12,55 @@
 <a class="skip-link" href="#main">Skip to content</a>
 <div class="app-shell"><header class="topbar"><a class="brand" href="index.html">P / TeamParker</a>
 <p class="campus">CIT-University • Campus parking</p>
-<span class="role">Administrator</span></header>
-<aside class="sidebar"><p class="nav-label">ADMINISTRATOR</p>
+<div class="topbar-end"><span class="role">Administrator</span>
+<a class="button neutral" href="login.html">Sign out</a></div></header>
+<aside class="sidebar">
 <nav aria-label="Main navigation"><a href="overview.html" class="active" aria-current="page">Overview</a>
 <a href="areas.html" >Parking areas</a>
 <a href="vehicles.html" >Vehicles / owners</a>
 <a href="history.html" >Parking history</a>
 <a href="reports.html" >Reports</a>
-<a href="login.html" >Sign out</a></nav></aside>
-<main id="main" class="main"><div class="page-heading"><h1>Parking overview</h1>
+</nav></aside>
+<main id="main" class="main"><div class="page-heading with-actions"><div><h1>Parking overview</h1>
 <p class="text  muted size-14">Campus totals • Updated 12 Oct 2026, 08:15</p></div>
-<div class="row"><section class="card" style="--card-width:297px"><h2>Total capacity</h2>
-<p class="text strong  size-36">200</p></section>
-<section class="card" style="--card-width:297px"><h2>Currently parked</h2>
-<p class="text strong  size-36">130</p></section>
-<section class="card" style="--card-width:297px"><h2>Available</h2>
-<p class="text strong  size-36">70</p></section></div>
-<div class="table-wrap" tabindex="0"><table><thead><tr><th scope="col">Area</th>
-<th scope="col">Total</th>
-<th scope="col">Occupied</th>
-<th scope="col">Available</th>
-<th scope="col">Usage</th></tr></thead>
-<tbody><tr><td>Area A</td>
-<td>100</td>
-<td>70</td>
-<td>30</td>
-<td>70%</td></tr>
-<tr><td>Area B</td>
-<td>80</td>
-<td>40</td>
-<td>40</td>
-<td>50%</td></tr>
-<tr><td>Area C</td>
-<td>20</td>
-<td>20</td>
-<td>0 — Full</td>
-<td>100%</td></tr></tbody></table></div>
-<div class="row"><a class="button primary" href="areas.html" >Manage parking areas</a>
-<a class="button neutral" href="history.html" >View parking history</a>
-<a class="button neutral" href="reports.html" >Generate report</a></div></main>
+<div class="row"><a class="button neutral" href="history.html" >View parking history</a>
+<a class="button primary" href="reports.html" >Generate report</a></div></div>
+<section class="card summary-card" aria-label="Campus totals"><div class="summary-stat primary"><span>Currently parked</span>
+<p class="summary-value num"><strong>130</strong> <span>of 200 · 65%</span></p>
+<div class="meter large" role="img" aria-label="65% of campus capacity occupied"><span style="--value:65%"></span></div></div>
+<div class="divider" aria-hidden="true"></div>
+<div class="summary-stat"><span>Available</span>
+<p class="summary-value num"><strong class="good">70</strong></p></div>
+<div class="divider" aria-hidden="true"></div>
+<div class="summary-stat"><span>Total capacity</span>
+<p class="summary-value num"><strong>200</strong></p></div></section>
+<section class="panel" aria-labelledby="areas-heading"><div class="panel-head"><h2 id="areas-heading">Areas</h2>
+<a href="areas.html">Manage parking areas</a></div>
+<div class="table-wrap" tabindex="0"><table class="areas-table num"><colgroup><col style="width:17%"><col style="width:10%"><col style="width:11%"><col style="width:11%"><col style="width:35%"><col style="width:16%"></colgroup>
+<thead><tr><th scope="col">Area</th>
+<th scope="col" class="num">Total</th>
+<th scope="col" class="num">Occupied</th>
+<th scope="col" class="num">Available</th>
+<th scope="col" class="usage-col">Usage</th>
+<th scope="col">Status</th></tr></thead>
+<tbody><tr><th scope="row" class="strong">Area A</th>
+<td class="num">100</td>
+<td class="num">70</td>
+<td class="num">30</td>
+<td class="usage-col"><div class="usage"><div class="meter" aria-hidden="true"><span style="--value:70%"></span></div><span>70%</span></div></td>
+<td><span class="badge available">Available</span></td></tr>
+<tr><th scope="row" class="strong">Area B</th>
+<td class="num">80</td>
+<td class="num">40</td>
+<td class="num">40</td>
+<td class="usage-col"><div class="usage"><div class="meter" aria-hidden="true"><span style="--value:50%"></span></div><span>50%</span></div></td>
+<td><span class="badge available">Available</span></td></tr>
+<tr><th scope="row" class="strong">Area C</th>
+<td class="num">20</td>
+<td class="num">20</td>
+<td class="num">0</td>
+<td class="usage-col"><div class="usage"><div class="meter" aria-hidden="true"><span style="--value:100%"></span></div><span>100%</span></div></td>
+<td><span class="badge full">Full</span></td></tr></tbody></table></div></section></main>
 <footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
 </body>
 </html>

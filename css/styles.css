@@ -60,7 +60,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 .app-shell {
   display:grid;
   grid-template-columns:220px minmax(0,1fr);
-  grid-template-rows:80px 1fr auto;
+  grid-template-rows:auto 1fr auto;
   min-height:100vh;
   max-width:1600px;
   margin:auto
@@ -70,72 +70,86 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
   grid-column:1/-1;
   display:flex;
   align-items:center;
-  gap:32px;
-  padding:20px 24px;
+  gap:24px;
+  min-height:64px;
+  padding:8px 24px;
   background:var(--gold);
-  border-bottom:3px solid var(--ink);
-  box-shadow:0 4px 4px #0003;
+  border-bottom:2px solid var(--ink);
   z-index:1
 }
 
 .brand {
-  font-size:22px;
+  font-size:20px;
   font-weight:700;
   text-decoration:none;
   white-space:nowrap
 }
 
 .campus {
-  margin:0 0 0 65px;
+  margin:0;
   color:var(--secondary);
   font-size:14px
 }
 
-.role {
+.topbar-end {
   margin-left:auto;
+  display:flex;
+  align-items:center;
+  gap:16px
+}
+
+.topbar-end .button {
+  font-size:14px;
+  padding:8px 12px;
+  min-height:36px
+}
+
+.role {
   font-size:14px;
   font-weight:600;
-  min-width:130px
+  white-space:nowrap
+}
+
+.chip {
+  font-size:13px;
+  font-weight:600;
+  background:var(--surface);
+  border:1px solid var(--ink);
+  border-radius:999px;
+  padding:4px 12px;
+  white-space:nowrap
 }
 
 .sidebar {
   grid-row:2/4;
   background:var(--sidebar);
-  padding:24px
-}
-
-.nav-label {
-  font-size:12px;
-  color:var(--secondary);
-  margin:0 0 16px;
-  font-weight:600
+  padding:24px 16px
 }
 
 .sidebar nav {
   display:flex;
-  align-items:flex-start;
   flex-direction:column;
-  gap:16px
+  gap:4px
 }
 
 .sidebar nav a {
   display:block;
-  max-width:100%;
-  border:1px solid transparent;
   border-radius:8px;
-  padding:8px 10px;
+  padding:10px 12px;
+  font-size:15px;
   text-decoration:none;
   color:#38342c;
   line-height:1.3
 }
 
-.sidebar nav a.active {
-  border-color:#9c8d63;
-  background:var(--secondary-fill)
-}
-
 .sidebar nav a:hover {
   background:#eedc9e
+}
+
+.sidebar nav a.active {
+  background:var(--ink);
+  color:#fff;
+  font-weight:600
 }
 
 .main {
@@ -192,6 +206,10 @@ p {
 
 .size-14 {
   font-size:14px
+}
+
+.size-15 {
+  font-size:15px
 }
 
 .size-16 {
@@ -393,15 +411,17 @@ tbody tr:hover {
 .public-shell {
   max-width:390px;
   margin:0 auto;
-  padding:24px 20px;
   min-height:100vh
 }
 
 .public-header {
   display:flex;
-  flex-direction:column;
+  justify-content:space-between;
+  align-items:center;
   gap:16px;
-  margin-bottom:16px
+  padding:16px 20px;
+  background:var(--gold);
+  border-bottom:2px solid var(--ink)
 }
 
 .public-header .brand {
@@ -415,7 +435,8 @@ tbody tr:hover {
 .public-main {
   display:flex;
   flex-direction:column;
-  gap:16px
+  gap:16px;
+  padding:24px 20px
 }
 
 .public-main .card {
@@ -485,6 +506,553 @@ tbody tr:hover {
   flex-wrap:wrap
 }
 
+/* Task-first dashboards: capacity bars, status badges, tabular figures. */
+:root {
+  --available:oklch(0.45 0.12 150);
+  --available-fill:oklch(0.93 0.05 150);
+  --available-ink:oklch(0.38 0.1 150);
+  --rule:#eadbb4
+}
+
+.num {
+  font-variant-numeric:tabular-nums
+}
+
+.visually-hidden {
+  position:absolute;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  clip:rect(0 0 0 0);
+  white-space:nowrap
+}
+
+.page-heading.inline {
+  flex-direction:row;
+  align-items:baseline;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:8px 16px
+}
+
+.page-heading.with-actions {
+  flex-direction:row;
+  align-items:flex-end;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:16px
+}
+
+.page-heading.with-actions>div:first-child {
+  display:flex;
+  flex-direction:column;
+  gap:4px
+}
+
+.page-heading.inline h1,.page-heading.with-actions h1 {
+  font-size:28px;
+  line-height:1.3
+}
+
+.card-label {
+  margin:0;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--secondary)
+}
+
+.card h2.card-label {
+  font-size:13px;
+  font-weight:700
+}
+
+.badge {
+  display:inline-block;
+  font-size:12px;
+  font-weight:700;
+  line-height:1.4;
+  padding:3px 10px;
+  border-radius:999px;
+  white-space:nowrap
+}
+
+.badge.available {
+  background:var(--available-fill);
+  color:var(--available-ink)
+}
+
+.badge.full {
+  background:var(--ink);
+  color:#fff
+}
+
+.meter {
+  height:8px;
+  border-radius:4px;
+  background:var(--sidebar);
+  overflow:hidden
+}
+
+.meter>span {
+  display:block;
+  width:var(--value);
+  height:100%;
+  background:var(--ink)
+}
+
+.meter.large {
+  height:10px;
+  border-radius:5px
+}
+
+.footnote {
+  font-size:12px;
+  color:var(--secondary);
+  line-height:1.5
+}
+
+/* Guard / gate dashboard */
+.gate-grid {
+  display:grid;
+  grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);
+  gap:20px;
+  align-items:stretch
+}
+
+.gate-grid>.card {
+  max-width:none
+}
+
+.reader-card {
+  padding:32px;
+  gap:24px
+}
+
+.reader-status {
+  display:flex;
+  align-items:center;
+  gap:24px
+}
+
+.reader-indicator {
+  width:88px;
+  height:88px;
+  border-radius:50%;
+  background:var(--available-fill);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0
+}
+
+.reader-indicator::after {
+  content:"";
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:oklch(0.55 0.12 150)
+}
+
+.reader-status>div {
+  display:flex;
+  flex-direction:column;
+  gap:6px
+}
+
+.reader-title {
+  font-size:30px;
+  font-weight:600;
+  line-height:1.2
+}
+
+.action-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-top:auto
+}
+
+.action-tile {
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  padding:20px 24px;
+  border-radius:10px;
+  border:1px solid var(--ink);
+  background:var(--ink);
+  color:#fff;
+  text-decoration:none;
+  transition:box-shadow .15s
+}
+
+.action-tile:hover {
+  box-shadow:0 3px 8px #681f2b26;
+  filter:brightness(.96)
+}
+
+.action-tile strong {
+  font-size:22px;
+  font-weight:600
+}
+
+.action-tile span {
+  font-size:13px;
+  opacity:.85
+}
+
+.action-tile.neutral {
+  background:var(--secondary-fill);
+  border-color:#9c8d63;
+  color:#38342c
+}
+
+.action-tile.neutral span {
+  color:var(--secondary);
+  opacity:1
+}
+
+.quick-search {
+  display:flex;
+  gap:12px;
+  align-items:center;
+  border-top:1px solid var(--rule);
+  padding-top:20px
+}
+
+.quick-search input {
+  flex:1;
+  min-width:0;
+  min-height:44px;
+  padding:11px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  background:#fff;
+  color:#302a24
+}
+
+.quick-search input::placeholder {
+  color:#716b60
+}
+
+.quick-search .button {
+  align-self:auto;
+  min-height:44px;
+  padding:11px 16px
+}
+
+.availability-card {
+  gap:22px
+}
+
+.big-stat {
+  display:flex;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:10px
+}
+
+.big-stat strong {
+  font-size:56px;
+  font-weight:700;
+  line-height:1
+}
+
+.big-stat span {
+  font-size:16px;
+  color:var(--secondary)
+}
+
+.mini-stats {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px
+}
+
+.mini-stat {
+  background:var(--canvas);
+  border-radius:8px;
+  padding:12px 14px;
+  display:flex;
+  flex-direction:column;
+  gap:2px
+}
+
+.mini-stat span {
+  font-size:13px;
+  color:var(--secondary)
+}
+
+.mini-stat strong {
+  font-size:22px;
+  font-weight:600
+}
+
+.area-meters {
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:18px
+}
+
+.area-meters li {
+  display:flex;
+  flex-direction:column;
+  gap:8px
+}
+
+.area-meters .meter-head {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  font-size:15px
+}
+
+.area-meters .meter-head>span:first-child {
+  font-weight:600
+}
+
+.availability-card .footnote {
+  margin-top:auto
+}
+
+/* Admin / overview */
+.summary-card {
+  display:grid;
+  grid-template-columns:minmax(0,2fr) 1px minmax(0,1fr) 1px minmax(0,1fr);
+  gap:28px;
+  align-items:center;
+  padding:28px;
+  max-width:none
+}
+
+.summary-card .divider {
+  height:72px;
+  background:var(--rule)
+}
+
+.summary-stat {
+  display:flex;
+  flex-direction:column;
+  gap:8px
+}
+
+.summary-stat.primary {
+  gap:12px
+}
+
+.summary-stat>span {
+  font-size:14px;
+  color:var(--secondary)
+}
+
+.summary-value {
+  display:flex;
+  align-items:baseline;
+  gap:10px
+}
+
+.summary-value strong {
+  font-size:44px;
+  font-weight:700;
+  line-height:1
+}
+
+.summary-value span {
+  font-size:16px;
+  color:var(--secondary)
+}
+
+.summary-value strong.good {
+  color:var(--available)
+}
+
+.panel {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  overflow:hidden
+}
+
+.panel-head {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  padding:18px 24px;
+  border-bottom:1px solid var(--rule)
+}
+
+.panel-head h2 {
+  margin:0;
+  font-size:18px;
+  font-weight:600
+}
+
+.panel-head a {
+  font-size:14px;
+  font-weight:600
+}
+
+.panel .table-wrap {
+  border:0;
+  border-radius:0
+}
+
+.areas-table {
+  width:max(100%,720px);
+  min-width:720px
+}
+
+.areas-table thead th {
+  background:var(--sidebar);
+  color:#38342c;
+  padding:12px 24px
+}
+
+.areas-table tbody th,.areas-table td {
+  font-size:15px;
+  padding:18px 24px;
+  vertical-align:middle;
+  border-bottom:1px solid #f1e6c8
+}
+
+.areas-table th,.areas-table td {
+  overflow-wrap:normal
+}
+
+.areas-table tbody th {
+  background:none
+}
+
+.areas-table tbody tr:last-child>* {
+  border-bottom:0
+}
+
+.areas-table th.num,.areas-table td.num {
+  text-align:right
+}
+
+.areas-table .usage-col {
+  padding-left:56px
+}
+
+.usage {
+  display:flex;
+  align-items:center;
+  gap:12px
+}
+
+.usage .meter {
+  flex:1
+}
+
+.usage>span {
+  width:44px;
+  text-align:right
+}
+
+/* Owner / mobile availability */
+.availability-head {
+  display:flex;
+  flex-direction:column;
+  gap:4px
+}
+
+.availability-head h1 {
+  margin:0;
+  font-size:14px;
+  font-weight:400;
+  color:var(--secondary)
+}
+
+.availability-head .big-stat strong {
+  font-size:52px;
+  line-height:1.05
+}
+
+.availability-head .big-stat span {
+  font-size:18px;
+  font-weight:600;
+  color:var(--ink)
+}
+
+.refresh-row {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-top:4px
+}
+
+.refresh-row .button {
+  align-self:auto;
+  min-height:44px;
+  font-size:14px;
+  font-weight:600
+}
+
+.area-card {
+  padding:18px;
+  gap:12px;
+  text-decoration:none;
+  transition:box-shadow .15s
+}
+
+a.area-card:hover {
+  box-shadow:0 6px 20px rgb(0 0 0 / 12%)
+}
+
+.area-card-head {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px
+}
+
+.area-card-head h2 {
+  margin:0;
+  font-size:19px;
+  font-weight:600
+}
+
+.area-card-count {
+  display:flex;
+  align-items:baseline;
+  gap:6px
+}
+
+.area-card-count strong {
+  font-size:26px;
+  font-weight:700
+}
+
+.area-card-count span {
+  font-size:14px;
+  color:var(--secondary)
+}
+
+.area-card-count .view {
+  margin-left:auto;
+  font-weight:600;
+  color:var(--ink)
+}
+
+.area-card.is-full {
+  background:#f5f0e4;
+  border-color:#e3d6b3;
+  box-shadow:none
+}
+
+.area-card.is-full h2,.area-card.is-full .area-card-count strong {
+  color:var(--secondary)
+}
+
 
 @media(min-width:1601px) {
   .app-shell {
@@ -496,12 +1064,25 @@ tbody tr:hover {
 
 
 @media(max-width:1000px) {
-  .campus {
-  margin-left:0
+  .topbar {
+  flex-wrap:wrap;
+  row-gap:8px
 }
 
-.role {
-  min-width:0
+.gate-grid {
+  grid-template-columns:minmax(0,1fr)
+}
+
+.summary-card {
+  grid-template-columns:1fr 1fr
+}
+
+.summary-card .summary-stat.primary {
+  grid-column:1/-1
+}
+
+.summary-card .divider {
+  display:none
 }
 
 .app-shell {
@@ -567,12 +1148,51 @@ tbody tr:hover {
   font-size:12px
 }
 
+.topbar-end {
+  gap:10px;
+  flex-wrap:wrap
+}
+
 .sidebar {
   padding:12px 16px
 }
 
-.nav-label {
-  display:none
+.reader-card {
+  padding:24px 20px
+}
+
+.reader-status {
+  gap:16px
+}
+
+.reader-indicator {
+  width:64px;
+  height:64px
+}
+
+.reader-indicator::after {
+  width:32px;
+  height:32px
+}
+
+.reader-title {
+  font-size:24px
+}
+
+.action-grid {
+  grid-template-columns:1fr
+}
+
+.big-stat strong {
+  font-size:48px
+}
+
+.summary-value strong {
+  font-size:36px
+}
+
+.panel-head {
+  padding:16px 20px
 }
 
 .sidebar nav {
