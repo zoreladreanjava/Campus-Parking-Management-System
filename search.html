@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="TeamParker campus parking front-end prototype for CIT-University.">
+<title>07 • Guard / search and correction | TeamParker</title>
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="app-shell"><header class="topbar"><a class="brand" href="index.html">P / TeamParker</a>
+<p class="campus">CIT-University • Campus parking</p>
+<span class="role">Guard</span></header>
+<aside class="sidebar"><p class="nav-label">GUARD</p>
+<nav aria-label="Main navigation"><a href="guard.html" >Gate dashboard</a>
+<a href="entry.html" >Vehicle entry</a>
+<a href="exit.html" >Vehicle exit</a>
+<a href="search.html" class="active" aria-current="page">Search / correct</a>
+<a href="login.html" >Sign out</a></nav></aside>
+<main id="main" class="main"><div class="page-heading"><h1>Search vehicle / owner</h1>
+<p class="text  muted size-14">Find registered vehicles and inspect parking records.</p></div>
+<div class="field" style="--field-width:924px"><label for="field-5">Search</label>
+<input id="field-5" name="Search" type="text" placeholder="Plate number, owner name or RFID card number"  data-search autocomplete="off"></div>
+<div class="table-wrap" tabindex="0"><table><thead><tr><th scope="col">Owner</th>
+<th scope="col">Vehicle</th>
+<th scope="col">Parking area</th>
+<th scope="col">Status</th></tr></thead>
+<tbody><tr><td>John Doe</td>
+<td>MC-1234</td>
+<td>Area A</td>
+<td>Active</td></tr>
+<tr><td>Maria Cruz</td>
+<td>ABC-5678</td>
+<td>Area B</td>
+<td>Active</td></tr>
+<tr><td>Alex Reyes</td>
+<td>MC-2088</td>
+<td>—</td>
+<td>Outside</td></tr></tbody></table></div>
+<section class="card" style="--card-width:924px"><h2>Selected record • ENT-0158</h2>
+<p class="text   size-16">John Doe / MC-1234 / Area A / Entered 08:15 / Active</p>
+<a class="button primary" href="correct.html" >Correct selected record</a>
+<aside class="notice">A correction must reconcile area availability. Save only after reviewing the change.</aside></section></main>
+<footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
+</body>
+</html>

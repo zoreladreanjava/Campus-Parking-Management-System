@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="TeamParker campus parking front-end prototype for CIT-University.">
+<title>11 • Admin / area form | TeamParker</title>
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="app-shell"><header class="topbar"><a class="brand" href="index.html">P / TeamParker</a>
+<p class="campus">CIT-University • Campus parking</p>
+<span class="role">Administrator</span></header>
+<aside class="sidebar"><p class="nav-label">ADMINISTRATOR</p>
+<nav aria-label="Main navigation"><a href="overview.html" >Overview</a>
+<a href="areas.html" class="active" aria-current="page">Parking areas</a>
+<a href="vehicles.html" >Vehicles / owners</a>
+<a href="history.html" >Parking history</a>
+<a href="reports.html" >Reports</a>
+<a href="login.html" >Sign out</a></nav></aside>
+<main id="main" class="main"><div class="page-heading"><h1>Add / edit parking area</h1>
+<p class="text  muted size-14">Area details match the ParkingArea entity.</p></div>
+<section class="card" style="--card-width:720px"><h2>Parking area details</h2>
+<div class="field" style="--field-width:672px"><label for="field-10">Area ID (generated)</label>
+<input id="field-10" name="Area ID (generated)" type="text" value="A-01" readonly  autocomplete="off"></div>
+<div class="field" style="--field-width:672px"><label for="field-11">Area name</label>
+<input id="field-11" name="Area name" type="text" value="Area A"   autocomplete="off"></div>
+<div class="field" style="--field-width:672px"><label for="field-12">Total capacity</label>
+<input id="field-12" name="Total capacity" type="text" value="100"   autocomplete="off"></div>
+<div class="field" style="--field-width:672px"><label for="field-13">Managed by administrator</label>
+<input id="field-13" name="Managed by administrator" type="text" value="A. Rivera • ADM-01"   autocomplete="off"></div>
+<aside class="notice">70 occupied • 30 available (calculated). Capacity must be at least 70 for this sample area.</aside>
+<div class="row"><a class="button primary" href="areas.html" >Save parking area</a>
+<a class="button neutral" href="areas.html" >Cancel</a></div></section></main>
+<footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
+</body>
+</html>

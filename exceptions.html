@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="TeamParker campus parking front-end prototype for CIT-University.">
+<title>19 • Guard / exception states | TeamParker</title>
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="app-shell"><header class="topbar"><a class="brand" href="index.html">P / TeamParker</a>
+<p class="campus">CIT-University • Campus parking</p>
+<span class="role">Guard</span></header>
+<aside class="sidebar"><p class="nav-label">GUARD</p>
+<nav aria-label="Main navigation"><a href="guard.html" >Gate dashboard</a>
+<a href="entry.html" class="active" aria-current="page">Vehicle entry</a>
+<a href="exit.html" >Vehicle exit</a>
+<a href="search.html" >Search / correct</a>
+<a href="login.html" >Sign out</a></nav></aside>
+<main id="main" class="main"><div class="page-heading"><h1>Gate verification exceptions</h1>
+<p class="text  muted size-14">No entry or exit is saved when verification fails.</p></div>
+<section class="card" style="--card-width:924px"><h2>Invalid or unregistered ID</h2>
+<p class="text   size-14">No matching RFID owner was found. Re-tap the card or search the registry; refer registration issues to an administrator.</p></section>
+<section class="card" style="--card-width:924px"><h2>No parking available</h2>
+<p class="text   size-14">All parking areas are full. Entry confirmation is disabled until capacity is available.</p></section>
+<section class="card" style="--card-width:924px"><h2>No active parking record</h2>
+<p class="text   size-14">The vehicle is not recorded inside. Request verification before recording an exit.</p></section>
+<section class="card" style="--card-width:924px"><h2>Vehicle already inside</h2>
+<p class="text   size-14">An active entry already exists. Review the record instead of creating a duplicate.</p></section>
+<div class="row"><a class="button primary" href="entry.html" >Retry ID scan</a>
+<a class="button neutral" href="search.html" >Search records</a></div></main>
+<footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
+</body>
+</html>

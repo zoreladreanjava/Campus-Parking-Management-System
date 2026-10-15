@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="TeamParker campus parking front-end prototype for CIT-University.">
+<title>10 • Admin / parking areas | TeamParker</title>
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="app-shell"><header class="topbar"><a class="brand" href="index.html">P / TeamParker</a>
+<p class="campus">CIT-University • Campus parking</p>
+<span class="role">Administrator</span></header>
+<aside class="sidebar"><p class="nav-label">ADMINISTRATOR</p>
+<nav aria-label="Main navigation"><a href="overview.html" >Overview</a>
+<a href="areas.html" class="active" aria-current="page">Parking areas</a>
+<a href="vehicles.html" >Vehicles / owners</a>
+<a href="history.html" >Parking history</a>
+<a href="reports.html" >Reports</a>
+<a href="login.html" >Sign out</a></nav></aside>
+<main id="main" class="main"><div class="page-heading"><h1>Manage parking areas</h1>
+<p class="text  muted size-14">Available slots are calculated from capacity and active entries.</p></div>
+<a class="button primary" href="areaform.html" >Add parking area</a>
+<div class="table-wrap" tabindex="0"><table><thead><tr><th scope="col">Area ID</th>
+<th scope="col">Area name</th>
+<th scope="col">Capacity</th>
+<th scope="col">Available</th>
+<th scope="col">Actions</th></tr></thead>
+<tbody><tr><td>A-01</td>
+<td>Area A</td>
+<td>100</td>
+<td>30</td>
+<td>Edit / Remove</td></tr>
+<tr><td>A-02</td>
+<td>Area B</td>
+<td>80</td>
+<td>40</td>
+<td>Edit / Remove</td></tr>
+<tr><td>A-03</td>
+<td>Area C</td>
+<td>20</td>
+<td>0</td>
+<td>Edit / Remove</td></tr></tbody></table></div>
+<div class="row"><a class="button neutral" href="areaform.html" >Edit Area A</a>
+<a class="button neutral" href="remove.html" >Remove Area A</a></div>
+<aside class="notice">Do not reduce capacity below current occupancy. Review active records before removing an area.</aside></main>
+<footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
+</body>
+</html>

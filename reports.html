@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="TeamParker campus parking front-end prototype for CIT-University.">
+<title>16 • Admin / utilization report | TeamParker</title>
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="app-shell"><header class="topbar"><a class="brand" href="index.html">P / TeamParker</a>
+<p class="campus">CIT-University • Campus parking</p>
+<span class="role">Administrator</span></header>
+<aside class="sidebar"><p class="nav-label">ADMINISTRATOR</p>
+<nav aria-label="Main navigation"><a href="overview.html" >Overview</a>
+<a href="areas.html" >Parking areas</a>
+<a href="vehicles.html" >Vehicles / owners</a>
+<a href="history.html" >Parking history</a>
+<a href="reports.html" class="active" aria-current="page">Reports</a>
+<a href="login.html" >Sign out</a></nav></aside>
+<main id="main" class="main"><div class="page-heading"><h1>Parking utilization reports</h1>
+<p class="text  muted size-14">Generate an area-based summary from recorded entry and exit activity.</p></div>
+<div class="row"><div class="field" style="--field-width:400px"><label for="field-27">Period</label>
+<input id="field-27" name="Period" type="text" value="12 Oct 2026"   autocomplete="off"></div>
+<div class="field" style="--field-width:400px"><label for="field-28">Parking area</label>
+<input id="field-28" name="Parking area" type="text" value="All areas"   autocomplete="off"></div></div>
+<a class="button primary" href="reportdone.html" >Generate report</a>
+<aside class="notice">Report includes entries, exits and current occupancy. Historical usage is calculated from overlapping parking sessions.</aside></main>
+<footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
+</body>
+</html>

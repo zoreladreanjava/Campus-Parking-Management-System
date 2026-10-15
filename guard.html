@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="TeamParker campus parking front-end prototype for CIT-University.">
+<title>02 • Guard / gate dashboard | TeamParker</title>
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="app-shell"><header class="topbar"><a class="brand" href="index.html">P / TeamParker</a>
+<p class="campus">CIT-University • Campus parking</p>
+<span class="role">Guard</span></header>
+<aside class="sidebar"><p class="nav-label">GUARD</p>
+<nav aria-label="Main navigation"><a href="guard.html" class="active" aria-current="page">Gate dashboard</a>
+<a href="entry.html" >Vehicle entry</a>
+<a href="exit.html" >Vehicle exit</a>
+<a href="search.html" >Search / correct</a>
+<a href="login.html" >Sign out</a></nav></aside>
+<main id="main" class="main"><div class="page-heading"><h1>Gate dashboard</h1>
+<p class="text  muted size-14">Main gate • Guard: G. Santos • 12 Oct 2026, 08:15</p></div>
+<div class="row"><section class="card" style="--card-width:297px"><h2>Available slots</h2>
+<p class="text strong  size-36">70</p></section>
+<section class="card" style="--card-width:297px"><h2>Vehicles inside</h2>
+<p class="text strong  size-36">130</p></section>
+<section class="card" style="--card-width:297px"><h2>Entries today</h2>
+<p class="text strong  size-36">158</p></section></div>
+<div class="row"><section class="card" style="--card-width:450px"><h2>ID / RFID reader</h2>
+<p class="text strong  size-22">Ready for the next ID tap</p>
+<p class="text  muted size-14">Tap the owner&#39;s campus ID to verify a registered vehicle.</p>
+<a class="button primary" href="entry.html" >Start vehicle entry</a>
+<a class="button neutral" href="exit.html" >Start vehicle exit</a></section>
+<section class="card" style="--card-width:458px"><h2>Parking capacity</h2>
+<div class="table-wrap" tabindex="0"><table><thead><tr><th scope="col">Area</th>
+<th scope="col">Available</th>
+<th scope="col">Capacity</th></tr></thead>
+<tbody><tr><td>Area A</td>
+<td>30</td>
+<td>100</td></tr>
+<tr><td>Area B</td>
+<td>40</td>
+<td>80</td></tr>
+<tr><td>Area C</td>
+<td>0 — Full</td>
+<td>20</td></tr></tbody></table></div></section></div></main>
+<footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
+</body>
+</html>

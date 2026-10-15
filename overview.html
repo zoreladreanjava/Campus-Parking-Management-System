@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="TeamParker campus parking front-end prototype for CIT-University.">
+<title>09 • Admin / overview | TeamParker</title>
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="app-shell"><header class="topbar"><a class="brand" href="index.html">P / TeamParker</a>
+<p class="campus">CIT-University • Campus parking</p>
+<span class="role">Administrator</span></header>
+<aside class="sidebar"><p class="nav-label">ADMINISTRATOR</p>
+<nav aria-label="Main navigation"><a href="overview.html" class="active" aria-current="page">Overview</a>
+<a href="areas.html" >Parking areas</a>
+<a href="vehicles.html" >Vehicles / owners</a>
+<a href="history.html" >Parking history</a>
+<a href="reports.html" >Reports</a>
+<a href="login.html" >Sign out</a></nav></aside>
+<main id="main" class="main"><div class="page-heading"><h1>Parking overview</h1>
+<p class="text  muted size-14">Campus totals • Updated 12 Oct 2026, 08:15</p></div>
+<div class="row"><section class="card" style="--card-width:297px"><h2>Total capacity</h2>
+<p class="text strong  size-36">200</p></section>
+<section class="card" style="--card-width:297px"><h2>Currently parked</h2>
+<p class="text strong  size-36">130</p></section>
+<section class="card" style="--card-width:297px"><h2>Available</h2>
+<p class="text strong  size-36">70</p></section></div>
+<div class="table-wrap" tabindex="0"><table><thead><tr><th scope="col">Area</th>
+<th scope="col">Total</th>
+<th scope="col">Occupied</th>
+<th scope="col">Available</th>
+<th scope="col">Usage</th></tr></thead>
+<tbody><tr><td>Area A</td>
+<td>100</td>
+<td>70</td>
+<td>30</td>
+<td>70%</td></tr>
+<tr><td>Area B</td>
+<td>80</td>
+<td>40</td>
+<td>40</td>
+<td>50%</td></tr>
+<tr><td>Area C</td>
+<td>20</td>
+<td>20</td>
+<td>0 — Full</td>
+<td>100%</td></tr></tbody></table></div>
+<div class="row"><a class="button primary" href="areas.html" >Manage parking areas</a>
+<a class="button neutral" href="history.html" >View parking history</a>
+<a class="button neutral" href="reports.html" >Generate report</a></div></main>
+<footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
+</body>
+</html>
