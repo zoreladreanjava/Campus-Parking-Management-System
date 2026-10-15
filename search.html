@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="TeamParker campus parking front-end prototype for CIT-University.">
 <title>07 • Guard / search and correction | TeamParker</title>
 <link rel="stylesheet" href="css/styles.css">
@@ -26,7 +26,7 @@
 <section class="panel" aria-labelledby="results-heading"><div class="toolbar" role="search"><div class="field grow"><label for="search-q">Plate number, owner name or RFID</label>
 <input id="search-q" name="q" type="search" placeholder="e.g. MC-1234 or John Doe" data-search autocomplete="off"></div></div>
 <h2 class="visually-hidden" id="results-heading">Results</h2>
-<div class="table-wrap" tabindex="0"><table class="data-table" style="--table-min:680px"><colgroup><col style="width:24%"><col style="width:18%"><col style="width:12%"><col style="width:12%"><col style="width:16%"><col style="width:18%"></colgroup>
+<div class="table-wrap" tabindex="0"><table class="data-table stack" style="--table-min:680px"><colgroup><col style="width:22%"><col style="width:18%"><col style="width:14%"><col style="width:12%"><col style="width:15%"><col style="width:19%"></colgroup>
 <thead><tr><th scope="col">Owner</th>
 <th scope="col">Vehicle</th>
 <th scope="col">Area</th>
@@ -34,23 +34,23 @@
 <th scope="col">Status</th>
 <th scope="col"><span class="visually-hidden">Actions</span></th></tr></thead>
 <tbody><tr class="is-selected"><th scope="row">John Doe<span class="cell-sub">RFID 004218</span></th>
-<td>MC-1234<span class="cell-sub">Motorcycle</span></td>
-<td>Area A</td>
-<td class="num">08:15</td>
-<td><span class="badge active">Inside</span></td>
-<td><a href="correct.html">Correct</a></td></tr>
+<td data-label="Vehicle"><span>MC-1234<span class="cell-sub">Motorcycle</span></span></td>
+<td data-label="Area">Area A</td>
+<td class="num" data-label="Entered">08:15</td>
+<td class="cell-status"><span class="badge active">Inside</span></td>
+<td class="cell-action"><a href="correct.html">Correct</a></td></tr>
 <tr><th scope="row">Maria Cruz<span class="cell-sub">RFID 004219</span></th>
-<td>ABC-5678<span class="cell-sub">Car</span></td>
-<td>Area B</td>
-<td class="num">08:20</td>
-<td><span class="badge active">Inside</span></td>
-<td><a href="correct.html">Correct</a></td></tr>
+<td data-label="Vehicle"><span>ABC-5678<span class="cell-sub">Car</span></span></td>
+<td data-label="Area">Area B</td>
+<td class="num" data-label="Entered">08:20</td>
+<td class="cell-status"><span class="badge active">Inside</span></td>
+<td class="cell-action"><a href="correct.html">Correct</a></td></tr>
 <tr><th scope="row">Alex Reyes<span class="cell-sub">RFID 004377</span></th>
-<td>MC-2088<span class="cell-sub">Motorcycle</span></td>
-<td>—</td>
-<td class="num">—</td>
-<td><span class="badge neutral">Outside</span></td>
-<td><a href="entry.html">Record entry</a></td></tr></tbody></table></div>
+<td data-label="Vehicle"><span>MC-2088<span class="cell-sub">Motorcycle</span></span></td>
+<td data-label="Area">—</td>
+<td class="num" data-label="Entered">—</td>
+<td class="cell-status"><span class="badge neutral">Outside</span></td>
+<td class="cell-action"><a href="entry.html">Record entry</a></td></tr></tbody></table></div>
 <p class="panel-foot">Corrections are saved with your name and the time, and update area availability.</p></section></main>
 <footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
 </body>
