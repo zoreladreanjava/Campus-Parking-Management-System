@@ -4,42 +4,31 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="TeamParker campus parking front-end prototype for CIT-University.">
-<title>08 • Guard / correct record | TeamParker</title>
+<title>08 • Guard / correct a record | TeamParker</title>
 <link rel="stylesheet" href="css/styles.css">
 <script src="js/app.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<div class="app-shell"><header class="topbar"><a class="brand" href="index.html">P / TeamParker</a>
-<p class="campus">CIT-University • Campus parking</p>
-<div class="topbar-end"><span class="chip">Main gate</span>
-<span class="role">G. Santos · Guard</span>
-<a class="button neutral" href="login.html">Sign out</a></div></header>
-<aside class="sidebar">
-<nav aria-label="Main navigation"><a href="guard.html" >Gate dashboard</a>
-<a href="entry.html" >Vehicle entry</a>
-<a href="exit.html" >Vehicle exit</a>
-<a href="search.html" class="active" aria-current="page">Search / correct</a>
-</nav></aside>
-<main id="main" class="main"><div class="page-heading"><h1>Correct parking record</h1>
-<p class="text muted size-14">ENT-0158 • John Doe • MC-1234</p></div>
-<form class="card form-card" action="search.html" method="get"><div class="field"><label for="c-vehicle">Vehicle</label>
-<input id="c-vehicle" type="text" value="MC-1234 — John Doe" readonly></div>
+<div class="gate-shell"><header class="gate-topbar"><div class="gate-who"><a class="brand" href="guard.html">P / TeamParker</a><span>Main gate · G. Santos</span></div></header>
+<main id="main" class="gate-main"><h1 class="gate-title">Correct a record</h1>
+<div class="vehicle-id"><span class="plate">MC-1234</span>
+<p class="person"><strong>John Doe</strong> <span>Entry at 08:15 · ENT-0158</span></p></div>
+<form class="card form-card" action="guard.html" method="get"><input type="hidden" name="corrected" value="1">
 <div class="row"><div class="field"><label for="c-area">Parking area</label>
-<select id="c-area" name="area"><option>Area A</option><option selected>Area B</option><option disabled>Area C (full)</option></select>
-<span class="hint">Originally recorded: Area A</span></div>
+<select id="c-area" name="area"><option selected>Area A</option><option>Area B</option><option disabled>Area C (full)</option></select>
+<span class="hint">Recorded as: Area B</span></div>
 <div class="field"><label for="c-time">Entry time</label>
-<input id="c-time" type="datetime-local" value="2026-10-12T08:15"></div></div>
+<input id="c-time" name="time" type="datetime-local" value="2026-10-12T08:15"></div></div>
 <div class="field"><label for="c-reason">Reason for correction</label>
-<textarea id="c-reason" name="reason" required>Owner parked in Area B; Area A was selected by mistake.</textarea>
-<span class="hint">Required. Shown in parking history.</span></div>
-<div class="area-update"><p class="card-label">Availability after saving</p>
-<ul class="compare"><li><div class="meter-head num"><strong>Area A</strong><span><b>29</b> → <b>30</b> <span class="muted">/ 100 free</span></span></div>
-<div class="meter" aria-hidden="true"><span style="--value:70%"></span></div></li>
-<li><div class="meter-head num"><strong>Area B</strong><span><b>40</b> → <b>39</b> <span class="muted">/ 80 free</span></span></div>
-<div class="meter" aria-hidden="true"><span style="--value:51%"></span></div></li></ul></div>
-<div class="form-actions sticky-actions"><button class="button primary" type="submit">Save correction</button>
-<a class="button subtle" href="search.html">Cancel</a></div></form></main>
-<footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
+<textarea id="c-reason" name="reason" required>Owner parked in Area A, wrong button pressed</textarea>
+<span class="hint">Required. Administrators see it in parking history.</span></div>
+<div class="area-update"><p class="card-label">Free slots after saving</p>
+<ul class="compare"><li><div class="meter-head num"><strong>Area B</strong><span><b>39</b> → <b>40</b> <span class="muted">/ 80 free</span></span></div>
+<div class="meter" aria-hidden="true"><span style="--value:50%"></span></div></li>
+<li><div class="meter-head num"><strong>Area A</strong><span><b>30</b> → <b>29</b> <span class="muted">/ 100 free</span></span></div>
+<div class="meter" aria-hidden="true"><span style="--value:29%"></span></div></li></ul></div>
+<div class="form-actions"><button class="gate-button primary" type="submit">Save correction</button>
+<a class="gate-button" href="guard.html">Cancel</a></div></form></main></div>
 </body>
 </html>

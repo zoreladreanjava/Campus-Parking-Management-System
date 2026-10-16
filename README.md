@@ -11,7 +11,7 @@ Today, guards at the gate check vehicles by eye: no ID is scanned and no entry i
 No installation or build step is needed.
 
 1. Open `index.html` in a browser to start at staff sign-in.
-2. Open `screens.html` to browse all 22 screens.
+2. Open `screens.html` to browse all 24 screens.
 
 Every page works offline and with JavaScript turned off. JavaScript only adds small conveniences (see [Project files](#project-files)).
 
@@ -21,35 +21,39 @@ Every page works offline and with JavaScript turned off. JavaScript only adds sm
 
 | Screen | File | Purpose |
 | --- | --- | --- |
-| Parking availability | `mobile.html` | Free slots per area, each with a bar and an Available/Full badge |
-| Selected area | `mobilearea.html` | One area's free slots and the steps at the gate |
+| Parking availability | `mobile.html` | Answers "Can I park?" first, then free slots per area, most free first |
+| Selected area | `mobilearea.html` | One area's free slots and the three steps at the gate |
 | No slots available | `mobilefull.html` | Shown when every area is full |
+| Counts out of date | `mobilestale.html` | Shown when the counts are over 5 minutes old |
 
 ### Guard
+
+Guards use one gate screen with no menu. The ID tap decides what it shows: a vehicle recorded inside opens Exit, one outside opens Entry, and anything wrong opens a Problem screen.
 
 | Screen | File | Purpose |
 | --- | --- | --- |
 | Staff sign in | `index.html`, `login.html` | Sign-in form, with a link for vehicle owners |
-| Gate dashboard | `guard.html` | ID reader status, entry/exit buttons, quick search, campus availability |
-| Vehicle entry | `entry.html` | Verified owner; tell the owner Yes or No; record their chosen area |
-| Entry recorded | `entrydone.html` | Confirmation and the area's updated slot count |
-| Vehicle exit | `exit.html` | Active parking record and the slot change, before confirming |
-| Exit recorded | `exitdone.html` | Confirmation and the area's updated slot count |
-| Search / correct | `search.html` | Find a vehicle without an ID tap, or open a record to fix |
-| Correct record | `correct.html` | Change the area or time with a required reason; shows the availability impact |
-| Gate exceptions | `exceptions.html` | Unregistered ID, no parking, already inside, no active record |
+| Waiting for a tap | `guard.html` | Reader status, free slots per area, plate search, the last taps (only the latest can be undone) and the Help menu |
+| Vehicle entry | `entry.html` | Plate and owner; pressing an area records the entry right away |
+| Entry recorded | `entrydone.html` | Full green screen; returns to the reader after 5 seconds; Undo |
+| Vehicle exit | `exit.html` | Where and since when the vehicle is parked; one large Confirm exit button |
+| Exit recorded | `exitdone.html` | Full green screen; returns to the reader after 5 seconds; Undo |
+| Problem screens | `exceptions.html` | ID not registered, no parking, already inside, no active record (one per `#anchor`) |
+| Search by plate | `search.html` | For owners without an ID; matches appear while typing |
+| Correct a record | `correct.html` | From Help: change the area or time of an earlier tap, with a required reason |
+| Today's log | `gatelog.html` | From Help: every tap at this gate today |
 
 ### Administrator
 
 | Screen | File | Purpose |
 | --- | --- | --- |
-| Overview | `overview.html` | Campus totals and usage per area |
-| Parking areas | `areas.html` | Areas with capacity, usage and row actions |
+| Overview | `overview.html` | Free slots right now, vehicles parked, corrections today, and free space per area |
+| Parking areas | `areas.html` | Areas with capacity, free space and row actions |
 | Area form | `areaform.html` | Add or edit an area; capacity can't go below current occupancy |
 | Vehicles & owners | `vehicles.html` | Registered owners and vehicles, with search and type filter |
 | Owner & vehicle form | `vehicleform.html` | Register an owner or link another vehicle |
-| Parking history | `history.html` | All entries and exits, with date, area and status filters |
-| Log details | `logdetail.html` | Timeline of one parking session |
+| Parking history | `history.html` | All entries and exits, with filters and quick filters for inside, corrected and undone taps |
+| Log details | `logdetail.html` | One parking session with a timeline of what happened, including corrections |
 | Reports | `reports.html` | Choose a period and area for a utilization report |
 | Report result | `reportdone.html` | Totals and per-area usage; print or save as PDF |
 | Remove area | `remove.html` | Removal is blocked while vehicles are still parked |
@@ -58,9 +62,11 @@ Every page works offline and with JavaScript turned off. JavaScript only adds sm
 
 The screens follow the team's activity and sequence diagrams.
 
-**Entry:** the owner taps their ID and the guard sees the verified owner and vehicle. If parking is available, the guard tells the owner "Yes" and records the area the owner chooses. That area's free slots drop by 1. If every area is full, the guard tells the owner "No" and no entry is recorded.
+**Entry:** the owner taps their ID and the gate screen turns green with the plate and owner. If parking is available, the guard presses the area the owner chooses, which records the entry at once. That area's free slots drop by 1. If every area is full, a red screen tells the guard to say "No".
 
-**Exit:** the owner taps their ID and the guard sees the active parking record. The guard confirms the exit and the area's free slots rise by 1. If no active record exists, the guard searches the records before letting the vehicle out.
+**Exit:** the owner taps their ID and the gate screen turns blue with where the vehicle is parked. The guard presses Confirm exit and the area's free slots rise by 1. If no active record exists, a red screen tells the guard to hold the vehicle and search the records.
+
+**Mistakes:** the latest tap can be undone from the confirmation screen or the Last taps strip. Older taps are fixed with Correct a record, which needs a reason. Administrators see every undo and correction in parking history.
 
 **Availability:** owners open the availability page on a phone, tablet or university device. They pick an area there and tell the guard at the gate. Viewing a page doesn't reserve a slot.
 
@@ -70,15 +76,18 @@ The screens follow the team's activity and sequence diagrams.
 | --- | --- |
 | `*.html` | One file per screen, written in plain, editable HTML |
 | `css/styles.css` | Shared styles for every page: colours, layout, cards, tables, bars, badges, forms. Adapts to phone, tablet and desktop widths |
-| `js/app.js` | Optional extras: filters tables as you type, pre-fills search from the dashboard, updates the entry slot preview, adds prototype links to the footer |
+| `js/app.js` | Optional extras: filters tables and plate matches as you type, counts down on the confirmation screens, shows undo and correction messages, closes Help with Escape, runs the history quick filters, adds prototype links |
+| `design_handoff/` | The design handoff these screens were built from (spec and mock frames) |
 
 ## Design
 
-- **Colours:** cream `#FFF8E7`, warm white `#FFFEF8`, maroon `#681F2B`, header gold `#F2C230`, pale gold `#F8E9B6`. Green marks available slots and red marks errors. All colours are defined once at the top of `css/styles.css`.
+- **Colours:** cream `#FFF8E7`, warm white `#FFFEF8`, maroon `#681F2B`, header gold `#F2C230`, pale gold `#F8E9B6`. All colours are defined once at the top of `css/styles.css`.
+- **One colour, one meaning, on every screen:** green = entry, available or success; blue = exit; red = a problem; amber = a correction or out-of-date counts; maroon = main buttons.
 - **Type:** Inter when installed, otherwise Arial or Helvetica.
 - **Patterns:**
-  - Bars show how full each area is.
-  - Badges show status (Available, Full, Inside, Exited).
+  - Green bars show free space, so a longer bar means more room. Reports show "% full" instead, and say so.
+  - Badges show status (Available, Full, Inside, Exited, Undone).
+  - Users see "ID number", never "RFID".
   - Numbers are right-aligned with equal-width digits so columns line up.
   - Each screen's main action sits at the top right of the page or at the end of its form.
 - **Origin:** the layout started from the TeamParker Figma file: https://www.figma.com/design/K51KbAEwjQ4xDcFIsoBer6
@@ -87,14 +96,15 @@ The screens follow the team's activity and sequence diagrams.
 
 This is a wireframe prototype, not a working parking system.
 
-- No backend, database or RFID reader is connected. Every count, name and record is fixed sample data.
+- No backend, database or ID reader is connected. Every count, name and record is fixed sample data.
 - The sign-in buttons only choose a demo role; nothing is authenticated. Don't enter real credentials or personal information.
 - Forms and confirmations move between sample screens; nothing is saved.
-- The record-correction flow goes beyond the original ERD. A real build would need to store corrections, for example in a corrections or audit table.
+- Undo, corrections, gate names, the guards' gate log and the out-of-date warning go beyond the original reference documents. [docs/reference-updates.md](docs/reference-updates.md) lists the matching changes to the ERD, class diagram, use cases, functional requirements, activity and sequence diagrams.
+- The gate screens can't receive a real ID tap. The waiting screen has a "Prototype · simulate a tap" row that opens each state.
 
 ## Next steps for a real build
 
 - Authenticate guards and administrators on the server, with roles matching the `Guard` and `Administrator` entities.
-- Read IDs from the RFID reader and look up `VehicleOwner` → `Vehicle`.
+- Read ID numbers from the card reader and look up `VehicleOwner` → `Vehicle`.
 - Write `VehicleEntryLog` and `VehicleExitLog` records. Calculate each area's free slots from its capacity minus its active entries.
 - Refresh the availability page automatically so owners see current counts.

@@ -4,50 +4,32 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="TeamParker campus parking front-end prototype for CIT-University.">
-<title>02 • Guard / gate dashboard | TeamParker</title>
+<title>02 • Guard / waiting for a tap | TeamParker</title>
 <link rel="stylesheet" href="css/styles.css">
 <script src="js/app.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<div class="app-shell"><header class="topbar"><a class="brand" href="index.html">P / TeamParker</a>
-<p class="campus">CIT-University • Campus parking</p>
-<div class="topbar-end"><span class="chip">Main gate</span>
-<span class="role">G. Santos · Guard</span>
-<a class="button neutral" href="login.html">Sign out</a></div></header>
-<aside class="sidebar">
-<nav aria-label="Main navigation"><a href="guard.html" class="active" aria-current="page">Gate dashboard</a>
-<a href="entry.html" >Vehicle entry</a>
-<a href="exit.html" >Vehicle exit</a>
-<a href="search.html" >Search / correct</a>
-</nav></aside>
-<main id="main" class="main"><div class="page-heading inline"><h1>Gate dashboard</h1>
-<p class="text  muted size-14">12 Oct 2026, 08:15</p></div>
-<div class="gate-grid"><section class="card reader-card" aria-labelledby="reader-label"><h2 class="card-label" id="reader-label">ID / RFID reader</h2>
-<div class="reader-status" role="status"><span class="reader-indicator" aria-hidden="true"></span>
-<div><p class="reader-title">Ready for the next ID tap</p>
-<p class="text  muted size-15">Tap the owner&#39;s campus ID to verify a registered vehicle.</p></div></div>
-<div class="action-grid"><a class="action-tile" href="entry.html"><strong>Vehicle entry</strong>
-<span>Log arrival and record chosen area</span></a>
-<a class="action-tile neutral" href="exit.html"><strong>Vehicle exit</strong>
-<span>Close the active record</span></a></div>
-<form class="quick-search" action="search.html" method="get" role="search"><label class="visually-hidden" for="quick-search">Search by plate number or owner</label>
-<input id="quick-search" name="q" type="search" placeholder="No ID? Search by plate number or owner" autocomplete="off">
-<button class="button neutral" type="submit">Search</button></form></section>
-<section class="card availability-card" aria-labelledby="availability-label"><h2 class="card-label" id="availability-label">Campus availability</h2>
-<p class="big-stat num"><strong>70</strong> <span>of 200 slots free</span></p>
-<div class="mini-stats"><p class="mini-stat"><span>Vehicles inside</span> <strong class="num">130</strong></p>
-<p class="mini-stat"><span>Entries today</span> <strong class="num">158</strong></p></div>
-<ul class="area-meters"><li><div class="meter-head"><span>Area A</span>
-<span class="num"><b>30</b> <span class="muted">/ 100 free</span></span></div>
-<div class="meter" role="img" aria-label="Area A 70% occupied"><span style="--value:70%"></span></div></li>
-<li><div class="meter-head"><span>Area B</span>
-<span class="num"><b>40</b> <span class="muted">/ 80 free</span></span></div>
-<div class="meter" role="img" aria-label="Area B 50% occupied"><span style="--value:50%"></span></div></li>
-<li><div class="meter-head"><span>Area C</span>
-<span class="badge full num">FULL · 0 / 20</span></div>
-<div class="meter" role="img" aria-label="Area C 100% occupied"><span style="--value:100%"></span></div></li></ul>
-<p class="footnote">Bars show occupied share. Updated 08:15.</p></section></div></main>
-<footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
+<div class="gate-shell"><header class="gate-topbar"><div class="gate-who"><a class="brand" href="guard.html">P / TeamParker</a><span>Main gate · G. Santos</span></div><a class="button neutral" href="#help">Help</a></header>
+<main id="main" class="gate-ready"><div class="reader-dot" role="img" aria-label="Reader ready"></div>
+<h1>Ready for the next ID tap</h1>
+<p>Tap a campus ID to start an entry or exit.</p></main>
+<section class="gate-tiles" aria-label="Free slots per area"><div class="gate-tile"><span>Area A</span> <strong class="num">30 free</strong></div>
+<div class="gate-tile"><span>Area B</span> <strong class="num">40 free</strong></div>
+<div class="gate-tile is-full"><span>Area C</span> <strong>FULL</strong></div>
+<a class="gate-search" href="search.html">No ID?<br>Search plate</a></section>
+<section class="last-taps" aria-labelledby="taps-label"><h2 id="taps-label">Last taps</h2>
+<ol><li class="tap latest"><time class="num">08:14</time> <span class="tap-what"><b>Entry</b> ABC-5678 · Area B</span> <a class="button neutral" href="guard.html?undone=entry&amp;plate=ABC-5678">Undo</a></li>
+<li class="tap"><time class="num">08:11</time> <span class="tap-what"><b>Exit</b> MC-2088</span></li>
+<li class="tap"><time class="num">08:09</time> <span class="tap-what"><b class="is-problem">Not registered</b> 009931</span></li></ol></section>
+<p class="demo-taps"><b>Prototype · simulate a tap:</b> <a href="entry.html">Entry</a> <a href="exit.html">Exit</a> <a href="exceptions.html">Not registered</a> <a href="exceptions.html#no-parking">All areas full</a> <a href="exceptions.html#already-inside">Already inside</a> <a href="exceptions.html#no-record">No active record</a> <a href="screens.html">All screens</a></p>
+<div class="help" id="help" role="dialog" aria-modal="true" aria-labelledby="help-title"><a class="help-scrim" href="#" aria-label="Close help"></a>
+<div class="help-panel"><div class="help-head"><h2 id="help-title">Help</h2>
+<a class="gate-button" href="#">Close</a></div>
+<p class="text muted size-16">Tasks you won&#39;t need for most vehicles.</p>
+<a class="help-item primary" href="search.html"><strong>Search by plate</strong><span>Owner has no ID or the tap failed</span></a>
+<a class="help-item" href="correct.html"><strong>Correct a record</strong><span>Wrong area or time on an earlier tap</span></a>
+<a class="help-item" href="gatelog.html"><strong>Today&#39;s log</strong><span>Every entry and exit at this gate today</span></a>
+<a class="gate-button signout" href="login.html">Sign out</a></div></div></div>
 </body>
 </html>

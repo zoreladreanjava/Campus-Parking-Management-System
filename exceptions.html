@@ -4,54 +4,32 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="TeamParker campus parking front-end prototype for CIT-University.">
-<title>19 • Guard / exception states | TeamParker</title>
+<title>19 • Guard / problem screens | TeamParker</title>
 <link rel="stylesheet" href="css/styles.css">
 <script src="js/app.js" defer></script>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
-<div class="app-shell"><header class="topbar"><a class="brand" href="index.html">P / TeamParker</a>
-<p class="campus">CIT-University • Campus parking</p>
-<div class="topbar-end"><span class="chip">Main gate</span>
-<span class="role">G. Santos · Guard</span>
-<a class="button neutral" href="login.html">Sign out</a></div></header>
-<aside class="sidebar">
-<nav aria-label="Main navigation"><a href="guard.html" class="active" aria-current="page">Gate dashboard</a>
-<a href="entry.html" >Vehicle entry</a>
-<a href="exit.html" >Vehicle exit</a>
-<a href="search.html" >Search / correct</a>
-</nav></aside>
-<main id="main" class="main"><div class="page-heading"><h1>Gate exceptions</h1>
-<p class="text muted size-14">What the reader shows when a tap can&#39;t be recorded. Nothing is saved in these states.</p></div>
-<div class="state-grid"><section class="card state-card" id="invalid-id" aria-labelledby="s1"><span class="badge danger">Entry or exit</span>
-<div class="reader-status"><span class="reader-indicator small error" aria-hidden="true"></span>
-<div><p class="reader-title" id="s1">ID not registered</p>
-<p class="text muted size-14">RFID 009931 has no matching owner or vehicle.</p></div></div>
-<p class="text size-15">Ask the owner to tap again. If it still fails, search by plate number. Registration is handled by an administrator.</p>
-<div class="form-actions"><a class="button primary" href="guard.html">Tap again</a>
-<a class="button neutral" href="search.html">Search by plate</a></div></section>
-<section class="card state-card" id="no-parking" aria-labelledby="s2"><span class="badge danger">Entry</span>
-<div class="reader-status"><span class="reader-indicator small error" aria-hidden="true"></span>
-<div><p class="reader-title" id="s2">No parking available — tell the owner “No”</p>
-<p class="text muted size-14">All areas are full. Entry can&#39;t be recorded.</p></div></div>
-<ul class="area-meters"><li><div class="meter-head"><span>Area A</span><span class="badge full num">FULL · 0 / 100</span></div></li>
-<li><div class="meter-head"><span>Area B</span><span class="badge full num">FULL · 0 / 80</span></div></li>
-<li><div class="meter-head"><span>Area C</span><span class="badge full num">FULL · 0 / 20</span></div></li></ul>
-<div class="form-actions"><a class="button neutral" href="guard.html">Back to gate dashboard</a></div></section>
-<section class="card state-card" id="already-inside" aria-labelledby="s3"><span class="badge warn">Entry</span>
-<div class="reader-status"><span class="reader-indicator small warn" aria-hidden="true"></span>
-<div><p class="reader-title" id="s3">Vehicle already inside</p>
-<p class="text muted size-14">MC-1234 has an active entry in Area A since 08:15.</p></div></div>
-<p class="text size-15">A second entry would count the slot twice. If the vehicle is leaving, record the exit; if the old record is wrong, correct it.</p>
-<div class="form-actions"><a class="button primary" href="exit.html">Record exit instead</a>
-<a class="button neutral" href="search.html?q=MC-1234">Review record</a></div></section>
-<section class="card state-card" id="no-record" aria-labelledby="s4"><span class="badge danger">Exit</span>
-<div class="reader-status"><span class="reader-indicator small error" aria-hidden="true"></span>
-<div><p class="reader-title" id="s4">No active parking record</p>
-<p class="text muted size-14">Alex Reyes • MC-2088 is not recorded inside.</p></div></div>
-<p class="text size-15">The entry may have been missed at the gate. Find the vehicle&#39;s records before letting the exit through.</p>
-<div class="form-actions"><a class="button primary" href="search.html?q=MC-2088">Find records</a>
-<a class="button neutral" href="guard.html">Back to gate dashboard</a></div></section></div></main>
-<footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
+<div class="problem-cases">
+<div class="gate-shell problem-case" id="not-registered"><header class="state-bar problem"><h1>ID not registered</h1><span><span class="where">Main gate · </span>08:09</span></header>
+<main class="gate-main"><p class="problem-statement">ID number 009931 has no matching owner or vehicle.</p>
+<p class="problem-hold">Hold the vehicle at the gate.</p>
+<ol class="numbered"><li><span>Ask the owner to tap again.</span></li><li><span>If it still fails, search by plate number.</span></li></ol>
+<div class="problem-buttons"><a class="gate-button big primary" href="search.html">Search by plate</a><a class="gate-button big" href="guard.html">Back</a></div></main></div>
+<div class="gate-shell problem-case" id="no-parking"><header class="state-bar problem"><h1>No parking available</h1><span><span class="where">Main gate · </span>08:40</span></header>
+<main class="gate-main"><p class="problem-statement">All 3 areas are full. The entry can&#39;t be recorded.</p>
+<p class="problem-hold">Tell the owner “No”.</p>
+<ol class="numbered"><li><span>Tell the owner every area is full.</span></li><li><span>Slots open up when vehicles leave. The owner can check on their phone before coming back.</span></li></ol>
+<div class="problem-buttons"><a class="gate-button big primary" href="guard.html">Back to the reader</a></div></main></div>
+<div class="gate-shell problem-case" id="already-inside"><header class="state-bar problem"><h1>Vehicle already inside</h1><span><span class="where">Main gate · </span>08:16</span></header>
+<main class="gate-main"><p class="problem-statement">MC-1234 is already recorded inside, in Area A since 08:15.</p>
+<p class="problem-hold">Don&#39;t record a second entry.</p>
+<ol class="numbered"><li><span>If the vehicle is leaving, record the exit.</span></li><li><span>If the earlier record is wrong, correct it from Help.</span></li></ol>
+<div class="problem-buttons"><a class="gate-button big primary" href="exit.html">Record exit instead</a><a class="gate-button big" href="guard.html">Back</a></div></main></div>
+<div class="gate-shell problem-case" id="no-record"><header class="state-bar problem"><h1>No active record</h1><span><span class="where">Main gate · </span>09:10</span></header>
+<main class="gate-main"><p class="problem-statement">MC-2088 · Alex Reyes is not recorded inside.</p>
+<p class="problem-hold">Hold the vehicle at the gate.</p>
+<ol class="numbered"><li><span>The entry may have been missed at the gate.</span></li><li><span>Find the vehicle&#39;s records before letting it out.</span></li></ol>
+<div class="problem-buttons"><a class="gate-button big primary" href="search.html?q=MC-2088">Search by plate</a><a class="gate-button big" href="guard.html">Back</a></div></main></div>
+</div>
 </body>
 </html>
