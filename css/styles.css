@@ -1883,7 +1883,7 @@ to {
   gap:16px
 }
 
-/* Search by plate: matches appear while typing */
+/* Search vehicle / owner: matches appear while typing */
 .plate-input {
   width:100%;
   height:88px;

@@ -47,7 +47,7 @@ Guards work from one reader screen with no menu. They press **Entry** or **Exit*
 | --- | --- | --- |
 | Overview | `overview.html` | Free slots right now, vehicles parked, entries today, and free space per area |
 | Parking areas | `areas.html` | Areas with capacity, free space and row actions |
-| Area form | `areaform.html` | Add or edit an area; capacity can't go below current occupancy. Invalid details show an error message (`#invalid` shows an example); saving shows a success message on `areas.html` |
+| Area form | `areaform.html` | Add (`?new=1`) or edit an area (`?id=A-01`, `A-02`, `A-03`). Capacity can't go below the vehicles parked in that area now (A 70, B 40, C 20; at least 1 for a new area). Invalid details show an error message (`#invalid` shows an example); saving shows a success message on `areas.html` |
 | Vehicles & owners | `vehicles.html` | Registered owners and vehicles, with search, type filter and row actions |
 | Owner & vehicle form | `vehicleform.html` | Register an owner or link another vehicle. Invalid details show an error message (`#invalid` shows an example); saving shows a success message on `vehicles.html` |
 | Parking history | `history.html` | All entries and exits, with filters and quick filters for vehicles inside and exited |
