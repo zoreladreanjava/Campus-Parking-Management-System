@@ -1899,8 +1899,10 @@ to {
 }
 
 .plate-input::placeholder {
-  color:#c9ba94;
-  font-weight:700
+  color:#b3a47e;
+  font-weight:600;
+  letter-spacing:0;
+  text-transform:none
 }
 
 .match-count {
@@ -2827,6 +2829,10 @@ to {
   height:68px;
   padding:0 16px;
   font-size:32px
+}
+
+.plate-input::placeholder {
+  font-size:24px
 }
 
 .plate-result {

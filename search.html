@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="TeamParker campus parking front-end prototype for CIT-University.">
-<title>07 • Guard / search by plate | TeamParker</title>
+<title>07 • Guard / search vehicle / owner | TeamParker</title>
 <link rel="stylesheet" href="css/styles.css">
 <script src="js/app.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <div class="guard-shell"><header class="guard-topbar"><div class="guard-who"><a class="brand" href="guard.html">P / TeamParker</a><span>G. Santos · Guard</span></div></header>
-<main id="main" class="guard-main"><h1 class="guard-title"><label for="plate-q">Search by plate number</label></h1>
+<main id="main" class="guard-main"><h1 class="guard-title"><label for="plate-q">Search vehicle / owner</label></h1>
 <p class="search-flow" data-flow-label hidden></p>
-<input id="plate-q" class="plate-input" type="search" name="q" placeholder="MC-1234" autocomplete="off" autocapitalize="characters" spellcheck="false" data-search>
+<input id="plate-q" class="plate-input" type="search" name="q" placeholder="Plate or owner name" autocomplete="off" autocapitalize="characters" spellcheck="false" data-search>
 <p class="match-count" data-match-count aria-live="polite">Registered vehicles</p>
 <ul class="plate-results" data-areas-full="false">
 <li class="plate-result" data-search-item><span class="plate small">MC-1234</span><span class="owner">John Doe<span class="type"> · Motorcycle</span></span><a class="guard-button start-entry" data-start="entry" href="entry.html?plate=MC-1234&amp;owner=John+Doe&amp;type=Motorcycle&amp;time=12:10">Start entry</a><a class="guard-button start-exit" data-start="exit" href="exceptions.html?plate=MC-1234&amp;owner=John+Doe&amp;time=12:10#no-record">Start exit</a></li>
