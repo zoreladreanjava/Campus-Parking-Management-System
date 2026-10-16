@@ -32,12 +32,12 @@ Guards work from one reader screen with no menu. They press **Entry** or **Exit*
 | Screen | File | Purpose |
 | --- | --- | --- |
 | Staff sign in | `index.html`, `login.html` | Sign-in form, with a link for vehicle owners |
-| Reader screen | `guard.html` | Entry and Exit buttons, free slots per area, plate search and the Help menu (Search by plate, Correct a record, Sign out) |
+| Reader screen | `guard.html` | Entry and Exit buttons, free slots per area, a "No ID? Search" tile and the Help menu (Search vehicle / owner, Correct a record, Sign out) |
 | Vehicle entry | `entry.html` | Plate and owner; pressing an area records the entry right away |
 | Entry recorded | `entrydone.html` | Full green screen; Back to reader, or it returns by itself after 5 seconds |
 | Vehicle exit | `exit.html` | Where and since when the vehicle is parked; one large Confirm exit button |
 | Exit recorded | `exitdone.html` | Full green screen; Back to reader, or it returns by itself after 5 seconds |
-| Problem screens | `exceptions.html` | ID not registered (entry, and `#not-registered-exit`), `#no-parking`, `#no-record` |
+| Problem screens | `exceptions.html` | ID not registered (entry, and `#not-registered-exit`), `#no-parking`, `#no-record`; each offers Search vehicle / owner where it helps |
 | Search vehicle / owner | `search.html` | For owners without an ID; search by plate or owner name; matches appear while typing. Opened after Entry or Exit (`?flow=entry` / `?flow=exit`) it shows only that flow's button; opened from Help it shows Start entry and Start exit |
 | Correct a record | `correct.html` | From Help: change the area or entry time of an entry |
 

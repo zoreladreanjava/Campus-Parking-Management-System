@@ -88,7 +88,7 @@ document.querySelectorAll('a[data-q-from-plate]').forEach(link=>{
   link.href=url.href;
 });
 
-// Search by plate: the guard's Entry/Exit choice arrives as ?flow= and only that flow's button shows
+// Search vehicle / owner: the guard's Entry/Exit choice arrives as ?flow= and only that flow's button shows
 const flow=params.get('flow');
 if(flow==='entry'||flow==='exit'){
   document.querySelectorAll('[data-start]').forEach(button=>{button.hidden=button.dataset.start!==flow;});
@@ -101,7 +101,7 @@ const results=document.querySelector('[data-areas-full]');
 if(results&&(results.dataset.areasFull==='true'||params.get('full')==='1')){
   document.querySelectorAll('[data-start="entry"]').forEach(button=>{button.href='exceptions.html#no-parking';});
 }
-// Reader screen: the "No ID? Search plate" tile follows the open Entry or Exit panel
+// Reader screen: the "No ID? Search" tile follows the open Entry or Exit panel
 const searchTile=document.querySelector('[data-search-tile]');
 if(searchTile){
   const syncTile=()=>{
