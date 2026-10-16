@@ -10,45 +10,15 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<div class="app-shell"><header class="topbar"><a class="brand" href="index.html">P / TeamParker</a>
-<p class="campus">CIT-University • Campus parking</p>
-<div class="topbar-end"><span class="chip">Main gate</span>
-<span class="role">G. Santos · Guard</span>
-<a class="button neutral" href="login.html">Sign out</a></div></header>
-<aside class="sidebar">
-<nav aria-label="Main navigation"><a href="guard.html" >Gate dashboard</a>
-<a href="entry.html" class="active" aria-current="page">Vehicle entry</a>
-<a href="exit.html" >Vehicle exit</a>
-<a href="search.html" >Search / correct</a>
-</nav></aside>
-<main id="main" class="main"><div class="page-heading inline"><h1>Record vehicle entry</h1>
-<ol class="stepper" aria-label="Entry steps"><li class="done">Verify ID</li>
-<li class="current" aria-current="step">Tell owner &amp; record area</li>
-<li>Entry saved</li></ol></div>
-<div class="flow-grid"><section class="card" aria-labelledby="owner-label"><h2 class="card-label" id="owner-label">ID verified</h2>
-<div class="reader-status"><span class="reader-indicator small" aria-hidden="true"></span>
-<div><p class="reader-title">John Doe</p>
-<p class="text muted size-14">RFID 004218 • Registered owner</p></div></div>
-<dl class="detail-list"><div><dt>Plate</dt><dd>MC-1234</dd></div>
-<div><dt>Vehicle</dt><dd>Motorcycle</dd></div>
-<div><dt>Contact</dt><dd>09•• ••• 1234</dd></div>
-<div><dt>Parking status</dt><dd><span class="badge neutral">Outside campus</span></dd></div></dl>
-<p class="footnote">John Doe has 2 registered vehicles. <a href="search.html?q=John+Doe">Choose a different vehicle</a></p></section>
-<form class="card" action="entrydone.html" method="get" data-entry-form aria-labelledby="area-legend">
-<div class="callout good" role="status"><strong>Parking available — tell the owner “Yes”</strong>
-<span>70 slots free in 2 areas. Ask which area they want, then record it.</span></div>
-<fieldset class="choice-group"><legend class="card-label" id="area-legend">Owner&#39;s chosen area</legend>
-<label class="choice"><input type="radio" name="area" value="Area A" data-free="30" checked><span class="choice-body"><span class="choice-head"><strong>Area A</strong>
-<span class="num"><b>30</b> <span class="muted">/ 100 free</span></span></span>
-<span class="meter" aria-hidden="true"><span style="--value:70%"></span></span></span></label>
-<label class="choice"><input type="radio" name="area" value="Area B" data-free="40"><span class="choice-body"><span class="choice-head"><strong>Area B</strong>
-<span class="num"><b>40</b> <span class="muted">/ 80 free</span></span></span>
-<span class="meter" aria-hidden="true"><span style="--value:50%"></span></span></span></label>
-<label class="choice is-disabled"><input type="radio" name="area" value="Area C" disabled><span class="choice-body"><span class="choice-head"><strong>Area C</strong>
-<span class="badge full num">FULL · 0 / 20</span></span></span></label></fieldset>
-<p class="impact num" data-entry-impact aria-live="polite">Area A will go from <b>30</b> to <b>29</b> free.</p>
-<div class="form-actions sticky-actions"><button class="button primary large" type="submit" data-entry-submit>Record entry · Area A</button>
-<a class="button subtle" href="guard.html">Cancel</a></div></form></div></main>
-<footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
+<div class="gate-shell"><header class="state-bar entry"><h1>Vehicle entry</h1><span><span class="where">Main gate · </span>08:15</span></header>
+<main id="main" class="gate-main"><div class="vehicle-id"><span class="plate">MC-1234</span>
+<p class="person"><strong>John Doe</strong> <span>Motorcycle</span></p></div>
+<p class="gate-statement">Parking available. Confirm the plate, then record the owner&#39;s chosen area.</p>
+<div class="area-buttons" role="group" aria-label="Owner's chosen area">
+<a class="area-button" href="entrydone.html?area=Area+A"><span class="area-label"><span class="name">Area A</span><span class="free num">30 free</span></span><span class="pill">Record entry</span></a>
+<a class="area-button" href="entrydone.html?area=Area+B"><span class="area-label"><span class="name">Area B</span><span class="free num">40 free</span></span><span class="pill">Record entry</span></a>
+<div class="area-button is-full" aria-disabled="true"><span class="area-label"><span class="name">Area C</span></span><span class="full-text"><b>FULL</b><span>No slots</span></span></div></div>
+<div class="gate-actions"><p class="hint">Wrong vehicle?</p>
+<a class="gate-button" href="guard.html">Cancel</a></div></main></div>
 </body>
 </html>

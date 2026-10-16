@@ -21,20 +21,23 @@
 <a href="history.html" class="active" aria-current="page">Parking history</a>
 <a href="reports.html" >Reports</a>
 </nav></aside>
-<main id="main" class="main"><div class="page-heading with-actions"><div><h1>John Doe • MC-1234</h1>
-<p class="text muted size-14">Entry ENT-0158 • Exit EXT-0126</p></div>
-<div class="row"><a class="button neutral" href="history.html">Back to history</a></div></div>
-<div class="form-grid"><section class="card" aria-labelledby="tl-label"><h2 class="card-label" id="tl-label">Timeline</h2>
-<ol class="timeline"><li><strong>Entered Area A</strong><span>12 Oct 2026, 08:15 • G. Santos, Main gate</span></li>
-<li><strong>Exited</strong><span>12 Oct 2026, 12:05 • G. Santos, Main gate</span></li></ol>
-<p class="text size-15"><span class="badge neutral">Exited</span> Parked for <b>3 h 50 min</b></p></section>
-<section class="card" aria-labelledby="veh-label"><h2 class="card-label" id="veh-label">Owner &amp; vehicle</h2>
-<dl class="detail-list"><div><dt>Owner</dt><dd>John Doe</dd></div>
-<div><dt>Owner ID</dt><dd>OWN-0042</dd></div>
-<div><dt>RFID</dt><dd>004218</dd></div>
+<main id="main" class="main"><a class="crumb" href="history.html">‹ Parking history</a>
+<div class="page-heading with-actions"><div><h1>John Doe · MC-1234</h1>
+<p class="text muted size-14">Parking session ENT-0158 · 12 Oct 2026</p></div>
+<div class="row"><button class="button neutral" type="button" onclick="window.print()">Print</button></div></div>
+<div class="form-grid"><section class="card" aria-labelledby="session-label"><h2 class="card-label" id="session-label">Session</h2>
+<dl class="detail-list"><div><dt>ID number</dt><dd class="num">004218</dd></div>
 <div><dt>Vehicle</dt><dd>Motorcycle</dd></div>
-<div><dt>Area</dt><dd>Area A (A-01)</dd></div>
-<div><dt>Corrections</dt><dd>None</dd></div></dl></section></div></main>
-<footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
+<div><dt>Area</dt><dd>Area A</dd></div>
+<div><dt>Entry</dt><dd>08:15 · Main gate</dd></div>
+<div><dt>Exit</dt><dd>12:05 · Main gate</dd></div>
+<div><dt>Duration</dt><dd>3 h 50 min</dd></div>
+<div><dt>Status</dt><dd><span class="badge neutral">Exited</span></dd></div></dl></section>
+<section class="card" aria-labelledby="tl-label"><h2 class="card-label" id="tl-label">What happened</h2>
+<ol class="timeline"><li class="entry"><strong>08:15 · Entry recorded</strong><span>Area B · G. Santos at Main gate</span></li>
+<li class="correction"><strong>08:20 · Corrected: Area B → Area A</strong><span>G. Santos · Reason: “Owner parked in Area A, wrong button pressed”</span><span class="impact-line">Area B +1 free, Area A −1 free</span></li>
+<li class="exit"><strong>12:05 · Exit recorded</strong><span>Area A · G. Santos at Main gate</span></li></ol>
+<p class="amber-note">This session was corrected once. The original value is kept above.</p></section></div></main>
+<footer class="footer">PROTOTYPE • Demonstration data • No live ID reader or database connection</footer></div>
 </body>
 </html>

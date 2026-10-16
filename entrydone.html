@@ -7,34 +7,14 @@
 <title>04 • Guard / entry recorded | TeamParker</title>
 <link rel="stylesheet" href="css/styles.css">
 <script src="js/app.js" defer></script>
+<meta http-equiv="refresh" content="5;url=guard.html">
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
-<div class="app-shell"><header class="topbar"><a class="brand" href="index.html">P / TeamParker</a>
-<p class="campus">CIT-University • Campus parking</p>
-<div class="topbar-end"><span class="chip">Main gate</span>
-<span class="role">G. Santos · Guard</span>
-<a class="button neutral" href="login.html">Sign out</a></div></header>
-<aside class="sidebar">
-<nav aria-label="Main navigation"><a href="guard.html" >Gate dashboard</a>
-<a href="entry.html" class="active" aria-current="page">Vehicle entry</a>
-<a href="exit.html" >Vehicle exit</a>
-<a href="search.html" >Search / correct</a>
-</nav></aside>
-<main id="main" class="main"><div class="page-heading inline"><h1>Entry recorded</h1>
-<ol class="stepper" aria-label="Entry steps"><li class="done">Verify ID</li>
-<li class="done">Tell owner &amp; record area</li>
-<li class="current" aria-current="step">Entry saved</li></ol></div>
-<section class="card success-card" aria-labelledby="done-title"><div class="reader-status" role="status"><span class="reader-indicator" aria-hidden="true"></span>
-<div><p class="reader-title" id="done-title">John Doe can park in <span data-area-name>Area A</span></p>
-<p class="text muted size-15">MC-1234 • Motorcycle • Entry ENT-0158 is now active</p></div></div>
-<dl class="detail-list"><div><dt>Entry time</dt><dd>12 Oct 2026, 08:15</dd></div>
-<div><dt>Recorded by</dt><dd>G. Santos • Main gate</dd></div></dl>
-<div class="area-update"><div class="meter-head num"><strong data-area-name>Area A</strong>
-<span><b data-area-free>29</b> <span class="muted">/ <span data-area-total>100</span> free (was <span data-area-was>30</span>)</span></span></div>
-<div class="meter" aria-hidden="true"><span data-area-meter style="--value:71%"></span></div></div>
-<div class="form-actions"><a class="button primary large" href="guard.html">Ready for next vehicle</a>
-<a class="button subtle" href="search.html?q=MC-1234">Undo or correct this entry</a></div></section></main>
-<footer class="footer">PROTOTYPE • Demonstration data • No live RFID or database connection</footer></div>
+<div class="gate-shell is-done"><main id="main" class="done-main" role="status"><div class="done-check" aria-hidden="true">✓</div>
+<h1>Entry recorded<span class="sep"> · </span><span class="done-area" data-area-name>Area A</span></h1>
+<p>MC-1234 · John Doe<span class="sep"> · </span><span class="done-area"><span data-area-name>Area A</span> now has <span data-area-free class="num">29</span> free</span></p></main>
+<div class="done-foot"><div class="countdown" aria-hidden="true"><span></span></div>
+<div class="gate-actions"><p>Returning to the reader in <span data-countdown>5</span> s</p>
+<a class="gate-button white" href="guard.html?undone=entry&amp;plate=MC-1234">Undo entry</a></div></div></div>
 </body>
 </html>
