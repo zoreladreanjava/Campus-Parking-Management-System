@@ -2151,6 +2151,16 @@ to {
   font-weight:600
 }
 
+.refresh-row {
+  display:flex;
+  justify-content:flex-end
+}
+
+.refresh-row .button {
+  min-height:44px;
+  font-weight:600
+}
+
 .section-label {
   margin:4px 0 0;
   font-size:13px;

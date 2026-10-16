@@ -80,6 +80,6 @@ if(footer){
 }
 if(document.querySelector('.public-main')){
   const links=document.createElement('p');links.className='prototype-tools';
-  links.innerHTML='<a href="screens.html">All screens</a><a href="mobilefull.html">All-full example</a><a href="mobilestale.html">Out-of-date example</a>';
+  links.innerHTML='<a href="screens.html">All screens</a><a href="mobilefull.html">All-full example</a>';
   document.querySelector('.public-main').append(links);
 }
