@@ -12,7 +12,7 @@
   --radius:12px;
   --tabbar-h:64px;
   --shadow:0 4px 16px rgb(0 0 0 / 8%);
-  /* green = entry / available / success, blue = exit, red = problem, amber = correction or stale */
+  /* green = entry / available / success, blue = exit, red = problem */
   --green:oklch(0.45 0.12 150);
   --green-fill:oklch(0.93 0.05 150);
   --green-ink:oklch(0.38 0.1 150);
@@ -21,9 +21,6 @@
   --blue-fill:oklch(0.93 0.04 250);
   --blue-ink:oklch(0.4 0.1 250);
   --red-bar:oklch(0.48 0.17 25);
-  --amber-fill:#fbecc0;
-  --amber-border:#e2c46a;
-  --amber-ink:#5c4510;
   --track:#ede6d6;
   --disabled-border:#c9ba94
 }
@@ -2124,7 +2121,7 @@ to {
   font-size:14px
 }
 
-/* ===== Admin: free space, corrections and undos ===== */
+/* ===== Admin: free space and history filters ===== */
 .data-table td.free {
   font-weight:700;
   color:var(--green-ink)
