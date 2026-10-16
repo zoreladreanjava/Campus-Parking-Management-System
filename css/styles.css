@@ -853,14 +853,6 @@ a.area-card:hover {
   color:#5c4510
 }
 
-.impact {
-  margin:0;
-  padding:12px 14px;
-  border-radius:8px;
-  background:var(--canvas);
-  font-size:15px
-}
-
 .form-actions {
   display:flex;
   flex-wrap:wrap;
@@ -1037,28 +1029,6 @@ a.area-card:hover {
 .field textarea {
   min-height:88px;
   resize:vertical
-}
-
-.compare {
-  list-style:none;
-  margin:0;
-  padding:0;
-  display:flex;
-  flex-direction:column;
-  gap:14px
-}
-
-.compare li {
-  display:flex;
-  flex-direction:column;
-  gap:8px
-}
-
-.compare .meter-head {
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  font-size:15px
 }
 
 /* Log details */
@@ -1442,67 +1412,6 @@ fieldset.card {
   text-decoration:none
 }
 
-.last-taps {
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:12px 24px;
-  background:var(--surface);
-  border-top:1px solid var(--border);
-  font-size:16px;
-  color:#38342c;
-  overflow-x:auto
-}
-
-.last-taps h2 {
-  margin:0 4px 0 0;
-  font-size:13px;
-  font-weight:700;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  white-space:nowrap;
-  color:var(--secondary)
-}
-
-.last-taps ol {
-  list-style:none;
-  display:flex;
-  gap:12px;
-  margin:0;
-  padding:0
-}
-
-.tap {
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:14px;
-  border-radius:10px;
-  background:var(--canvas);
-  white-space:nowrap
-}
-
-.tap.latest {
-  padding:6px 6px 6px 14px;
-  border:1px solid var(--border)
-}
-
-.tap time {
-  color:var(--secondary)
-}
-
-.tap .is-problem {
-  color:var(--danger-ink)
-}
-
-.tap .button {
-  align-self:auto;
-  font-size:16px;
-  font-weight:600;
-  padding:10px 16px;
-  min-height:44px
-}
-
 .demo-taps {
   display:flex;
   flex-wrap:wrap;
@@ -1764,10 +1673,6 @@ a.area-button:hover {
   text-align:center;
   text-decoration:none;
   cursor:pointer
-}
-
-.guard-button.white {
-  background:#fff
 }
 
 .guard-button.primary {
@@ -2107,32 +2012,7 @@ to {
 }
 
 /* Today's log */
-.log-list {
-  list-style:none;
-  margin:0;
-  padding:0;
-  display:flex;
-  flex-direction:column;
-  gap:8px
-}
 
-.log-list .tap {
-  flex-wrap:wrap;
-  padding:14px 16px;
-  border:1px solid var(--border);
-  background:var(--surface);
-  font-size:17px;
-  white-space:normal
-}
-
-.log-list .tap.latest {
-  padding:8px 8px 8px 16px;
-  border-color:#9c8d63
-}
-
-.log-list .tap-what {
-  flex:1
-}
 
 /* ===== Owner mobile: answer "Can I park?" first ===== */
 .answer {
@@ -2165,35 +2045,6 @@ to {
 .answer.bad {
   background:var(--danger-fill);
   color:var(--danger-ink)
-}
-
-.freshness {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px
-}
-
-.freshness p {
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-size:15px;
-  color:var(--secondary)
-}
-
-.freshness p::before {
-  content:"";
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:var(--green)
-}
-
-.freshness .button {
-  align-self:auto;
-  min-height:44px;
-  font-weight:600
 }
 
 .refresh-row {
@@ -2235,36 +2086,6 @@ to {
 .area-card-sub {
   font-size:14px;
   color:var(--secondary)
-}
-
-.stale-banner {
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-  padding:18px;
-  border:1px solid var(--amber-border);
-  border-radius:12px;
-  background:var(--amber-fill);
-  color:var(--amber-ink)
-}
-
-.stale-banner strong {
-  font-size:18px
-}
-
-.stale-banner p {
-  font-size:15px
-}
-
-.stale-banner .button {
-  align-self:stretch;
-  min-height:48px;
-  margin-top:4px;
-  font-weight:700
-}
-
-.is-stale .area-card {
-  opacity:.6
 }
 
 .area-title {
@@ -2355,34 +2176,12 @@ to {
   display:none
 }
 
-.badge.undone {
-  background:var(--danger-fill);
-  color:var(--danger-ink)
-}
-
 .timeline li.entry::before {
   background:var(--ink)
 }
 
-.timeline li.correction::before {
-  background:oklch(0.72 0.14 80)
-}
-
 .timeline li.exit::before {
   background:var(--blue)
-}
-
-.timeline .impact-line {
-  display:block
-}
-
-.amber-note {
-  margin:0;
-  padding:12px 14px;
-  border-radius:8px;
-  background:var(--amber-fill);
-  color:var(--amber-ink);
-  font-size:14px
 }
 
 .crumb {
@@ -2565,12 +2364,6 @@ to {
 }
 
 
-@media(max-width:900px) {
-
-
-}
-
-
 @media(max-width:1000px) {
   .data-table thead th,.data-table :is(tbody,tfoot) th,.data-table td {
   padding-left:14px;
@@ -2655,53 +2448,6 @@ to {
   display:inline-block;
   padding:13px 0;
   margin:-13px 0
-}
-
-
-}
-
-
-/* Last taps: when three taps no longer fit in one row, show only the latest (full list is in Help) */
-@media(max-width:930px) {
-  .last-taps {
-  display:grid;
-  grid-template-columns:auto 1fr auto;
-  align-items:center;
-  gap:2px 6px;
-  padding:12px 16px
-}
-
-.last-taps h2 {
-  grid-area:1/1;
-  margin:0
-}
-
-.last-taps ol,.last-taps .tap.latest {
-  display:contents
-}
-
-.last-taps .tap:not(.latest) {
-  display:none
-}
-
-.last-taps .tap.latest time {
-  grid-area:1/2;
-  font-size:13px;
-  font-weight:700;
-  letter-spacing:.08em;
-  color:var(--secondary)
-}
-
-.last-taps .tap.latest time::before {
-  content:"· "
-}
-
-.last-taps .tap.latest .tap-what {
-  grid-area:2/1/3/3
-}
-
-.last-taps .tap.latest .button {
-  grid-area:1/3/3/4
 }
 
 
@@ -2805,7 +2551,7 @@ to {
   min-height:60px
 }
 
-.state-bar .where,.guard-shell .sep,.plate-result .type {
+.guard-shell .sep,.plate-result .type {
   display:none
 }
 
