@@ -37,6 +37,49 @@ document.querySelectorAll('.skip-link').forEach(link=>link.addEventListener('cli
   target.focus();
 }));
 
+// Keep the vehicle a screen was opened for when moving to the next screen
+const CARRY=['plate','owner','type','area'];
+document.querySelectorAll('a[data-carry]').forEach(link=>{
+  const url=new URL(link.getAttribute('href'),location.href);
+  CARRY.forEach(key=>{if(params.has(key)&&!url.searchParams.has(key))url.searchParams.set(key,params.get(key));});
+  link.href=url.href;
+});
+document.querySelectorAll('a[data-q-from-plate]').forEach(link=>{
+  if(!params.get('plate'))return;
+  const url=new URL(link.getAttribute('href'),location.href);
+  url.searchParams.set('q',params.get('plate'));
+  link.href=url.href;
+});
+
+// Search by plate: the guard's Entry/Exit choice arrives as ?flow= and only that flow's button shows
+const flow=params.get('flow');
+if(flow==='entry'||flow==='exit'){
+  document.querySelectorAll('[data-start]').forEach(button=>{button.hidden=button.dataset.start!==flow;});
+  const label=document.querySelector('[data-flow-label]');
+  if(label){label.textContent=flow==='entry'?'Vehicle entry':'Vehicle exit';label.classList.add(flow);label.hidden=false;}
+  document.querySelectorAll('[data-flow-back]').forEach(link=>{link.href=`guard.html#${flow}-mode`;});
+}
+// Entry is refused when every area is full
+const results=document.querySelector('[data-areas-full]');
+if(results&&(results.dataset.areasFull==='true'||params.get('full')==='1')){
+  document.querySelectorAll('[data-start="entry"]').forEach(button=>{button.href='exceptions.html#no-parking';});
+}
+// Reader screen: the "No ID? Search plate" tile follows the open Entry or Exit panel
+const searchTile=document.querySelector('[data-search-tile]');
+if(searchTile){
+  const syncTile=()=>{
+    const mode=location.hash.match(/^#(entry|exit)-mode$/);
+    searchTile.href=mode?`search.html?flow=${mode[1]}`:'search.html';
+  };
+  syncTile();
+  addEventListener('hashchange',syncTile);
+}
+
+// Exit recorded: the area the vehicle left gets one slot back (sample counts)
+const EXIT_FREE={'Area A':30,'Area B':41};
+const exitFree=document.querySelector('[data-exit-free]');
+if(exitFree&&params.get('area') in EXIT_FREE)exitFree.textContent=EXIT_FREE[params.get('area')];
+
 // Entry recorded: show the area the guard pressed (sample counts)
 const SAMPLE_AREAS={'Area A':30,'Area B':40};
 const chosenArea=params.get('area');

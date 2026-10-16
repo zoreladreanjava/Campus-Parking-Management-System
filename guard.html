@@ -19,15 +19,17 @@
 <div class="tap-mode entry" id="entry-mode" role="status"><p class="tap-mode-title">Entry · waiting for the ID tap</p>
 <p>Ask the owner to tap their campus ID on the reader.</p>
 <p class="demo-links"><b>Prototype · simulate a tap:</b> <a href="entry.html">Registered ID</a> <a href="exceptions.html">Not registered</a> <a href="exceptions.html#no-parking">All areas full</a></p>
-<a class="guard-button" href="#">Cancel</a></div>
+<div class="tap-mode-actions"><a class="guard-button" href="search.html?flow=entry">No ID? Search by plate</a>
+<a class="guard-button" href="#">Cancel</a></div></div>
 <div class="tap-mode exit" id="exit-mode" role="status"><p class="tap-mode-title">Exit · waiting for the ID tap</p>
 <p>Ask the owner to tap their campus ID on the reader.</p>
-<p class="demo-links"><b>Prototype · simulate a tap:</b> <a href="exit.html">Registered ID</a> <a href="exceptions.html">Not registered</a> <a href="exceptions.html#no-record">No active record</a></p>
-<a class="guard-button" href="#">Cancel</a></div></main>
+<p class="demo-links"><b>Prototype · simulate a tap:</b> <a href="exit.html">Registered ID</a> <a href="exceptions.html#not-registered-exit">Not registered</a> <a href="exceptions.html#no-record">No active record</a></p>
+<div class="tap-mode-actions"><a class="guard-button" href="search.html?flow=exit">No ID? Search by plate</a>
+<a class="guard-button" href="#">Cancel</a></div></div></main>
 <section class="guard-tiles" aria-label="Free slots per area"><div class="guard-tile"><span>Area A</span> <strong class="num">30 free</strong></div>
 <div class="guard-tile"><span>Area B</span> <strong class="num">40 free</strong></div>
 <div class="guard-tile is-full"><span>Area C</span> <strong>FULL</strong></div>
-<a class="guard-search" href="search.html">No ID?<br>Search plate</a></section>
+<a class="guard-search" href="search.html" data-search-tile>No ID?<br>Search plate</a></section>
 <p class="demo-taps"><b>Prototype:</b> press Entry or Exit to simulate an ID tap. <a href="screens.html">All screens</a></p>
 <div class="help" id="help" role="dialog" aria-modal="true" aria-labelledby="help-title"><a class="help-scrim" href="#" aria-label="Close help"></a>
 <div class="help-panel"><div class="help-head"><h2 id="help-title">Help</h2>

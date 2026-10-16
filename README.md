@@ -37,8 +37,8 @@ Guards work from one reader screen with no menu. They press **Entry** or **Exit*
 | Entry recorded | `entrydone.html` | Full green screen; Back to reader, or it returns by itself after 5 seconds |
 | Vehicle exit | `exit.html` | Where and since when the vehicle is parked; one large Confirm exit button |
 | Exit recorded | `exitdone.html` | Full green screen; Back to reader, or it returns by itself after 5 seconds |
-| Problem screens | `exceptions.html` | ID not registered, no parking available, no active record (one per `#anchor`) |
-| Search by plate | `search.html` | For owners without an ID; matches appear while typing, each with Start entry or Start exit |
+| Problem screens | `exceptions.html` | ID not registered (entry, and `#not-registered-exit`), `#no-parking`, `#no-record` |
+| Search by plate | `search.html` | For owners without an ID; matches appear while typing. Opened after Entry or Exit (`?flow=entry` / `?flow=exit`) it shows only that flow's button; opened from Help it shows Start entry and Start exit |
 | Correct a record | `correct.html` | From Help: change the area or entry time of an entry |
 
 ### Administrator
@@ -65,6 +65,8 @@ The screens follow the team's submitted use cases, activity diagrams and sequenc
 
 **Exit:** the guard presses Exit, the owner taps their ID and the screen turns blue with where the vehicle is parked. The guard presses Confirm exit: the exit is saved, the entry becomes Closed and the area's free slots rise by 1. If the vehicle has no active record, a red screen tells the guard to hold it and search the records; nothing is recorded.
 
+**No ID:** the guard searches by plate number. The search keeps the Entry or Exit the guard chose. Starting an exit for a vehicle that isn't recorded inside opens No active record; starting an entry when every area is full opens No parking available.
+
 **Mistakes:** if an entry was recorded with the wrong area or entry time, the guard fixes it with Correct a record (Help). Changing the area gives the old area one free slot back and takes one from the new area.
 
 **Availability:** owners open the availability page on a phone, tablet or university device. They pick an area there and tell the guard at the gate. Viewing a page doesn't reserve a slot.
@@ -75,7 +77,7 @@ The screens follow the team's submitted use cases, activity diagrams and sequenc
 | --- | --- |
 | `*.html` | One file per screen, written in plain, editable HTML |
 | `css/styles.css` | Shared styles for every page: colours, layout, cards, tables, bars, badges, forms. Adapts to phone, tablet and desktop widths |
-| `js/app.js` | Optional extras: filters tables and plate matches as you type, counts down on the confirmation screens, confirms a saved correction, closes Help with Escape, runs the history quick filters, fills in the vehicle on the removal screen, adds prototype links |
+| `js/app.js` | Optional extras: filters tables and plate matches as you type, counts down on the confirmation screens, confirms a saved correction, closes Help with Escape, runs the history quick filters, keeps the guard's Entry/Exit choice in plate search, shows the chosen vehicle on the next screens, adds prototype links |
 | `design_handoff/` | The design handoff the visual style came from (spec and mock frames). Where it goes beyond the submitted documents, the prototype follows the documents |
 
 ## Design

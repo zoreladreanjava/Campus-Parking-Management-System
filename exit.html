@@ -10,11 +10,11 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<div class="guard-shell"><header class="state-bar exit"><h1>Vehicle exit</h1><span>12:05</span></header>
-<main id="main" class="guard-main"><div class="vehicle-id"><span class="plate">MC-1234</span>
-<p class="person"><strong>John Doe</strong> <span>Motorcycle</span></p></div>
-<p class="guard-statement">Parked in <b>Area A</b> since <b class="num">08:15</b> · 3 h 50 min</p>
-<a class="confirm-exit" href="exitdone.html">Confirm exit</a>
+<div class="guard-shell"><header class="state-bar exit"><h1>Vehicle exit</h1><span data-param="time">12:05</span></header>
+<main id="main" class="guard-main"><div class="vehicle-id"><span class="plate" data-param="plate">MC-1234</span>
+<p class="person"><strong data-param="owner">John Doe</strong> <span data-param="type">Motorcycle</span></p></div>
+<p class="guard-statement">Parked in <b data-param="area">Area A</b> since <b class="num" data-param="since">08:15</b> · <span data-param="duration">3 h 50 min</span></p>
+<a class="confirm-exit" data-carry href="exitdone.html">Confirm exit</a>
 <div class="guard-actions"><p class="hint">Plate doesn&#39;t match?</p>
 <a class="guard-button" href="guard.html">Cancel</a></div></main></div>
 </body>

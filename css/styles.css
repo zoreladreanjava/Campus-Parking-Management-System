@@ -30,6 +30,10 @@
   box-sizing:border-box
 }
 
+[hidden] {
+  display:none!important
+}
+
 body {
   margin:0;
   background:var(--canvas);
@@ -1917,6 +1921,51 @@ to {
   color:#fff
 }
 
+.plate-result .start-entry {
+  border-color:var(--green);
+  color:var(--green)
+}
+
+.plate-result .start-exit {
+  border-color:var(--blue);
+  color:var(--blue)
+}
+
+.plate-result.is-best .start-entry {
+  background:var(--green);
+  color:#fff
+}
+
+.plate-result.is-best .start-exit {
+  background:var(--blue);
+  color:#fff
+}
+
+.search-flow {
+  align-self:flex-start;
+  margin:-8px 0 0;
+  padding:6px 14px;
+  border-radius:999px;
+  color:#fff;
+  font-size:16px;
+  font-weight:700
+}
+
+.search-flow.entry {
+  background:var(--green)
+}
+
+.search-flow.exit {
+  background:var(--blue)
+}
+
+.tap-mode-actions {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px
+}
+
 /* Help: less common tasks, over the reader */
 .help {
   position:fixed;
@@ -2762,7 +2811,7 @@ to {
 }
 
 .plate-result .guard-button {
-  flex:1 1 100%
+  flex:1 1 40%
 }
 
 .help-panel {
