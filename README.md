@@ -13,7 +13,7 @@ No installation or build step is needed.
 1. Open `index.html` in a browser to start at staff sign-in.
 2. Open `screens.html` to browse all 23 screens.
 
-Every page works offline and with JavaScript turned off. JavaScript only adds small conveniences (see [Project files](#project-files)).
+Every page works offline. With JavaScript turned off, every page still opens and its links work, but a few details fall back to the default sample: the area edit and removal pages always show Area A, search shows both Start entry and Start exit, and the entry and exit screens always show John Doe (see `js/app.js` in [Project files](#project-files)).
 
 ## Screens
 
@@ -23,7 +23,7 @@ Every page works offline and with JavaScript turned off. JavaScript only adds sm
 | --- | --- | --- |
 | Parking availability | `mobile.html` | Answers "Can I park?" first, then free slots per area, most free first; "Last updated: just now" and Refresh; opens on a phone, tablet or university device |
 | Selected area | `mobilearea.html` | One area's free slots, "Last updated: just now", and the three steps at the gate |
-| No slots available | `mobilefull.html` | Shown when every area is full |
+| No slots available | `mobilefull.html` | Shown when every area is full; "Last updated: just now", Refresh, and the phone, tablet or university device note |
 
 ### Guard
 
@@ -39,7 +39,7 @@ Guards work from one reader screen with no menu. They press **Entry** or **Exit*
 | Exit recorded | `exitdone.html` | Full green screen; Back to reader, or it returns by itself after 5 seconds |
 | Problem screens | `exceptions.html` | ID not registered (entry, and `#not-registered-exit`), `#no-parking`, `#no-record`; each offers Search vehicle / owner where it helps |
 | Search vehicle / owner | `search.html` | For owners without an ID; search by plate or owner name; matches appear while typing. Opened after Entry or Exit (`?flow=entry` / `?flow=exit`) it shows only that flow's button; opened from Help it shows Start entry and Start exit |
-| Correct a record | `correct.html` | From Help: change the area or entry time of an entry |
+| Correct a record | `correct.html` | From Help: change the area or entry time of an entry; the reader screen then confirms "Record corrected" |
 
 ### Administrator
 
@@ -48,8 +48,8 @@ Guards work from one reader screen with no menu. They press **Entry** or **Exit*
 | Overview | `overview.html` | Free slots right now, vehicles parked, entries today, and free space per area |
 | Parking areas | `areas.html` | Areas with capacity, free space and row actions |
 | Area form | `areaform.html` | Add (`?new=1`) or edit an area (`?id=A-01`, `A-02`, `A-03`). Capacity can't go below the vehicles parked in that area now (A 70, B 40, C 20; at least 1 for a new area). Invalid details show an error message (`#invalid` shows an example); saving shows a success message on `areas.html` |
-| Vehicles & owners | `vehicles.html` | Registered owners and vehicles, with search, type filter and row actions |
-| Owner & vehicle form | `vehicleform.html` | Register an owner or link another vehicle. Invalid details show an error message (`#invalid` shows an example); saving shows a success message on `vehicles.html` |
+| Vehicles & owners | `vehicles.html` | Registered owners and vehicles, with search, type filter and row actions; shows "Registration saved" (`#saved`) or "Vehicle removed" / "Owner and their vehicles removed" (`#removed`) |
+| Owner & vehicle form | `vehicleform.html` | Register an owner or link another vehicle. Owner name and ID number are required (any ID format); the plate is letters and digits separated by single spaces or dashes (e.g. MC-1234, 1234-AB, ABC 1234). Invalid details show an error message (`#invalid` shows an example); saving shows a success message on `vehicles.html`. Only the plate is carried in the link |
 | Parking history | `history.html` | All entries and exits, with filters and quick filters for vehicles inside and exited |
 | Log details | `logdetail.html` | One parking session: the entry (guard, area, time) and the exit (guard, time) |
 | Reports | `reports.html` | Choose the report type (Parking utilization), date range and area |
@@ -77,7 +77,7 @@ The screens follow the team's submitted use cases, activity diagrams and sequenc
 | --- | --- |
 | `*.html` | One file per screen, written in plain, editable HTML |
 | `css/styles.css` | Shared styles for every page: colours, layout, cards, tables, bars, badges, forms. Adapts to phone, tablet and desktop widths |
-| `js/app.js` | Optional extras: filters tables and plate matches as you type, counts down on the confirmation screens, confirms a saved correction, closes Help with Escape, runs the history quick filters, checks the area and vehicle forms before saving, keeps the guard's Entry/Exit choice in search, shows the chosen vehicle on the next screens, adds prototype links |
+| `js/app.js` | Optional extras: filters tables and plate matches as you type, counts down on the confirmation screens, confirms a saved correction, closes Help with Escape, runs the history quick filters, checks the area and vehicle forms before saving (and fills in sample mistakes on `#invalid`), loads the chosen area on the edit and removal pages, keeps the guard's Entry/Exit choice in search, shows the chosen vehicle on the next screens, adds prototype links |
 | `design_handoff/` | The design handoff the visual style came from (spec and mock frames). Where it goes beyond the submitted documents, the prototype follows the documents |
 
 ## Design
@@ -103,6 +103,11 @@ This is a wireframe prototype, not a working parking system.
 - The prototype stays within the submitted ERD, use case diagram and functional requirements. Correct a record only changes an entry's area and entry time; nothing else about a correction is stored.
 - The guard screens can't receive a real ID tap. After pressing Entry or Exit, the reader screen shows "Prototype · simulate a tap" links for each outcome.
 - Sample data describes one day (12 Oct 2026, seen at 12:10): 158 entries and 28 exits, so 130 vehicles parked and 70 slots free. "No parking available" and the owner's all-full page are demonstration states.
+- Some rules are the prototype's own, because the documents don't specify them:
+  - An area's capacity can't go below the vehicles parked in it now, so free slots never go negative.
+  - An area can't be removed while vehicles are parked in it, and a vehicle or owner can't be removed while the vehicle is recorded inside. Past entries and exits always stay in parking history.
+  - Plate numbers are letters and digits separated by single spaces or dashes; ID numbers can be in any format.
+- Where the submitted documents disagree with each other, the prototype follows the requirements, the spreadsheet use cases and the sequence diagram: the owner chooses the area (not "Assign parking area"), and the entry is recorded at the gate, before the vehicle parks.
 
 ## Next steps for a real build
 
@@ -110,3 +115,4 @@ This is a wireframe prototype, not a working parking system.
 - Read ID numbers from the card reader and look up `VehicleOwner` → `Vehicle`.
 - Write `VehicleEntryLog` and `VehicleExitLog` records, and update `ParkingArea.AvailableSlots`: −1 on entry, +1 on exit.
 - Show the current `AvailableSlots` per area on the owner's availability page.
+- Repeat the form checks on the server (required fields, plate format, capacity at least the active entries) and block removals while records are active.
