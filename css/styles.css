@@ -417,8 +417,6 @@ tbody tr:hover {
 }
 
 .public-shell {
-  max-width:390px;
-  margin:0 auto;
   min-height:100vh
 }
 
@@ -441,6 +439,8 @@ tbody tr:hover {
 }
 
 .public-main {
+  max-width:480px;
+  margin:0 auto;
   display:flex;
   flex-direction:column;
   gap:16px;
@@ -711,7 +711,8 @@ tbody tr:hover {
 .data-table thead th {
   background:var(--sidebar);
   color:#38342c;
-  padding:12px 24px
+  padding:12px 24px;
+  white-space:nowrap
 }
 
 .data-table :is(tbody,tfoot) th,.data-table td {
@@ -2512,6 +2513,53 @@ to {
 }
 
 
+/* Last taps: when three taps no longer fit in one row, show only the latest (full list is in Help) */
+@media(max-width:930px) {
+  .last-taps {
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:2px 6px;
+  padding:12px 16px
+}
+
+.last-taps h2 {
+  grid-area:1/1;
+  margin:0
+}
+
+.last-taps ol,.last-taps .tap.latest {
+  display:contents
+}
+
+.last-taps .tap:not(.latest) {
+  display:none
+}
+
+.last-taps .tap.latest time {
+  grid-area:1/2;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.08em;
+  color:var(--secondary)
+}
+
+.last-taps .tap.latest time::before {
+  content:"· "
+}
+
+.last-taps .tap.latest .tap-what {
+  grid-area:2/1/3/3
+}
+
+.last-taps .tap.latest .button {
+  grid-area:1/3/3/4
+}
+
+
+}
+
+
 /* Gate screen and owner pages on phones: one column, main button at the bottom */
 @media(max-width:700px) {
   .gate-topbar {
@@ -2591,47 +2639,6 @@ to {
 
 .gate-search {
   min-height:60px
-}
-
-.last-taps {
-  display:grid;
-  grid-template-columns:auto 1fr auto;
-  align-items:center;
-  gap:2px 6px;
-  padding:12px 16px
-}
-
-.last-taps h2 {
-  grid-area:1/1;
-  margin:0
-}
-
-.last-taps ol,.last-taps .tap.latest {
-  display:contents
-}
-
-.last-taps .tap:not(.latest) {
-  display:none
-}
-
-.last-taps .tap.latest time {
-  grid-area:1/2;
-  font-size:13px;
-  font-weight:700;
-  letter-spacing:.08em;
-  color:var(--secondary)
-}
-
-.last-taps .tap.latest time::before {
-  content:"· "
-}
-
-.last-taps .tap.latest .tap-what {
-  grid-area:2/1/3/3
-}
-
-.last-taps .tap.latest .button {
-  grid-area:1/3/3/4
 }
 
 .state-bar .where,.gate-shell .sep,.plate-result .type {
