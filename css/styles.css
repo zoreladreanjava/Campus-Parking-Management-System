@@ -1195,8 +1195,8 @@ fieldset.card {
   font-size:15px
 }
 
-/* ===== Guard gate screen: one screen whose state follows the ID tap ===== */
-.gate-shell {
+/* ===== Guard reader screen: Entry or Exit, then the ID tap ===== */
+.guard-shell {
   min-height:100vh;
   min-height:100dvh;
   display:flex;
@@ -1204,7 +1204,7 @@ fieldset.card {
   background:var(--canvas)
 }
 
-.gate-topbar {
+.guard-topbar {
   flex-shrink:0;
   min-height:56px;
   display:flex;
@@ -1215,22 +1215,22 @@ fieldset.card {
   border-bottom:2px solid var(--ink)
 }
 
-.gate-who {
+.guard-who {
   display:flex;
   align-items:baseline;
   gap:16px
 }
 
-.gate-who .brand {
+.guard-who .brand {
   font-size:18px
 }
 
-.gate-who span {
+.guard-who span {
   font-size:15px;
   color:#38342c
 }
 
-.gate-topbar .button {
+.guard-topbar .button {
   margin-left:auto;
   align-self:center;
   font-size:15px;
@@ -1275,7 +1275,7 @@ fieldset.card {
   background:var(--red-bar)
 }
 
-.gate-main {
+.guard-main {
   flex:1;
   width:100%;
   max-width:1100px;
@@ -1286,7 +1286,7 @@ fieldset.card {
   padding:28px 32px
 }
 
-.gate-title {
+.guard-title {
   margin:0;
   font-size:36px;
   font-weight:700;
@@ -1294,7 +1294,7 @@ fieldset.card {
 }
 
 /* Waiting for a tap */
-.gate-ready {
+.guard-ready {
   flex:1;
   display:flex;
   flex-direction:column;
@@ -1324,19 +1324,19 @@ fieldset.card {
   background:oklch(0.55 0.12 150)
 }
 
-.gate-ready h1 {
+.guard-ready h1 {
   margin:0;
   font-size:52px;
   font-weight:700;
   line-height:1.1
 }
 
-.gate-ready p {
+.guard-ready p {
   font-size:22px;
   color:var(--secondary)
 }
 
-.gate-tiles {
+.guard-tiles {
   width:100%;
   max-width:1100px;
   margin:0 auto;
@@ -1346,7 +1346,7 @@ fieldset.card {
   padding:0 24px 24px
 }
 
-.gate-tile {
+.guard-tile {
   display:flex;
   flex-direction:column;
   gap:2px;
@@ -1356,31 +1356,31 @@ fieldset.card {
   background:var(--surface)
 }
 
-.gate-tile>span {
+.guard-tile>span {
   font-size:18px;
   font-weight:600
 }
 
-.gate-tile strong {
+.guard-tile strong {
   font-size:30px;
   font-weight:700;
   color:var(--green-ink)
 }
 
-.gate-tile.is-full {
+.guard-tile.is-full {
   background:#f5f0e4;
   border-color:#e3d6b3
 }
 
-.gate-tile.is-full>span {
+.guard-tile.is-full>span {
   color:var(--secondary)
 }
 
-.gate-tile.is-full strong {
+.guard-tile.is-full strong {
   color:var(--danger-ink)
 }
 
-.gate-search {
+.guard-search {
   min-height:80px;
   display:flex;
   align-items:center;
@@ -1530,21 +1530,21 @@ fieldset.card {
   display:flex
 }
 
-.gate-ready:has(.tap-mode:target) .direction-buttons {
+.guard-ready:has(.tap-mode:target) .direction-buttons {
   display:none
 }
 
-.gate-ready .tap-mode p {
+.guard-ready .tap-mode p {
   color:#fff;
   font-size:18px
 }
 
-.gate-ready .tap-mode .tap-mode-title {
+.guard-ready .tap-mode .tap-mode-title {
   font-size:30px;
   font-weight:800
 }
 
-.gate-ready .tap-mode .demo-links {
+.guard-ready .tap-mode .demo-links {
   display:flex;
   flex-wrap:wrap;
   justify-content:center;
@@ -1556,7 +1556,7 @@ fieldset.card {
   color:#fff
 }
 
-.tap-mode .gate-button {
+.tap-mode .guard-button {
   border-color:#fff;
   color:#fff
 }
@@ -1607,7 +1607,7 @@ fieldset.card {
   color:var(--secondary)
 }
 
-.gate-statement {
+.guard-statement {
   margin:0;
   font-size:22px;
   color:#38342c
@@ -1690,7 +1690,7 @@ a.area-button:hover {
   font-size:16px
 }
 
-.gate-actions {
+.guard-actions {
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -1698,13 +1698,13 @@ a.area-button:hover {
   gap:16px
 }
 
-.gate-actions .hint {
+.guard-actions .hint {
   margin:0;
   font-size:18px;
   color:var(--secondary)
 }
 
-.gate-button {
+.guard-button {
   min-height:60px;
   display:inline-flex;
   align-items:center;
@@ -1721,16 +1721,16 @@ a.area-button:hover {
   cursor:pointer
 }
 
-.gate-button.white {
+.guard-button.white {
   background:#fff
 }
 
-.gate-button.primary {
+.guard-button.primary {
   background:var(--ink);
   color:#fff
 }
 
-.gate-button.big {
+.guard-button.big {
   min-height:100px;
   border-radius:14px;
   font-size:26px;
@@ -1757,7 +1757,7 @@ a.area-button:hover {
 }
 
 /* Done: the whole screen turns green, then returns to the reader */
-.gate-shell.is-done {
+.guard-shell.is-done {
   background:var(--done-bg)
 }
 
@@ -1809,7 +1809,7 @@ a.area-button:hover {
   padding:0 32px 32px
 }
 
-.done-foot .gate-actions p {
+.done-foot .guard-actions p {
   margin:0;
   font-size:18px;
   color:#38342c
@@ -1956,7 +1956,7 @@ to {
   font-weight:600
 }
 
-.plate-result .gate-button {
+.plate-result .guard-button {
   min-height:52px;
   padding:10px 22px
 }
@@ -1965,7 +1965,7 @@ to {
   border:2px solid var(--ink)
 }
 
-.plate-result.is-best .gate-button {
+.plate-result.is-best .guard-button {
   background:var(--ink);
   color:#fff
 }
@@ -2016,7 +2016,7 @@ to {
   font-weight:700
 }
 
-.help-head .gate-button {
+.help-head .guard-button {
   min-height:48px;
   padding:8px 20px;
   font-size:18px
@@ -2539,7 +2539,7 @@ to {
   padding:20px
 }
 
-/* Keep the main gate action on screen above the tab bar */
+/* Keep the main action on screen above the tab bar */
 
 
 /* Result tables read as cards on phones */
@@ -2653,19 +2653,19 @@ to {
 }
 
 
-/* Gate screen and owner pages on phones: one column, main button at the bottom */
+/* Guard screens and owner pages on phones: one column, main button at the bottom */
 @media(max-width:700px) {
-  .gate-topbar {
+  .guard-topbar {
   min-height:64px;
   padding:10px 16px
 }
 
-.gate-who {
+.guard-who {
   flex-direction:column;
   gap:0
 }
 
-.gate-who span {
+.guard-who span {
   font-size:13px
 }
 
@@ -2681,16 +2681,16 @@ to {
   font-size:15px
 }
 
-.gate-main {
+.guard-main {
   gap:16px;
   padding:20px 16px
 }
 
-.gate-title {
+.guard-title {
   font-size:26px
 }
 
-.gate-ready {
+.guard-ready {
   gap:14px;
   padding:24px 16px
 }
@@ -2705,11 +2705,11 @@ to {
   height:48px
 }
 
-.gate-ready h1 {
+.guard-ready h1 {
   font-size:32px
 }
 
-.gate-ready p {
+.guard-ready p {
   font-size:17px
 }
 
@@ -2725,32 +2725,32 @@ to {
   font-size:15px
 }
 
-.gate-ready .tap-mode .tap-mode-title {
+.guard-ready .tap-mode .tap-mode-title {
   font-size:24px
 }
 
-.gate-tiles {
+.guard-tiles {
   grid-template-columns:minmax(0,1fr);
   gap:8px;
   padding:0 16px 16px
 }
 
-.gate-tile {
+.guard-tile {
   flex-direction:row;
   justify-content:space-between;
   align-items:center;
   padding:12px 18px
 }
 
-.gate-tile strong {
+.guard-tile strong {
   font-size:26px
 }
 
-.gate-search {
+.guard-search {
   min-height:60px
 }
 
-.state-bar .where,.gate-shell .sep,.plate-result .type {
+.state-bar .where,.guard-shell .sep,.plate-result .type {
   display:none
 }
 
@@ -2798,7 +2798,7 @@ to {
   content:"· "
 }
 
-.gate-statement {
+.guard-statement {
   font-size:17px
 }
 
@@ -2854,21 +2854,21 @@ to {
   content:"· "
 }
 
-.gate-actions {
+.guard-actions {
   margin-top:auto
 }
 
-.gate-actions .hint:not(.keep) {
+.guard-actions .hint:not(.keep) {
   display:none
 }
 
-.gate-actions .hint.keep {
+.guard-actions .hint.keep {
   flex-basis:100%;
   font-size:15px;
   text-align:center
 }
 
-.gate-actions .gate-button,.done-foot .gate-button {
+.guard-actions .guard-button,.done-foot .guard-button {
   flex:1 1 100%
 }
 
@@ -2876,12 +2876,12 @@ to {
   padding:0 16px 20px
 }
 
-.done-foot .gate-actions {
+.done-foot .guard-actions {
   justify-content:center;
   text-align:center
 }
 
-.done-foot .gate-actions p {
+.done-foot .guard-actions p {
   flex-basis:100%;
   font-size:16px
 }
@@ -2907,7 +2907,7 @@ to {
   font-size:32px
 }
 
-.confirm-exit+.gate-actions {
+.confirm-exit+.guard-actions {
   margin-top:0
 }
 
@@ -2937,12 +2937,12 @@ to {
   gap:10px
 }
 
-.gate-button.big {
+.guard-button.big {
   min-height:60px;
   font-size:20px
 }
 
-.gate-button.big.primary {
+.guard-button.big.primary {
   min-height:72px;
   font-size:22px
 }
@@ -2963,7 +2963,7 @@ to {
   font-size:17px
 }
 
-.plate-result .gate-button {
+.plate-result .guard-button {
   flex:1 1 100%
 }
 

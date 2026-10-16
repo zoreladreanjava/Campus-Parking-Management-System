@@ -2,7 +2,7 @@
 const params=new URLSearchParams(location.search);
 const squash=text=>text.toLowerCase().replace(/[\s·-]/g,'');
 
-// Type-to-filter: admin tables and the gate's plate search (matches show while typing)
+// Type-to-filter: admin tables and the guard's plate search (matches show while typing)
 document.querySelectorAll('[data-search]').forEach(input=>{
   const count=document.querySelector('[data-match-count]');
   const run=()=>{
@@ -43,7 +43,7 @@ if(countdown){
 
 // Reader screen: confirm a correction that was just saved
 const message=params.has('corrected')?'Correction saved. Administrators can see it in parking history.':'';
-if(message&&document.querySelector('.gate-shell')){
+if(message&&document.querySelector('.guard-shell')){
   const toast=document.createElement('p');
   toast.className='toast';
   toast.setAttribute('role','status');
@@ -75,7 +75,7 @@ if(preset)applyChip(preset);
 const footer=document.querySelector('.footer');
 if(footer){
   const links=document.createElement('div');links.className='prototype-tools';
-  links.innerHTML='<a href="screens.html">All screens</a><a href="guard.html">Gate screen</a><a href="mobile.html">Public availability</a>';
+  links.innerHTML='<a href="screens.html">All screens</a><a href="guard.html">Guard screen</a><a href="mobile.html">Public availability</a>';
   footer.append(links);
 }
 if(document.querySelector('.public-main')){
