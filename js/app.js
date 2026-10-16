@@ -65,6 +65,17 @@ if(capacityInput){
   if(!isNew){updateAfter();capacityInput.addEventListener('input',updateAfter);}
 }
 
+// Area removal: show the area from the Remove link (?id=A-01…); removal stays blocked while vehicles are parked
+const removeTitle=document.querySelector('[data-remove-title]');
+const removeRecord=SAMPLE_AREA_RECORDS[params.get('id')];
+if(removeTitle&&removeRecord){
+  removeTitle.textContent=`Remove ${removeRecord.name}?`;
+  document.querySelector('[data-remove-sub]').textContent=`${params.get('id')} • ${removeRecord.capacity} slots`;
+  document.querySelector('[data-remove-parked]').textContent=`${removeRecord.parked} vehicles are parked in ${removeRecord.name} right now.`;
+  document.querySelector('[data-remove-active]').textContent=removeRecord.parked;
+  document.querySelector('[data-remove-capacity]').textContent=removeRecord.capacity;
+}
+
 // Area and vehicle forms: check the details before saving; invalid fields get a message
 document.querySelectorAll('form[data-validate]').forEach(form=>{
   form.noValidate=true;
@@ -94,7 +105,10 @@ document.querySelectorAll('form[data-validate]').forEach(form=>{
   // Prototype: #invalid fills in sample mistakes and shows the error message
   const showInvalid=()=>{
     if(location.hash!=='#invalid')return;
-    form.querySelectorAll('[data-invalid-sample]').forEach(input=>{input.value=input.dataset.invalidSample;});
+    form.querySelectorAll('[data-invalid-sample]').forEach(input=>{
+      input.value=input.dataset.invalidSample;
+      input.dispatchEvent(new Event('input'));
+    });
     check();
     summary.focus();
   };
