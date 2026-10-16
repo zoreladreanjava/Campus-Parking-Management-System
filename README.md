@@ -54,7 +54,7 @@ Guards work from one reader screen with no menu. They press **Entry** or **Exit*
 | Log details | `logdetail.html` | One parking session: the entry (guard, area, time) and the exit (guard, time) |
 | Reports | `reports.html` | Choose the report type (Parking utilization), date range and area |
 | Report result | `reportdone.html` | Per area: entries, exits, average daily usage, peak usage and how full it is now; print or save as PDF |
-| Remove area | `remove.html` | Removal is blocked while vehicles are still parked |
+| Remove area | `remove.html` | Opened for one area (`?id=A-01`, `A-02`, `A-03`); removal is blocked while vehicles are still parked |
 | Remove vehicle or owner | `removevehicle.html` | Remove a vehicle, or an owner and all their vehicles; blocked while the vehicle is recorded inside (`#blocked`) |
 
 ## How the main flows work
