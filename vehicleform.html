@@ -23,15 +23,19 @@
 </nav></aside>
 <main id="main" class="main"><div class="page-heading"><h1>Register owner &amp; vehicle</h1>
 <p class="text muted size-14">Create an owner, or link another vehicle to an existing owner.</p></div>
-<form action="vehicles.html" method="get" class="form-stack"><div class="form-grid"><fieldset class="card"><legend class="visually-hidden">Owner</legend><h2>Owner</h2>
+<form action="vehicles.html#saved" method="get" class="form-stack" data-validate><div class="callout bad" data-error-summary role="alert" tabindex="-1" hidden><strong>Check the owner and vehicle details</strong>
+<ul class="error-list"></ul></div>
+<div class="form-grid"><fieldset class="card"><legend class="visually-hidden">Owner</legend><h2>Owner</h2>
 <div class="field"><label for="o-id">Owner ID</label>
 <input id="o-id" type="text" value="OWN-0042" readonly>
 <span class="hint">Generated automatically</span></div>
 <div class="field"><label for="o-name">Full name</label>
-<input id="o-name" name="name" type="text" value="John Doe" required autocomplete="off"></div>
+<input id="o-name" name="name" type="text" value="John Doe" required autocomplete="off" aria-describedby="o-name-error" data-error="Enter the owner&#39;s full name." data-invalid-sample="">
+<span class="error-text" id="o-name-error" hidden></span></div>
 <div class="field"><label for="o-idnumber">ID number</label>
-<input id="o-idnumber" name="id_number" type="text" value="004218" inputmode="numeric" required autocomplete="off">
-<span class="hint">Tap the card on the desk reader to fill this in.</span></div>
+<input id="o-idnumber" name="id_number" type="text" value="004218" inputmode="numeric" required pattern="[0-9]{6}" autocomplete="off" aria-describedby="o-idnumber-hint o-idnumber-error" data-error="Enter the 6-digit ID number." data-invalid-sample="42">
+<span class="hint" id="o-idnumber-hint">Tap the card on the desk reader to fill this in.</span>
+<span class="error-text" id="o-idnumber-error" hidden></span></div>
 <div class="field"><label for="o-contact">Contact number</label>
 <input id="o-contact" name="contact" type="tel" value="09•• ••• 1234" autocomplete="off"></div></fieldset>
 <fieldset class="card"><legend class="visually-hidden">Vehicle</legend><h2>Vehicle</h2>
@@ -39,12 +43,14 @@
 <input id="v-id" type="text" value="VEH-0081" readonly>
 <span class="hint">Generated automatically</span></div>
 <div class="field"><label for="v-plate">Plate number</label>
-<input id="v-plate" name="plate" type="text" value="MC-1234" required autocomplete="off"></div>
+<input id="v-plate" name="plate" type="text" value="MC-1234" required pattern="[A-Za-z]{2,3}-[0-9]{4}" autocomplete="off" aria-describedby="v-plate-error" data-error="Enter the plate number, for example MC-1234." data-invalid-sample="MC1234">
+<span class="error-text" id="v-plate-error" hidden></span></div>
 <div class="field"><label for="v-type">Vehicle type</label>
 <select id="v-type" name="type"><option selected>Motorcycle</option><option>Car</option></select></div>
 <p class="footnote">This owner also has DEF-9123 (Car).</p></fieldset></div>
 <div class="form-actions"><button class="button primary" type="submit">Save registration</button>
-<a class="button subtle" href="vehicles.html">Cancel</a></div></form></main>
+<a class="button subtle" href="vehicles.html">Cancel</a></div>
+<p class="footnote">Prototype: <a href="#invalid">show the error message</a></p></form></main>
 <footer class="footer">PROTOTYPE • Demonstration data • No live ID reader or database connection</footer></div>
 </body>
 </html>

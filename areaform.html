@@ -23,20 +23,25 @@
 </nav></aside>
 <main id="main" class="main"><div class="page-heading"><h1>Edit parking area</h1>
 <p class="text muted size-14">Area A • A-01</p></div>
-<form class="card form-card" action="areas.html" method="get"><div class="row"><div class="field"><label for="a-id">Area ID</label>
+<form class="card form-card" action="areas.html#saved" method="get" data-validate><div class="callout bad" data-error-summary role="alert" tabindex="-1" hidden><strong>Check the area details</strong>
+<ul class="error-list"></ul></div>
+<div class="row"><div class="field"><label for="a-id">Area ID</label>
 <input id="a-id" type="text" value="A-01" readonly>
 <span class="hint">Generated automatically</span></div>
 <div class="field"><label for="a-admin">Managed by</label>
 <input id="a-admin" type="text" value="A. Rivera • ADM-01" readonly></div></div>
 <div class="field"><label for="a-name">Area name</label>
-<input id="a-name" name="name" type="text" value="Area A" required></div>
+<input id="a-name" name="name" type="text" value="Area A" required aria-describedby="a-name-error" data-error="Enter an area name." data-invalid-sample="">
+<span class="error-text" id="a-name-error" hidden></span></div>
 <div class="field"><label for="a-cap">Total capacity</label>
-<input id="a-cap" name="capacity" type="number" value="100" min="70" step="1" required>
-<span class="hint">70 vehicles are parked here now, so capacity must be at least 70.</span></div>
+<input id="a-cap" name="capacity" type="number" value="100" min="70" step="1" required aria-describedby="a-cap-hint a-cap-error" data-error="Capacity must be at least 70, the number of vehicles parked here now." data-invalid-sample="50">
+<span class="hint" id="a-cap-hint">70 vehicles are parked here now, so capacity must be at least 70.</span>
+<span class="error-text" id="a-cap-error" hidden></span></div>
 <div class="area-update"><div class="meter-head num"><strong>After saving</strong><span><b>30</b> <span class="muted">/ 100 free • 70 parked</span></span></div>
 <div class="meter" aria-hidden="true"><span style="--value:30%"></span></div></div>
 <div class="form-actions"><button class="button primary" type="submit">Save parking area</button>
-<a class="button subtle" href="areas.html">Cancel</a></div></form></main>
+<a class="button subtle" href="areas.html">Cancel</a></div>
+<p class="footnote">Prototype: <a href="#invalid">show the error message</a></p></form></main>
 <footer class="footer">PROTOTYPE • Demonstration data • No live ID reader or database connection</footer></div>
 </body>
 </html>

@@ -22,6 +22,43 @@ document.querySelectorAll('[data-search]').forEach(input=>{
   run();
 });
 
+// Area and vehicle forms: check the details before saving; invalid fields get a message
+document.querySelectorAll('form[data-validate]').forEach(form=>{
+  form.noValidate=true;
+  const summary=form.querySelector('[data-error-summary]');
+  const check=()=>{
+    const problems=[];
+    form.querySelectorAll('[data-error]').forEach(input=>{
+      const valid=input.checkValidity();
+      const note=document.getElementById(input.id+'-error');
+      input.closest('.field').classList.toggle('has-error',!valid);
+      input.setAttribute('aria-invalid',String(!valid));
+      if(note){note.textContent=valid?'':input.dataset.error;note.hidden=valid;}
+      if(!valid)problems.push(input);
+    });
+    const list=summary.querySelector('ul');
+    list.replaceChildren(...problems.map(input=>{
+      const item=document.createElement('li');
+      item.textContent=input.dataset.error;
+      return item;
+    }));
+    summary.hidden=!problems.length;
+    return problems;
+  };
+  form.addEventListener('submit',event=>{
+    if(check().length){event.preventDefault();summary.focus();}
+  });
+  // Prototype: #invalid fills in sample mistakes and shows the error message
+  const showInvalid=()=>{
+    if(location.hash!=='#invalid')return;
+    form.querySelectorAll('[data-invalid-sample]').forEach(input=>{input.value=input.dataset.invalidSample;});
+    check();
+    summary.focus();
+  };
+  showInvalid();
+  addEventListener('hashchange',showInvalid);
+});
+
 // Screens that name a record from the link (e.g. removevehicle.html?plate=…&owner=…)
 document.querySelectorAll('[data-param]').forEach(el=>{
   const value=params.get(el.dataset.param);
