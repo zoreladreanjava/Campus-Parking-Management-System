@@ -22,6 +22,21 @@ document.querySelectorAll('[data-search]').forEach(input=>{
   run();
 });
 
+// Screens that name a record from the link (e.g. removevehicle.html?plate=…&owner=…)
+document.querySelectorAll('[data-param]').forEach(el=>{
+  const value=params.get(el.dataset.param);
+  if(value)el.textContent=value;
+});
+
+// Skip links move focus without changing the #state some screens use
+document.querySelectorAll('.skip-link').forEach(link=>link.addEventListener('click',event=>{
+  const target=document.querySelector(link.getAttribute('href'));
+  if(!target)return;
+  event.preventDefault();
+  if(!target.hasAttribute('tabindex'))target.setAttribute('tabindex','-1');
+  target.focus();
+}));
+
 // Entry recorded: show the area the guard pressed (sample counts)
 const SAMPLE_AREAS={'Area A':30,'Area B':40};
 const chosenArea=params.get('area');
