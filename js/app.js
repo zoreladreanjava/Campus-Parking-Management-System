@@ -22,6 +22,90 @@ document.querySelectorAll('[data-search]').forEach(input=>{
   run();
 });
 
+// Area form: load the area being edited (?id=A-01…) or start a new one (?new=1).
+// Capacity can't go below the vehicles parked there now, so the minimum differs per area.
+const SAMPLE_AREA_RECORDS={'A-01':{name:'Area A',capacity:100,parked:70},'A-02':{name:'Area B',capacity:80,parked:40},'A-03':{name:'Area C',capacity:20,parked:20}};
+const capacityInput=document.querySelector('[data-area-capacity]');
+if(capacityInput){
+  const record=SAMPLE_AREA_RECORDS[params.get('id')];
+  const isNew=params.has('new');
+  const nameInput=document.getElementById('a-name');
+  const hint=document.getElementById('a-cap-hint');
+  const after=document.querySelector('[data-after-saving]');
+  if(isNew){
+    document.querySelector('[data-area-title]').textContent='Add parking area';
+    document.querySelector('[data-area-sub]').textContent='New area';
+    document.getElementById('a-id').value='';
+    nameInput.value='';
+    capacityInput.value='';
+    capacityInput.min='1';
+    capacityInput.dataset.error='Enter a capacity of at least 1.';
+    capacityInput.dataset.invalidSample='0';
+    hint.textContent='Number of parking slots in the area.';
+    after.hidden=true;
+  }else if(record){
+    document.querySelector('[data-area-sub]').textContent=`${record.name} • ${params.get('id')}`;
+    document.getElementById('a-id').value=params.get('id');
+    nameInput.value=record.name;
+    capacityInput.value=record.capacity;
+    capacityInput.min=String(record.parked);
+    capacityInput.dataset.error=`Capacity must be at least ${record.parked}, the number of vehicles parked here now.`;
+    capacityInput.dataset.invalidSample=String(Math.max(record.parked-10,0));
+    hint.textContent=`${record.parked} vehicles are parked here now, so capacity must be at least ${record.parked}.`;
+  }
+  const parked=isNew?0:(record||SAMPLE_AREA_RECORDS['A-01']).parked;
+  const updateAfter=()=>{
+    const capacity=Number(capacityInput.value)||0;
+    const free=Math.max(capacity-parked,0);
+    document.querySelector('[data-after-free]').textContent=free;
+    document.querySelector('[data-after-cap]').textContent=capacity;
+    document.querySelector('[data-after-parked]').textContent=parked;
+    document.querySelector('[data-after-meter]').style.setProperty('--value',(capacity?Math.round(free/capacity*100):0)+'%');
+  };
+  if(!isNew){updateAfter();capacityInput.addEventListener('input',updateAfter);}
+}
+
+// Area and vehicle forms: check the details before saving; invalid fields get a message
+document.querySelectorAll('form[data-validate]').forEach(form=>{
+  form.noValidate=true;
+  const summary=form.querySelector('[data-error-summary]');
+  const check=()=>{
+    const problems=[];
+    form.querySelectorAll('[data-error]').forEach(input=>{
+      const valid=input.checkValidity();
+      const note=document.getElementById(input.id+'-error');
+      input.closest('.field').classList.toggle('has-error',!valid);
+      input.setAttribute('aria-invalid',String(!valid));
+      if(note){note.textContent=valid?'':input.dataset.error;note.hidden=valid;}
+      if(!valid)problems.push(input);
+    });
+    const list=summary.querySelector('ul');
+    list.replaceChildren(...problems.map(input=>{
+      const item=document.createElement('li');
+      item.textContent=input.dataset.error;
+      return item;
+    }));
+    summary.hidden=!problems.length;
+    return problems;
+  };
+  form.addEventListener('submit',event=>{
+    if(check().length){event.preventDefault();summary.focus();}
+  });
+  // Prototype: #invalid fills in sample mistakes and shows the error message
+  const showInvalid=()=>{
+    if(location.hash!=='#invalid')return;
+    form.querySelectorAll('[data-invalid-sample]').forEach(input=>{input.value=input.dataset.invalidSample;});
+    check();
+    summary.focus();
+  };
+  showInvalid();
+  addEventListener('hashchange',showInvalid);
+});
+
+// Vehicles list after a removal: say what was removed
+const removedTitle=document.querySelector('[data-removed-title]');
+if(removedTitle&&params.get('remove')==='owner')removedTitle.textContent='Owner and their vehicles removed';
+
 // Screens that name a record from the link (e.g. removevehicle.html?plate=…&owner=…)
 document.querySelectorAll('[data-param]').forEach(el=>{
   const value=params.get(el.dataset.param);
@@ -51,7 +135,7 @@ document.querySelectorAll('a[data-q-from-plate]').forEach(link=>{
   link.href=url.href;
 });
 
-// Search by plate: the guard's Entry/Exit choice arrives as ?flow= and only that flow's button shows
+// Search vehicle / owner: the guard's Entry/Exit choice arrives as ?flow= and only that flow's button shows
 const flow=params.get('flow');
 if(flow==='entry'||flow==='exit'){
   document.querySelectorAll('[data-start]').forEach(button=>{button.hidden=button.dataset.start!==flow;});
@@ -64,7 +148,7 @@ const results=document.querySelector('[data-areas-full]');
 if(results&&(results.dataset.areasFull==='true'||params.get('full')==='1')){
   document.querySelectorAll('[data-start="entry"]').forEach(button=>{button.href='exceptions.html#no-parking';});
 }
-// Reader screen: the "No ID? Search plate" tile follows the open Entry or Exit panel
+// Reader screen: the "No ID? Search" tile follows the open Entry or Exit panel
 const searchTile=document.querySelector('[data-search-tile]');
 if(searchTile){
   const syncTile=()=>{

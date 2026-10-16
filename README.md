@@ -21,8 +21,8 @@ Every page works offline and with JavaScript turned off. JavaScript only adds sm
 
 | Screen | File | Purpose |
 | --- | --- | --- |
-| Parking availability | `mobile.html` | Answers "Can I park?" first, then free slots per area, most free first |
-| Selected area | `mobilearea.html` | One area's free slots and the three steps at the gate |
+| Parking availability | `mobile.html` | Answers "Can I park?" first, then free slots per area, most free first; "Last updated: just now" and Refresh; opens on a phone, tablet or university device |
+| Selected area | `mobilearea.html` | One area's free slots, "Last updated: just now", and the three steps at the gate |
 | No slots available | `mobilefull.html` | Shown when every area is full |
 
 ### Guard
@@ -32,13 +32,13 @@ Guards work from one reader screen with no menu. They press **Entry** or **Exit*
 | Screen | File | Purpose |
 | --- | --- | --- |
 | Staff sign in | `index.html`, `login.html` | Sign-in form, with a link for vehicle owners |
-| Reader screen | `guard.html` | Entry and Exit buttons, free slots per area, plate search and the Help menu (Search by plate, Correct a record, Sign out) |
+| Reader screen | `guard.html` | Entry and Exit buttons, free slots per area, a "No ID? Search" tile and the Help menu (Search vehicle / owner, Correct a record, Sign out) |
 | Vehicle entry | `entry.html` | Plate and owner; pressing an area records the entry right away |
 | Entry recorded | `entrydone.html` | Full green screen; Back to reader, or it returns by itself after 5 seconds |
 | Vehicle exit | `exit.html` | Where and since when the vehicle is parked; one large Confirm exit button |
 | Exit recorded | `exitdone.html` | Full green screen; Back to reader, or it returns by itself after 5 seconds |
-| Problem screens | `exceptions.html` | ID not registered (entry, and `#not-registered-exit`), `#no-parking`, `#no-record` |
-| Search by plate | `search.html` | For owners without an ID; matches appear while typing. Opened after Entry or Exit (`?flow=entry` / `?flow=exit`) it shows only that flow's button; opened from Help it shows Start entry and Start exit |
+| Problem screens | `exceptions.html` | ID not registered (entry, and `#not-registered-exit`), `#no-parking`, `#no-record`; each offers Search vehicle / owner where it helps |
+| Search vehicle / owner | `search.html` | For owners without an ID; search by plate or owner name; matches appear while typing. Opened after Entry or Exit (`?flow=entry` / `?flow=exit`) it shows only that flow's button; opened from Help it shows Start entry and Start exit |
 | Correct a record | `correct.html` | From Help: change the area or entry time of an entry |
 
 ### Administrator
@@ -47,13 +47,13 @@ Guards work from one reader screen with no menu. They press **Entry** or **Exit*
 | --- | --- | --- |
 | Overview | `overview.html` | Free slots right now, vehicles parked, entries today, and free space per area |
 | Parking areas | `areas.html` | Areas with capacity, free space and row actions |
-| Area form | `areaform.html` | Add or edit an area; capacity can't go below current occupancy |
+| Area form | `areaform.html` | Add (`?new=1`) or edit an area (`?id=A-01`, `A-02`, `A-03`). Capacity can't go below the vehicles parked in that area now (A 70, B 40, C 20; at least 1 for a new area). Invalid details show an error message (`#invalid` shows an example); saving shows a success message on `areas.html` |
 | Vehicles & owners | `vehicles.html` | Registered owners and vehicles, with search, type filter and row actions |
-| Owner & vehicle form | `vehicleform.html` | Register an owner or link another vehicle |
+| Owner & vehicle form | `vehicleform.html` | Register an owner or link another vehicle. Invalid details show an error message (`#invalid` shows an example); saving shows a success message on `vehicles.html` |
 | Parking history | `history.html` | All entries and exits, with filters and quick filters for vehicles inside and exited |
 | Log details | `logdetail.html` | One parking session: the entry (guard, area, time) and the exit (guard, time) |
-| Reports | `reports.html` | Choose a period and area for a utilization report |
-| Report result | `reportdone.html` | Totals and per-area usage; print or save as PDF |
+| Reports | `reports.html` | Choose the report type (Parking utilization), date range and area |
+| Report result | `reportdone.html` | Per area: entries, exits, average daily usage, peak usage and how full it is now; print or save as PDF |
 | Remove area | `remove.html` | Removal is blocked while vehicles are still parked |
 | Remove vehicle or owner | `removevehicle.html` | Remove a vehicle, or an owner and all their vehicles; blocked while the vehicle is recorded inside (`#blocked`) |
 
@@ -65,7 +65,7 @@ The screens follow the team's submitted use cases, activity diagrams and sequenc
 
 **Exit:** the guard presses Exit, the owner taps their ID and the screen turns blue with where the vehicle is parked. The guard presses Confirm exit: the exit is saved, the entry becomes Closed and the area's free slots rise by 1. If the vehicle has no active record, a red screen tells the guard to hold it and search the records; nothing is recorded.
 
-**No ID:** the guard searches by plate number. The search keeps the Entry or Exit the guard chose. Starting an exit for a vehicle that isn't recorded inside opens No active record; starting an entry when every area is full opens No parking available.
+**No ID:** the guard searches by plate number or owner name. The search keeps the Entry or Exit the guard chose. Starting an exit for a vehicle that isn't recorded inside opens No active record; starting an entry when every area is full opens No parking available.
 
 **Mistakes:** if an entry was recorded with the wrong area or entry time, the guard fixes it with Correct a record (Help). Changing the area gives the old area one free slot back and takes one from the new area.
 
@@ -77,7 +77,7 @@ The screens follow the team's submitted use cases, activity diagrams and sequenc
 | --- | --- |
 | `*.html` | One file per screen, written in plain, editable HTML |
 | `css/styles.css` | Shared styles for every page: colours, layout, cards, tables, bars, badges, forms. Adapts to phone, tablet and desktop widths |
-| `js/app.js` | Optional extras: filters tables and plate matches as you type, counts down on the confirmation screens, confirms a saved correction, closes Help with Escape, runs the history quick filters, keeps the guard's Entry/Exit choice in plate search, shows the chosen vehicle on the next screens, adds prototype links |
+| `js/app.js` | Optional extras: filters tables and plate matches as you type, counts down on the confirmation screens, confirms a saved correction, closes Help with Escape, runs the history quick filters, checks the area and vehicle forms before saving, keeps the guard's Entry/Exit choice in search, shows the chosen vehicle on the next screens, adds prototype links |
 | `design_handoff/` | The design handoff the visual style came from (spec and mock frames). Where it goes beyond the submitted documents, the prototype follows the documents |
 
 ## Design

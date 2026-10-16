@@ -1156,6 +1156,33 @@ fieldset.card {
   text-decoration:none
 }
 
+/* Form errors and saved messages */
+.field.has-error :is(input,select,textarea) {
+  border:2px solid var(--danger-ink)
+}
+
+.error-text {
+  font-size:13px;
+  font-weight:600;
+  color:var(--danger-ink)
+}
+
+.callout .error-list {
+  margin:4px 0 0;
+  padding-left:20px;
+  font-size:14px
+}
+
+.saved-note {
+  display:none;
+  margin:0;
+  scroll-margin-top:120px
+}
+
+.saved-note:target {
+  display:flex
+}
+
 /* One page, several states: the #state in the link picks one, the first is the default */
 .state-case {
   display:none
@@ -1856,7 +1883,7 @@ to {
   gap:16px
 }
 
-/* Search by plate: matches appear while typing */
+/* Search vehicle / owner: matches appear while typing */
 .plate-input {
   width:100%;
   height:88px;
@@ -1872,8 +1899,10 @@ to {
 }
 
 .plate-input::placeholder {
-  color:#c9ba94;
-  font-weight:700
+  color:#b3a47e;
+  font-weight:600;
+  letter-spacing:0;
+  text-transform:none
 }
 
 .match-count {
@@ -2095,7 +2124,9 @@ to {
 
 .refresh-row {
   display:flex;
-  justify-content:flex-end
+  justify-content:space-between;
+  align-items:center;
+  gap:12px
 }
 
 .refresh-row .button {
@@ -2798,6 +2829,10 @@ to {
   height:68px;
   padding:0 16px;
   font-size:32px
+}
+
+.plate-input::placeholder {
+  font-size:24px
 }
 
 .plate-result {
