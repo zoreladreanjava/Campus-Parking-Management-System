@@ -41,10 +41,8 @@ if(countdown){
   },1000);
 }
 
-// Reader screen: confirm an undo or correction that just happened
-const message=params.get('undone')
-  ?`${params.get('undone')==='exit'?'Exit':'Entry'} undone${params.get('plate')?` · ${params.get('plate')}`:''}. Free slots are back as they were.`
-  :params.has('corrected')?'Correction saved. Administrators can see it in parking history.':'';
+// Reader screen: confirm a correction that was just saved
+const message=params.has('corrected')?'Correction saved. Administrators can see it in parking history.':'';
 if(message&&document.querySelector('.gate-shell')){
   const toast=document.createElement('p');
   toast.className='toast';
