@@ -22,6 +22,49 @@ document.querySelectorAll('[data-search]').forEach(input=>{
   run();
 });
 
+// Area form: load the area being edited (?id=A-01…) or start a new one (?new=1).
+// Capacity can't go below the vehicles parked there now, so the minimum differs per area.
+const SAMPLE_AREA_RECORDS={'A-01':{name:'Area A',capacity:100,parked:70},'A-02':{name:'Area B',capacity:80,parked:40},'A-03':{name:'Area C',capacity:20,parked:20}};
+const capacityInput=document.querySelector('[data-area-capacity]');
+if(capacityInput){
+  const record=SAMPLE_AREA_RECORDS[params.get('id')];
+  const isNew=params.has('new');
+  const nameInput=document.getElementById('a-name');
+  const hint=document.getElementById('a-cap-hint');
+  const after=document.querySelector('[data-after-saving]');
+  if(isNew){
+    document.querySelector('[data-area-title]').textContent='Add parking area';
+    document.querySelector('[data-area-sub]').textContent='New area';
+    document.getElementById('a-id').value='';
+    nameInput.value='';
+    capacityInput.value='';
+    capacityInput.min='1';
+    capacityInput.dataset.error='Enter a capacity of at least 1.';
+    capacityInput.dataset.invalidSample='0';
+    hint.textContent='Number of parking slots in the area.';
+    after.hidden=true;
+  }else if(record){
+    document.querySelector('[data-area-sub]').textContent=`${record.name} • ${params.get('id')}`;
+    document.getElementById('a-id').value=params.get('id');
+    nameInput.value=record.name;
+    capacityInput.value=record.capacity;
+    capacityInput.min=String(record.parked);
+    capacityInput.dataset.error=`Capacity must be at least ${record.parked}, the number of vehicles parked here now.`;
+    capacityInput.dataset.invalidSample=String(Math.max(record.parked-10,0));
+    hint.textContent=`${record.parked} vehicles are parked here now, so capacity must be at least ${record.parked}.`;
+  }
+  const parked=isNew?0:(record||SAMPLE_AREA_RECORDS['A-01']).parked;
+  const updateAfter=()=>{
+    const capacity=Number(capacityInput.value)||0;
+    const free=Math.max(capacity-parked,0);
+    document.querySelector('[data-after-free]').textContent=free;
+    document.querySelector('[data-after-cap]').textContent=capacity;
+    document.querySelector('[data-after-parked]').textContent=parked;
+    document.querySelector('[data-after-meter]').style.setProperty('--value',(capacity?Math.round(free/capacity*100):0)+'%');
+  };
+  if(!isNew){updateAfter();capacityInput.addEventListener('input',updateAfter);}
+}
+
 // Area and vehicle forms: check the details before saving; invalid fields get a message
 document.querySelectorAll('form[data-validate]').forEach(form=>{
   form.noValidate=true;
@@ -58,6 +101,10 @@ document.querySelectorAll('form[data-validate]').forEach(form=>{
   showInvalid();
   addEventListener('hashchange',showInvalid);
 });
+
+// Vehicles list after a removal: say what was removed
+const removedTitle=document.querySelector('[data-removed-title]');
+if(removedTitle&&params.get('remove')==='owner')removedTitle.textContent='Owner and their vehicles removed';
 
 // Screens that name a record from the link (e.g. removevehicle.html?plate=…&owner=…)
 document.querySelectorAll('[data-param]').forEach(el=>{
