@@ -10,26 +10,33 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<div class="gate-shell"><header class="gate-topbar"><div class="gate-who"><a class="brand" href="guard.html">P / TeamParker</a><span>Main gate · G. Santos</span></div><a class="button neutral" href="#help">Help</a></header>
-<main id="main" class="gate-ready"><div class="reader-dot" role="img" aria-label="Reader ready"></div>
-<h1>Ready for the next ID tap</h1>
-<p>Tap a campus ID to start an entry or exit.</p></main>
-<section class="gate-tiles" aria-label="Free slots per area"><div class="gate-tile"><span>Area A</span> <strong class="num">30 free</strong></div>
-<div class="gate-tile"><span>Area B</span> <strong class="num">40 free</strong></div>
-<div class="gate-tile is-full"><span>Area C</span> <strong>FULL</strong></div>
-<a class="gate-search" href="search.html">No ID?<br>Search plate</a></section>
-<section class="last-taps" aria-labelledby="taps-label"><h2 id="taps-label">Last taps</h2>
-<ol><li class="tap latest"><time class="num">08:14</time> <span class="tap-what"><b>Entry</b> ABC-5678 · Area B</span> <a class="button neutral" href="guard.html?undone=entry&amp;plate=ABC-5678">Undo</a></li>
-<li class="tap"><time class="num">08:11</time> <span class="tap-what"><b>Exit</b> MC-2088</span></li>
-<li class="tap"><time class="num">08:09</time> <span class="tap-what"><b class="is-problem">Not registered</b> 009931</span></li></ol></section>
-<p class="demo-taps"><b>Prototype · simulate a tap:</b> <a href="entry.html">Entry</a> <a href="exit.html">Exit</a> <a href="exceptions.html">Not registered</a> <a href="exceptions.html#no-parking">All areas full</a> <a href="exceptions.html#already-inside">Already inside</a> <a href="exceptions.html#no-record">No active record</a> <a href="screens.html">All screens</a></p>
+<div class="guard-shell"><header class="guard-topbar"><div class="guard-who"><a class="brand" href="guard.html">P / TeamParker</a><span>G. Santos · Guard</span></div><a class="button neutral" href="#help">Help</a></header>
+<main id="main" class="guard-ready"><div class="reader-dot" role="img" aria-label="Reader ready"></div>
+<h1>Ready for the next vehicle</h1>
+<p>Press Entry or Exit, then ask the owner to tap their campus ID.</p>
+<div class="direction-buttons"><a class="direction-button entry" href="#entry-mode"><strong>Entry</strong><span>Vehicle arriving</span></a>
+<a class="direction-button exit" href="#exit-mode"><strong>Exit</strong><span>Vehicle leaving</span></a></div>
+<div class="tap-mode entry" id="entry-mode" role="status"><p class="tap-mode-title">Entry · waiting for the ID tap</p>
+<p>Ask the owner to tap their campus ID on the reader.</p>
+<p class="demo-links"><b>Prototype · simulate a tap:</b> <a href="entry.html">Registered ID</a> <a href="exceptions.html">Not registered</a> <a href="exceptions.html#no-parking">All areas full</a></p>
+<div class="tap-mode-actions"><a class="guard-button" href="search.html?flow=entry">No ID? Search by plate</a>
+<a class="guard-button" href="#">Cancel</a></div></div>
+<div class="tap-mode exit" id="exit-mode" role="status"><p class="tap-mode-title">Exit · waiting for the ID tap</p>
+<p>Ask the owner to tap their campus ID on the reader.</p>
+<p class="demo-links"><b>Prototype · simulate a tap:</b> <a href="exit.html">Registered ID</a> <a href="exceptions.html#not-registered-exit">Not registered</a> <a href="exceptions.html#no-record">No active record</a></p>
+<div class="tap-mode-actions"><a class="guard-button" href="search.html?flow=exit">No ID? Search by plate</a>
+<a class="guard-button" href="#">Cancel</a></div></div></main>
+<section class="guard-tiles" aria-label="Free slots per area"><div class="guard-tile"><span>Area A</span> <strong class="num">30 free</strong></div>
+<div class="guard-tile"><span>Area B</span> <strong class="num">40 free</strong></div>
+<div class="guard-tile is-full"><span>Area C</span> <strong>FULL</strong></div>
+<a class="guard-search" href="search.html" data-search-tile>No ID?<br>Search plate</a></section>
+<p class="demo-taps"><b>Prototype:</b> press Entry or Exit to simulate an ID tap. <a href="screens.html">All screens</a></p>
 <div class="help" id="help" role="dialog" aria-modal="true" aria-labelledby="help-title"><a class="help-scrim" href="#" aria-label="Close help"></a>
 <div class="help-panel"><div class="help-head"><h2 id="help-title">Help</h2>
-<a class="gate-button" href="#">Close</a></div>
+<a class="guard-button" href="#">Close</a></div>
 <p class="text muted size-16">Tasks you won&#39;t need for most vehicles.</p>
 <a class="help-item primary" href="search.html"><strong>Search by plate</strong><span>Owner has no ID or the tap failed</span></a>
 <a class="help-item" href="correct.html"><strong>Correct a record</strong><span>Wrong area or time on an earlier tap</span></a>
-<a class="help-item" href="gatelog.html"><strong>Today&#39;s log</strong><span>Every entry and exit at this gate today</span></a>
-<a class="gate-button signout" href="login.html">Sign out</a></div></div></div>
+<a class="guard-button signout" href="login.html">Sign out</a></div></div></div>
 </body>
 </html>

@@ -10,25 +10,17 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<div class="gate-shell"><header class="gate-topbar"><div class="gate-who"><a class="brand" href="guard.html">P / TeamParker</a><span>Main gate · G. Santos</span></div></header>
-<main id="main" class="gate-main"><h1 class="gate-title">Correct a record</h1>
-<div class="vehicle-id"><span class="plate">MC-1234</span>
-<p class="person"><strong>John Doe</strong> <span>Entry at 08:15 · ENT-0158</span></p></div>
+<div class="guard-shell"><header class="guard-topbar"><div class="guard-who"><a class="brand" href="guard.html">P / TeamParker</a><span>G. Santos · Guard</span></div></header>
+<main id="main" class="guard-main"><h1 class="guard-title">Correct a record</h1>
+<div class="vehicle-id"><span class="plate">ABC-5678</span>
+<p class="person"><strong>Maria Cruz</strong> <span>Entry at 08:14 · ENT-0157</span></p></div>
 <form class="card form-card" action="guard.html" method="get"><input type="hidden" name="corrected" value="1">
 <div class="row"><div class="field"><label for="c-area">Parking area</label>
-<select id="c-area" name="area"><option selected>Area A</option><option>Area B</option><option disabled>Area C (full)</option></select>
-<span class="hint">Recorded as: Area B</span></div>
+<select id="c-area" name="area"><option>Area A</option><option selected>Area B</option><option disabled>Area C (full)</option></select></div>
 <div class="field"><label for="c-time">Entry time</label>
-<input id="c-time" name="time" type="datetime-local" value="2026-10-12T08:15"></div></div>
-<div class="field"><label for="c-reason">Reason for correction</label>
-<textarea id="c-reason" name="reason" required>Owner parked in Area A, wrong button pressed</textarea>
-<span class="hint">Required. Administrators see it in parking history.</span></div>
-<div class="area-update"><p class="card-label">Free slots after saving</p>
-<ul class="compare"><li><div class="meter-head num"><strong>Area B</strong><span><b>39</b> → <b>40</b> <span class="muted">/ 80 free</span></span></div>
-<div class="meter" aria-hidden="true"><span style="--value:50%"></span></div></li>
-<li><div class="meter-head num"><strong>Area A</strong><span><b>30</b> → <b>29</b> <span class="muted">/ 100 free</span></span></div>
-<div class="meter" aria-hidden="true"><span style="--value:29%"></span></div></li></ul></div>
-<div class="form-actions"><button class="gate-button primary" type="submit">Save correction</button>
-<a class="gate-button" href="guard.html">Cancel</a></div></form></main></div>
+<input id="c-time" name="time" type="datetime-local" value="2026-10-12T08:14"></div></div>
+<p class="footnote">If you change the area, the old area gets one free slot back and the new area has one less.</p>
+<div class="form-actions"><button class="guard-button primary" type="submit">Save correction</button>
+<a class="guard-button" href="guard.html">Cancel</a></div></form></main></div>
 </body>
 </html>

@@ -12,7 +12,7 @@
   --radius:12px;
   --tabbar-h:64px;
   --shadow:0 4px 16px rgb(0 0 0 / 8%);
-  /* green = entry / available / success, blue = exit, red = problem, amber = correction or stale */
+  /* green = entry / available / success, blue = exit, red = problem */
   --green:oklch(0.45 0.12 150);
   --green-fill:oklch(0.93 0.05 150);
   --green-ink:oklch(0.38 0.1 150);
@@ -21,9 +21,6 @@
   --blue-fill:oklch(0.93 0.04 250);
   --blue-ink:oklch(0.4 0.1 250);
   --red-bar:oklch(0.48 0.17 25);
-  --amber-fill:#fbecc0;
-  --amber-border:#e2c46a;
-  --amber-ink:#5c4510;
   --track:#ede6d6;
   --disabled-border:#c9ba94
 }
@@ -31,6 +28,10 @@
 
 * {
   box-sizing:border-box
+}
+
+[hidden] {
+  display:none!important
 }
 
 body {
@@ -853,14 +854,6 @@ a.area-card:hover {
   color:#5c4510
 }
 
-.impact {
-  margin:0;
-  padding:12px 14px;
-  border-radius:8px;
-  background:var(--canvas);
-  font-size:15px
-}
-
 .form-actions {
   display:flex;
   flex-wrap:wrap;
@@ -1039,28 +1032,6 @@ a.area-card:hover {
   resize:vertical
 }
 
-.compare {
-  list-style:none;
-  margin:0;
-  padding:0;
-  display:flex;
-  flex-direction:column;
-  gap:14px
-}
-
-.compare li {
-  display:flex;
-  flex-direction:column;
-  gap:8px
-}
-
-.compare .meter-head {
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  font-size:15px
-}
-
 /* Log details */
 .timeline {
   list-style:none;
@@ -1185,6 +1156,51 @@ fieldset.card {
   text-decoration:none
 }
 
+/* One page, several states: the #state in the link picks one, the first is the default */
+.state-case {
+  display:none
+}
+
+.state-case:target,.state-cases:not(:has(.state-case:target)) .state-case:first-child {
+  display:flex;
+  flex-direction:column;
+  gap:16px
+}
+
+.choice-list {
+  margin:0;
+  padding:0;
+  border:0;
+  display:flex;
+  flex-direction:column;
+  gap:10px
+}
+
+.choice-list legend {
+  margin-bottom:8px;
+  padding:0;
+  font-weight:600
+}
+
+.choice-list label {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-height:44px;
+  padding:0 14px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  background:#fff;
+  color:#302a24;
+  cursor:pointer
+}
+
+.choice-list input {
+  width:20px;
+  height:20px;
+  accent-color:var(--ink)
+}
+
 /* Owner mobile detail */
 .steps {
   margin:0;
@@ -1195,8 +1211,8 @@ fieldset.card {
   font-size:15px
 }
 
-/* ===== Guard gate screen: one screen whose state follows the ID tap ===== */
-.gate-shell {
+/* ===== Guard reader screen: Entry or Exit, then the ID tap ===== */
+.guard-shell {
   min-height:100vh;
   min-height:100dvh;
   display:flex;
@@ -1204,7 +1220,7 @@ fieldset.card {
   background:var(--canvas)
 }
 
-.gate-topbar {
+.guard-topbar {
   flex-shrink:0;
   min-height:56px;
   display:flex;
@@ -1215,22 +1231,22 @@ fieldset.card {
   border-bottom:2px solid var(--ink)
 }
 
-.gate-who {
+.guard-who {
   display:flex;
   align-items:baseline;
   gap:16px
 }
 
-.gate-who .brand {
+.guard-who .brand {
   font-size:18px
 }
 
-.gate-who span {
+.guard-who span {
   font-size:15px;
   color:#38342c
 }
 
-.gate-topbar .button {
+.guard-topbar .button {
   margin-left:auto;
   align-self:center;
   font-size:15px;
@@ -1275,7 +1291,7 @@ fieldset.card {
   background:var(--red-bar)
 }
 
-.gate-main {
+.guard-main {
   flex:1;
   width:100%;
   max-width:1100px;
@@ -1286,7 +1302,7 @@ fieldset.card {
   padding:28px 32px
 }
 
-.gate-title {
+.guard-title {
   margin:0;
   font-size:36px;
   font-weight:700;
@@ -1294,7 +1310,7 @@ fieldset.card {
 }
 
 /* Waiting for a tap */
-.gate-ready {
+.guard-ready {
   flex:1;
   display:flex;
   flex-direction:column;
@@ -1324,19 +1340,19 @@ fieldset.card {
   background:oklch(0.55 0.12 150)
 }
 
-.gate-ready h1 {
+.guard-ready h1 {
   margin:0;
   font-size:52px;
   font-weight:700;
   line-height:1.1
 }
 
-.gate-ready p {
+.guard-ready p {
   font-size:22px;
   color:var(--secondary)
 }
 
-.gate-tiles {
+.guard-tiles {
   width:100%;
   max-width:1100px;
   margin:0 auto;
@@ -1346,7 +1362,7 @@ fieldset.card {
   padding:0 24px 24px
 }
 
-.gate-tile {
+.guard-tile {
   display:flex;
   flex-direction:column;
   gap:2px;
@@ -1356,31 +1372,31 @@ fieldset.card {
   background:var(--surface)
 }
 
-.gate-tile>span {
+.guard-tile>span {
   font-size:18px;
   font-weight:600
 }
 
-.gate-tile strong {
+.guard-tile strong {
   font-size:30px;
   font-weight:700;
   color:var(--green-ink)
 }
 
-.gate-tile.is-full {
+.guard-tile.is-full {
   background:#f5f0e4;
   border-color:#e3d6b3
 }
 
-.gate-tile.is-full>span {
+.guard-tile.is-full>span {
   color:var(--secondary)
 }
 
-.gate-tile.is-full strong {
+.guard-tile.is-full strong {
   color:var(--danger-ink)
 }
 
-.gate-search {
+.guard-search {
   min-height:80px;
   display:flex;
   align-items:center;
@@ -1397,67 +1413,6 @@ fieldset.card {
   text-decoration:none
 }
 
-.last-taps {
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:12px 24px;
-  background:var(--surface);
-  border-top:1px solid var(--border);
-  font-size:16px;
-  color:#38342c;
-  overflow-x:auto
-}
-
-.last-taps h2 {
-  margin:0 4px 0 0;
-  font-size:13px;
-  font-weight:700;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  white-space:nowrap;
-  color:var(--secondary)
-}
-
-.last-taps ol {
-  list-style:none;
-  display:flex;
-  gap:12px;
-  margin:0;
-  padding:0
-}
-
-.tap {
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:14px;
-  border-radius:10px;
-  background:var(--canvas);
-  white-space:nowrap
-}
-
-.tap.latest {
-  padding:6px 6px 6px 14px;
-  border:1px solid var(--border)
-}
-
-.tap time {
-  color:var(--secondary)
-}
-
-.tap .is-problem {
-  color:var(--danger-ink)
-}
-
-.tap .button {
-  align-self:auto;
-  font-size:16px;
-  font-weight:600;
-  padding:10px 16px;
-  min-height:44px
-}
-
 .demo-taps {
   display:flex;
   flex-wrap:wrap;
@@ -1466,6 +1421,99 @@ fieldset.card {
   background:var(--surface);
   font-size:12px;
   color:var(--secondary)
+}
+
+/* Entry and Exit are chosen by the guard before the ID tap */
+.direction-buttons {
+  width:100%;
+  max-width:720px;
+  margin-top:12px;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px
+}
+
+.direction-button {
+  min-height:120px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  border-radius:14px;
+  color:#fff;
+  text-decoration:none
+}
+
+.direction-button:hover {
+  filter:brightness(1.15)
+}
+
+.direction-button strong {
+  font-size:40px;
+  font-weight:800;
+  letter-spacing:.02em;
+  text-transform:uppercase
+}
+
+.direction-button span {
+  font-size:18px
+}
+
+.direction-button.entry,.tap-mode.entry {
+  background:var(--green)
+}
+
+.direction-button.exit,.tap-mode.exit {
+  background:var(--blue)
+}
+
+.tap-mode {
+  width:100%;
+  max-width:720px;
+  margin-top:12px;
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  gap:12px;
+  padding:24px;
+  border-radius:14px;
+  color:#fff
+}
+
+.tap-mode:target {
+  display:flex
+}
+
+.guard-ready:has(.tap-mode:target) .direction-buttons {
+  display:none
+}
+
+.guard-ready .tap-mode p {
+  color:#fff;
+  font-size:18px
+}
+
+.guard-ready .tap-mode .tap-mode-title {
+  font-size:30px;
+  font-weight:800
+}
+
+.guard-ready .tap-mode .demo-links {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:6px 16px;
+  font-size:15px
+}
+
+.tap-mode .demo-links a {
+  color:#fff
+}
+
+.tap-mode .guard-button {
+  border-color:#fff;
+  color:#fff
 }
 
 /* Vehicle identity: plate in plate style */
@@ -1514,7 +1562,7 @@ fieldset.card {
   color:var(--secondary)
 }
 
-.gate-statement {
+.guard-statement {
   margin:0;
   font-size:22px;
   color:#38342c
@@ -1597,7 +1645,7 @@ a.area-button:hover {
   font-size:16px
 }
 
-.gate-actions {
+.guard-actions {
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -1605,13 +1653,13 @@ a.area-button:hover {
   gap:16px
 }
 
-.gate-actions .hint {
+.guard-actions .hint {
   margin:0;
   font-size:18px;
   color:var(--secondary)
 }
 
-.gate-button {
+.guard-button {
   min-height:60px;
   display:inline-flex;
   align-items:center;
@@ -1628,16 +1676,12 @@ a.area-button:hover {
   cursor:pointer
 }
 
-.gate-button.white {
-  background:#fff
-}
-
-.gate-button.primary {
+.guard-button.primary {
   background:var(--ink);
   color:#fff
 }
 
-.gate-button.big {
+.guard-button.big {
   min-height:100px;
   border-radius:14px;
   font-size:26px;
@@ -1664,7 +1708,7 @@ a.area-button:hover {
 }
 
 /* Done: the whole screen turns green, then returns to the reader */
-.gate-shell.is-done {
+.guard-shell.is-done {
   background:var(--done-bg)
 }
 
@@ -1716,7 +1760,7 @@ a.area-button:hover {
   padding:0 32px 32px
 }
 
-.done-foot .gate-actions p {
+.done-foot .guard-actions p {
   margin:0;
   font-size:18px;
   color:#38342c
@@ -1863,7 +1907,7 @@ to {
   font-weight:600
 }
 
-.plate-result .gate-button {
+.plate-result .guard-button {
   min-height:52px;
   padding:10px 22px
 }
@@ -1872,9 +1916,54 @@ to {
   border:2px solid var(--ink)
 }
 
-.plate-result.is-best .gate-button {
+.plate-result.is-best .guard-button {
   background:var(--ink);
   color:#fff
+}
+
+.plate-result .start-entry {
+  border-color:var(--green);
+  color:var(--green)
+}
+
+.plate-result .start-exit {
+  border-color:var(--blue);
+  color:var(--blue)
+}
+
+.plate-result.is-best .start-entry {
+  background:var(--green);
+  color:#fff
+}
+
+.plate-result.is-best .start-exit {
+  background:var(--blue);
+  color:#fff
+}
+
+.search-flow {
+  align-self:flex-start;
+  margin:-8px 0 0;
+  padding:6px 14px;
+  border-radius:999px;
+  color:#fff;
+  font-size:16px;
+  font-weight:700
+}
+
+.search-flow.entry {
+  background:var(--green)
+}
+
+.search-flow.exit {
+  background:var(--blue)
+}
+
+.tap-mode-actions {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px
 }
 
 /* Help: less common tasks, over the reader */
@@ -1923,7 +2012,7 @@ to {
   font-weight:700
 }
 
-.help-head .gate-button {
+.help-head .guard-button {
   min-height:48px;
   padding:8px 20px;
   font-size:18px
@@ -1969,32 +2058,7 @@ to {
 }
 
 /* Today's log */
-.log-list {
-  list-style:none;
-  margin:0;
-  padding:0;
-  display:flex;
-  flex-direction:column;
-  gap:8px
-}
 
-.log-list .tap {
-  flex-wrap:wrap;
-  padding:14px 16px;
-  border:1px solid var(--border);
-  background:var(--surface);
-  font-size:17px;
-  white-space:normal
-}
-
-.log-list .tap.latest {
-  padding:8px 8px 8px 16px;
-  border-color:#9c8d63
-}
-
-.log-list .tap-what {
-  flex:1
-}
 
 /* ===== Owner mobile: answer "Can I park?" first ===== */
 .answer {
@@ -2029,31 +2093,12 @@ to {
   color:var(--danger-ink)
 }
 
-.freshness {
+.refresh-row {
   display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px
+  justify-content:flex-end
 }
 
-.freshness p {
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-size:15px;
-  color:var(--secondary)
-}
-
-.freshness p::before {
-  content:"";
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:var(--green)
-}
-
-.freshness .button {
-  align-self:auto;
+.refresh-row .button {
   min-height:44px;
   font-weight:600
 }
@@ -2087,36 +2132,6 @@ to {
 .area-card-sub {
   font-size:14px;
   color:var(--secondary)
-}
-
-.stale-banner {
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-  padding:18px;
-  border:1px solid var(--amber-border);
-  border-radius:12px;
-  background:var(--amber-fill);
-  color:var(--amber-ink)
-}
-
-.stale-banner strong {
-  font-size:18px
-}
-
-.stale-banner p {
-  font-size:15px
-}
-
-.stale-banner .button {
-  align-self:stretch;
-  min-height:48px;
-  margin-top:4px;
-  font-weight:700
-}
-
-.is-stale .area-card {
-  opacity:.6
 }
 
 .area-title {
@@ -2155,7 +2170,7 @@ to {
   font-size:14px
 }
 
-/* ===== Admin: free space, corrections and undos ===== */
+/* ===== Admin: free space and history filters ===== */
 .data-table td.free {
   font-weight:700;
   color:var(--green-ink)
@@ -2207,34 +2222,12 @@ to {
   display:none
 }
 
-.badge.undone {
-  background:var(--danger-fill);
-  color:var(--danger-ink)
-}
-
 .timeline li.entry::before {
   background:var(--ink)
 }
 
-.timeline li.correction::before {
-  background:oklch(0.72 0.14 80)
-}
-
 .timeline li.exit::before {
   background:var(--blue)
-}
-
-.timeline .impact-line {
-  display:block
-}
-
-.amber-note {
-  margin:0;
-  padding:12px 14px;
-  border-radius:8px;
-  background:var(--amber-fill);
-  color:var(--amber-ink);
-  font-size:14px
 }
 
 .crumb {
@@ -2417,12 +2410,6 @@ to {
 }
 
 
-@media(max-width:900px) {
-
-
-}
-
-
 @media(max-width:1000px) {
   .data-table thead th,.data-table :is(tbody,tfoot) th,.data-table td {
   padding-left:14px;
@@ -2446,7 +2433,7 @@ to {
   padding:20px
 }
 
-/* Keep the main gate action on screen above the tab bar */
+/* Keep the main action on screen above the tab bar */
 
 
 /* Result tables read as cards on phones */
@@ -2513,66 +2500,19 @@ to {
 }
 
 
-/* Last taps: when three taps no longer fit in one row, show only the latest (full list is in Help) */
-@media(max-width:930px) {
-  .last-taps {
-  display:grid;
-  grid-template-columns:auto 1fr auto;
-  align-items:center;
-  gap:2px 6px;
-  padding:12px 16px
-}
-
-.last-taps h2 {
-  grid-area:1/1;
-  margin:0
-}
-
-.last-taps ol,.last-taps .tap.latest {
-  display:contents
-}
-
-.last-taps .tap:not(.latest) {
-  display:none
-}
-
-.last-taps .tap.latest time {
-  grid-area:1/2;
-  font-size:13px;
-  font-weight:700;
-  letter-spacing:.08em;
-  color:var(--secondary)
-}
-
-.last-taps .tap.latest time::before {
-  content:"· "
-}
-
-.last-taps .tap.latest .tap-what {
-  grid-area:2/1/3/3
-}
-
-.last-taps .tap.latest .button {
-  grid-area:1/3/3/4
-}
-
-
-}
-
-
-/* Gate screen and owner pages on phones: one column, main button at the bottom */
+/* Guard screens and owner pages on phones: one column, main button at the bottom */
 @media(max-width:700px) {
-  .gate-topbar {
+  .guard-topbar {
   min-height:64px;
   padding:10px 16px
 }
 
-.gate-who {
+.guard-who {
   flex-direction:column;
   gap:0
 }
 
-.gate-who span {
+.guard-who span {
   font-size:13px
 }
 
@@ -2588,16 +2528,16 @@ to {
   font-size:15px
 }
 
-.gate-main {
+.guard-main {
   gap:16px;
   padding:20px 16px
 }
 
-.gate-title {
+.guard-title {
   font-size:26px
 }
 
-.gate-ready {
+.guard-ready {
   gap:14px;
   padding:24px 16px
 }
@@ -2612,36 +2552,52 @@ to {
   height:48px
 }
 
-.gate-ready h1 {
+.guard-ready h1 {
   font-size:32px
 }
 
-.gate-ready p {
+.guard-ready p {
   font-size:17px
 }
 
-.gate-tiles {
+.direction-button {
+  min-height:96px
+}
+
+.direction-button strong {
+  font-size:28px
+}
+
+.direction-button span {
+  font-size:15px
+}
+
+.guard-ready .tap-mode .tap-mode-title {
+  font-size:24px
+}
+
+.guard-tiles {
   grid-template-columns:minmax(0,1fr);
   gap:8px;
   padding:0 16px 16px
 }
 
-.gate-tile {
+.guard-tile {
   flex-direction:row;
   justify-content:space-between;
   align-items:center;
   padding:12px 18px
 }
 
-.gate-tile strong {
+.guard-tile strong {
   font-size:26px
 }
 
-.gate-search {
+.guard-search {
   min-height:60px
 }
 
-.state-bar .where,.gate-shell .sep,.plate-result .type {
+.guard-shell .sep,.plate-result .type {
   display:none
 }
 
@@ -2689,7 +2645,7 @@ to {
   content:"· "
 }
 
-.gate-statement {
+.guard-statement {
   font-size:17px
 }
 
@@ -2745,21 +2701,21 @@ to {
   content:"· "
 }
 
-.gate-actions {
+.guard-actions {
   margin-top:auto
 }
 
-.gate-actions .hint:not(.keep) {
+.guard-actions .hint:not(.keep) {
   display:none
 }
 
-.gate-actions .hint.keep {
+.guard-actions .hint.keep {
   flex-basis:100%;
   font-size:15px;
   text-align:center
 }
 
-.gate-actions .gate-button,.done-foot .gate-button {
+.guard-actions .guard-button,.done-foot .guard-button {
   flex:1 1 100%
 }
 
@@ -2767,12 +2723,12 @@ to {
   padding:0 16px 20px
 }
 
-.done-foot .gate-actions {
+.done-foot .guard-actions {
   justify-content:center;
   text-align:center
 }
 
-.done-foot .gate-actions p {
+.done-foot .guard-actions p {
   flex-basis:100%;
   font-size:16px
 }
@@ -2798,7 +2754,7 @@ to {
   font-size:32px
 }
 
-.confirm-exit+.gate-actions {
+.confirm-exit+.guard-actions {
   margin-top:0
 }
 
@@ -2828,12 +2784,12 @@ to {
   gap:10px
 }
 
-.gate-button.big {
+.guard-button.big {
   min-height:60px;
   font-size:20px
 }
 
-.gate-button.big.primary {
+.guard-button.big.primary {
   min-height:72px;
   font-size:22px
 }
@@ -2854,8 +2810,8 @@ to {
   font-size:17px
 }
 
-.plate-result .gate-button {
-  flex:1 1 100%
+.plate-result .guard-button {
+  flex:1 1 40%
 }
 
 .help-panel {

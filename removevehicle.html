@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="TeamParker campus parking front-end prototype for CIT-University.">
+<title>23 • Admin / remove vehicle or owner | TeamParker</title>
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="app-shell"><header class="topbar"><a class="brand" href="index.html">P / TeamParker</a>
+<p class="campus">CIT-University • Campus parking</p>
+<div class="topbar-end"><span class="role">Administrator</span>
+<a class="button neutral" href="login.html">Sign out</a></div></header>
+<aside class="sidebar">
+<nav aria-label="Main navigation"><a href="overview.html" >Overview</a>
+<a href="areas.html" >Parking areas</a>
+<a href="vehicles.html" class="active" aria-current="page">Vehicles / owners</a>
+<a href="history.html" >Parking history</a>
+<a href="reports.html" >Reports</a>
+</nav></aside>
+<main id="main" class="main" tabindex="-1"><div class="state-cases">
+<section class="state-case" id="confirm" aria-labelledby="confirm-title"><div class="page-heading"><h1 id="confirm-title">Remove <span data-param="plate">DEF-9123</span>?</h1>
+<p class="text muted size-14">Owner: <span data-param="owner">John Doe</span></p></div>
+<form class="card form-card" action="vehicles.html" method="get"><fieldset class="choice-list"><legend>What to remove</legend>
+<label><input type="radio" name="remove" value="vehicle" checked> This vehicle only</label>
+<label><input type="radio" name="remove" value="owner"> The owner and all of their vehicles</label></fieldset>
+<p class="text size-15">The owner&#39;s ID number will no longer record entries for what you remove. Past entries and exits stay in parking history.</p>
+<div class="form-actions"><button class="button primary" type="submit">Remove</button>
+<a class="button subtle" href="vehicles.html">Cancel</a></div></form></section>
+<section class="state-case" id="blocked" aria-labelledby="blocked-title"><div class="page-heading"><h1 id="blocked-title">Remove ABC-5678?</h1>
+<p class="text muted size-14">Owner: Maria Cruz</p></div>
+<div class="card form-card"><div class="callout bad" role="alert"><strong>This vehicle can&#39;t be removed yet</strong>
+<span>It is recorded inside, in Area B since 08:14.</span></div>
+<p class="text size-15">Remove it, or its owner, after its exit is recorded. Past entries and exits stay in parking history.</p>
+<div class="form-actions"><a class="button primary" href="history.html">View parking history</a>
+<a class="button subtle" href="vehicles.html">Back to vehicles</a>
+<button class="button neutral" type="button" disabled>Remove</button></div></div></section></div></main>
+<footer class="footer">PROTOTYPE • Demonstration data • No live ID reader or database connection</footer></div>
+</body>
+</html>
