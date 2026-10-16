@@ -33,7 +33,7 @@
 <input id="o-name" type="text" value="John Doe" required autocomplete="off" aria-describedby="o-name-error" data-error="Enter the owner&#39;s full name." data-invalid-sample="">
 <span class="error-text" id="o-name-error" hidden></span></div>
 <div class="field"><label for="o-idnumber">ID number</label>
-<input id="o-idnumber" type="text" value="004218" inputmode="numeric" required pattern="[0-9]{6}" autocomplete="off" aria-describedby="o-idnumber-hint o-idnumber-error" data-error="Enter the 6-digit ID number." data-invalid-sample="42">
+<input id="o-idnumber" type="text" value="004218" required autocomplete="off" aria-describedby="o-idnumber-hint o-idnumber-error" data-error="Enter the owner&#39;s ID number." data-invalid-sample="">
 <span class="hint" id="o-idnumber-hint">Tap the card on the desk reader to fill this in.</span>
 <span class="error-text" id="o-idnumber-error" hidden></span></div>
 <div class="field"><label for="o-contact">Contact number</label>
@@ -43,7 +43,7 @@
 <input id="v-id" type="text" value="VEH-0081" readonly>
 <span class="hint">Generated automatically</span></div>
 <div class="field"><label for="v-plate">Plate number</label>
-<input id="v-plate" name="plate" type="text" value="MC-1234" required pattern="[A-Za-z]{2,3}-[0-9]{4}" autocomplete="off" aria-describedby="v-plate-error" data-error="Enter the plate number, for example MC-1234." data-invalid-sample="MC1234">
+<input id="v-plate" name="plate" type="text" value="MC-1234" required pattern="[A-Za-z0-9]+(?:[ \-][A-Za-z0-9]+)*" autocomplete="off" aria-describedby="v-plate-error" data-error="Enter the plate number using letters, numbers, spaces or dashes, for example MC-1234 or 1234-AB." data-invalid-sample="MC/1234">
 <span class="error-text" id="v-plate-error" hidden></span></div>
 <div class="field"><label for="v-type">Vehicle type</label>
 <select id="v-type"><option selected>Motorcycle</option><option>Car</option></select></div>
