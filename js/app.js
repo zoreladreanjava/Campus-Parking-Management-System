@@ -42,7 +42,7 @@ if(countdown){
 }
 
 // Reader screen: confirm a correction that was just saved
-const message=params.has('corrected')?'Correction saved. Administrators can see it in parking history.':'';
+const message=params.has('corrected')?'Record corrected. Free slots are updated.':'';
 if(message&&document.querySelector('.guard-shell')){
   const toast=document.createElement('p');
   toast.className='toast';
