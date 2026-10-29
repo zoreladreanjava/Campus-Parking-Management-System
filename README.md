@@ -8,7 +8,9 @@ Today, guards at the gate check vehicles by eye: no ID is scanned and no entry i
 
 ## Run it
 
-No installation or build step is needed.
+**Live site:** https://zoreladreanjava.github.io/Campus-Parking-Management-System/ (all screens: [screens.html](https://zoreladreanjava.github.io/Campus-Parking-Management-System/screens.html)). It is published with GitHub Pages from the `main` branch and updates about a minute after each merge.
+
+To run it locally, no installation or build step is needed.
 
 1. Open `index.html` in a browser to start at staff sign-in.
 2. Open `screens.html` to browse all 23 screens.
